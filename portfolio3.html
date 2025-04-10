@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
-            background-size: 300% 300%;
+            background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: #ddd;
         }
@@ -23,18 +23,24 @@
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 80vw; /* 设置宽度为视口宽度的 80% */
+            margin: 10px auto;
+            padding: 15px;
+            background: rgba(50, 50, 50, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
+            font-size: 1.5rem;
             color: #fff;
         }
 
         .gallery {
+            max-width: 80vw; /* 设置最大宽度为视口宽度的 80% */
+            margin: 0 auto; /* 居中对齐 */
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适配列宽 */
             gap: 15px;
         }
 
@@ -90,6 +96,43 @@
         .back-link {
             margin-top: 20px;
             display: block;
+            font-size: 0.9rem;
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 800px; /* 保持中等屏幕的宽度限制 */
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                gap: 15px;
+            }
+
+            .back-link {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 小屏幕调整列宽 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr; /* 超小屏幕调整为单列 */
+            }
         }
     </style>
 </head>
