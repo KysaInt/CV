@@ -59,7 +59,16 @@
 
         .expandable {
             cursor: pointer;
-            color: #4f9bff;
+            color: #ff9800; /* 更改颜色 */
+            text-decoration: underline;
+        }
+
+        a {
+            color: #ff9800; /* 更改作品链接颜色 */
+            text-decoration: none;
+        }
+
+        a:hover {
             text-decoration: underline;
         }
 
@@ -90,14 +99,20 @@
         }
     </style>
     <script>
-        function toggleDetails(id) {
-            const details = document.getElementById(id);
-            if (details.style.display === "none" || details.style.display === "") {
-                details.style.display = "table-row";
-            } else {
-                details.style.display = "none";
-            }
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            const expandableElements = document.querySelectorAll(".expandable");
+            expandableElements.forEach(element => {
+                element.addEventListener("click", () => {
+                    const id = element.getAttribute("data-target");
+                    const details = document.getElementById(id);
+                    if (details.style.display === "none" || details.style.display === "") {
+                        details.style.display = "table-row";
+                    } else {
+                        details.style.display = "none";
+                    }
+                });
+            });
+        });
     </script>
 </head>
 <body>
@@ -122,33 +137,33 @@
                 <th>公司</th>
                 <th>职位</th>
                 <th>薪资</th>
+                <th>使用到的软件</th>
             </tr>
             <tr>
                 <td>2016.06-2016.11</td>
                 <td>武汉品胜文化传媒有限公司</td>
-                <td><span class="expandable" onclick="toggleDetails('details1')">儿童插画设计</span></td>
+                <td><span class="expandable" data-target="details1">儿童插画设计</span></td>
                 <td>2k实习</td>
+                <td>Photoshop</td>
             </tr>
             <tr id="details1" class="details">
-                <td colspan="4">
+                <td colspan="5">
                     <ul>
-                        <li>使用数位板配合 Photoshop 等软件为线稿上色。</li>
-                        <li>使用到的软件：Photoshop。</li>
-                        <li><a href="portfolio1.html" target="_blank">作品链接</a></li>
+                        <li>使用数位板配合 Photoshop 等软件为线稿上色.</li>
                     </ul>
                 </td>
             </tr>
             <tr>
                 <td>2017.03-2019.03</td>
                 <td>武汉东湖装饰工程有限公司</td>
-                <td><span class="expandable" onclick="toggleDetails('details2')">CAD施工图制图/工装空间效果图建模及渲染</span></td>
+                <td><span class="expandable" data-target="details2">CAD施工图制图/工装空间效果图建模及渲染</span></td>
                 <td>2K-5K</td>
+                <td>Photoshop/AutoCAD/3ds Max/V-Ray</td>
             </tr>
             <tr id="details2" class="details">
-                <td colspan="4">
+                <td colspan="5">
                     <ul>
-                        <li>使用 PS/CAD/3DSMAX/VRAY 绘制施工图及工装效果图。</li>
-                        <li>使用到的软件：Photoshop、AutoCAD、3ds Max、V-Ray。</li>
+                        <li>使用 PS/CAD/3DSMAX/VRAY 绘制规范的施工图及工装效果图.</li>
                         <li><a href="portfolio2.html" target="_blank">作品链接</a></li>
                     </ul>
                 </td>
@@ -156,15 +171,15 @@
             <tr>
                 <td>2020.05-2021.04</td>
                 <td>上海木里木外实业有限公司</td>
-                <td><span class="expandable" onclick="toggleDetails('details3')">展厅/家具类产品建模渲染</span></td>
+                <td><span class="expandable" data-target="details3">展厅/家具类产品建模渲染</span></td>
                 <td>8k-12k</td>
+                <td>SketchUp/3ds Max/V-Ray/Rhino/Cinema 4D/Blender</td>
             </tr>
             <tr id="details3" class="details">
-                <td colspan="4">
+                <td colspan="5">
                     <ul>
-                        <li>用 SketchUp 布置展厅模型，3dsMAX+Vray 做家具类产品建模渲染。</li>
-                        <li>学习 Rhino/C4D/Blender，提升建模能力。</li>
-                        <li>使用到的软件：SketchUp、3ds Max、V-Ray、Rhino、Cinema 4D、Blender。</li>
+                        <li>用 SketchUp 布置展厅模型，3dsMAX+Vray 做家具类产品建模渲染.</li>
+                        <li>接触rhino/C4D希望可以加强自己建模能力.</li>
                         <li><a href="portfolio3.html" target="_blank">作品链接</a></li>
                     </ul>
                 </td>
@@ -172,15 +187,15 @@
             <tr>
                 <td>2021.05-2022.04</td>
                 <td>上海伍鼎景观设计咨询有限公司</td>
-                <td><span class="expandable" onclick="toggleDetails('details4')">艺术装置/卡通IP形象设计/参数化建模设计</span></td>
+                <td><span class="expandable" data-target="details4">艺术装置/卡通IP形象设计/参数化建模设计</span></td>
                 <td>15k</td>
+                <td>Rhino/Enscape/Grasshopper/V-ray</td>
             </tr>
             <tr id="details4" class="details">
-                <td colspan="4">
+                <td colspan="5">
                     <ul>
-                        <li>使用 Rhino 制作景观雕塑模型，Enscape 渲染输出。</li>
-                        <li>研究角色绑定和 Grasshopper 参数化设计。</li>
-                        <li>使用到的软件：Rhino、Enscape、Grasshopper。</li>
+                        <li>使用 Rhino 制作曲面景观雕塑模型，Enscape 渲染输出.</li>
+                        <li>学习grasshopper让制作的模型融入更多参数化设计的内容</li>
                         <li><a href="portfolio4.html" target="_blank">作品链接</a></li>
                     </ul>
                 </td>
@@ -188,15 +203,15 @@
             <tr>
                 <td>2022.05-2023.04</td>
                 <td>离职期间</td>
-                <td><span class="expandable" onclick="toggleDetails('details5')">学习与研究</span></td>
+                <td><span class="expandable" data-target="details5">学习与研究</span></td>
                 <td>-</td>
+                <td>Cinema 4D/Stable Diffusion/Blender/OC/RS</td>
             </tr>
             <tr id="details5" class="details">
-                <td colspan="4">
+                <td colspan="5">
                     <ul>
-                        <li>学习 C4D 动画及相关插件，完成独立动画作品。</li>
-                        <li>研究 Stable Diffusion 及主流插件和模型。</li>
-                        <li>使用到的软件：Cinema 4D、Stable Diffusion。</li>
+                        <li>学习 C4D 动画及相关插件，积累完成独立动画作品.</li>
+                        <li>本地stable diffusion及其主流插件和models的研究探索.</li>
                         <li><a href="portfolio5.html" target="_blank">作品链接</a></li>
                     </ul>
                 </td>
@@ -204,14 +219,15 @@
             <tr>
                 <td>2023.05-2024.01</td>
                 <td>杭州青缇智能有限公司</td>
-                <td><span class="expandable" onclick="toggleDetails('details6')">动态虚拟直播场景设计</span></td>
+                <td><span class="expandable" data-target="details6">动态虚拟直播场景设计</span></td>
                 <td>15K-19K</td>
+                <td>Rhino/Cinema 4D/X-particles/Unreal Engine 4/AE/PS</td>
             </tr>
             <tr id="details6" class="details">
-                <td colspan="4">
+                <td colspan="5">
                     <ul>
-                        <li>用 Rhino 建模，C4D 制作动画，UE4 制作实时动态场景。</li>
-                        <li>使用到的软件：Rhino、Cinema 4D、Unreal Engine 4。</li>
+                        <li>用 Rhino 建模，C4D 制作动画，UE4 制作实时动态场景.</li>
+                        <li>用PS/AE处理简单的直播间贴片以及动效</li>
                         <li><a href="portfolio6.html" target="_blank">作品链接</a></li>
                     </ul>
                 </td>
@@ -219,15 +235,16 @@
             <tr>
                 <td>2024.03-2024.08</td>
                 <td>杭州顺颂商祺科技有限公司</td>
-                <td><span class="expandable" onclick="toggleDetails('details7')">产品主图渲染/产品动画设计制作</span></td>
+                <td><span class="expandable" data-target="details7">产品主图渲染/产品动画设计制作</span></td>
                 <td>18k</td>
+                <td>Cinema 4D/Rhino/AE</td>
             </tr>
             <tr id="details7" class="details">
-                <td colspan="4">
+                <td colspan="5">
                     <ul>
-                        <li>整理分类 C4D 文件，确保快速批量渲染。</li>
-                        <li>制作产品实装动画及售后安装接线动画。</li>
-                        <li>使用到的软件：Cinema 4D。</li>
+                        <li>确定渲染出图规范，C4D中配置好相应的渲染场次文件确保快速批量渲染产品图片.</li>
+                        <li>响应运营需求,独立构思并且制作产品动画,包括模型灯光材质处理,后期音乐音效设计制作.</li>
+                        <li>制作售后需要的产品安装动画</li>
                         <li><a href="portfolio7.html" target="_blank">作品链接</a></li>
                     </ul>
                 </td>
@@ -235,15 +252,15 @@
             <tr>
                 <td>2024.08-至今</td>
                 <td>离职期间</td>
-                <td><span class="expandable" onclick="toggleDetails('details8')">学习与研究</span></td>
+                <td><span class="expandable" data-target="details8">学习与研究</span></td>
                 <td>-</td>
+                <td>UE5/Babylon.js/Git/Blender/figma</td>
             </tr>
             <tr id="details8" class="details">
-                <td colspan="4">
+                <td colspan="5">
                     <ul>
-                        <li>研究 UE5 蓝图功能，独立制作音乐可视化项目及简单游戏。</li>
-                        <li>学习 WebGL 技术，使用 Babylon.js 制作静态网页。</li>
-                        <li>使用到的软件：Unreal Engine 5、Babylon.js。</li>
+                        <li>研究 UE5 蓝图功能，独立制作音乐可视化项目及简单消除类游戏.</li>
+                        <li>用babylon.js和copilot的结合使用gitpages制作静态网页.</li>
                         <li><a href="portfolio8.html" target="_blank">作品链接</a></li>
                     </ul>
                 </td>
@@ -252,17 +269,17 @@
 
         <h2>个人说明</h2>
         <p>
-            我是一名热爱设计与技术的创意工作者，拥有丰富的建模、渲染和动画制作经验。擅长使用多种设计工具，能够快速适应新技术并将其应用于实际项目中。
-            我追求细节与创新，致力于为每个项目提供高质量的解决方案。
+            我是一名热爱设计与技术的创意工作者，拥有丰富的建模/渲染和动画制作经验.擅长使用多种设计工具，能够快速适应新技术并将其应用于实际项目中.
+            我追求细节与创新，致力于为每个项目提供高质量的解决方案.
         </p>
 
         <h2>职业技能</h2>
         <ul>
-            <li>熟练使用设计软件：Photoshop、Illustrator、SketchUp、3ds Max、C4D、Rhino、Blender 等。</li>
-            <li>渲染与动画：V-Ray、Enscape、UE4/UE5、Stable Diffusion。</li>
-            <li>参数化设计：Grasshopper、Rhino。</li>
-            <li>编程与技术：熟悉 WebGL 技术，掌握 Babylon.js 和简单的蓝图功能开发。</li>
-            <li>团队协作与项目管理：能够高效沟通并推动项目按时完成。</li>
+            <li>熟练使用设计软件：Photoshop/Illustrator/SketchUp/3ds Max/C4D/Rhino/Blender 等.</li>
+            <li>渲染与动画：V-Ray/Enscape/UE4/UE5/Stable Diffusion.</li>
+            <li>参数化设计：Grasshopper/Rhino.</li>
+            <li>编程与技术：熟悉 WebGL 技术，掌握 Babylon.js 和简单的蓝图功能开发.</li>
+            <li>团队协作与项目管理：能够高效沟通并推动项目按时完成.</li>
         </ul>
 
         <h2>教育经历</h2>
@@ -286,4 +303,3 @@
     </div>
 </body>
 </html>
-``` 
