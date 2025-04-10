@@ -74,6 +74,10 @@
         .details {
             display: none;
             margin-top: 10px;
+            padding: 10px;
+            background: rgba(60, 60, 60, 0.9);
+            border-radius: 8px;
+            color: #ddd;
         }
 
         .info-section {
@@ -156,6 +160,34 @@
         .experience-card a:hover {
             text-decoration: underline;
         }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: rgba(60, 60, 60, 0.9);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -165,7 +197,7 @@
                     const id = element.getAttribute("data-target");
                     const details = document.getElementById(id);
                     if (details.style.display === "none" || details.style.display === "") {
-                        details.style.display = "table-row";
+                        details.style.display = "block";
                     } else {
                         details.style.display = "none";
                     }
@@ -197,7 +229,9 @@
                 <p>薪资: 2k实习</p>
                 <p>Photoshop</p>
                 <ul>
-                    <li>使用数位板配合 Photoshop 等软件为线稿上色.</li>
+                    <li class="tooltip">使用数位板配合 Photoshop 等软件为线稿上色.
+                        <span class="tooltiptext">在武汉品胜文化传媒有限公司实习期间，主要负责儿童插画的上色工作。通过使用数位板和 Photoshop 等工具，为线稿插画赋予生动的色彩，提升了插画的视觉表现力。</span>
+                    </li>
                 </ul>
             </div>
             <div class="experience-card">
@@ -207,7 +241,9 @@
                 <p>薪资: 2K-5K</p>
                 <p>Photoshop/AutoCAD/3ds Max/V-Ray</p>
                 <ul>
-                    <li>使用 PS/CAD/3DSMAX/VRAY 绘制规范的施工图及工装效果图.</li>
+                    <li class="tooltip">使用 PS/CAD/3DSMAX/VRAY 绘制规范的施工图及工装效果图.
+                        <span class="tooltiptext">在武汉东湖装饰工程有限公司工作期间，主要负责工装项目的施工图制图和效果图建模渲染。通过 Photoshop、AutoCAD、3ds Max 和 V-Ray 等工具，完成了多个高质量的工装项目设计，积累了丰富的实践经验。</span>
+                    </li>
                     <li><a href="portfolio2.html" target="_blank">作品链接</a></li>
                 </ul>
             </div>
@@ -218,7 +254,9 @@
                 <p>薪资: 8k-12k</p>
                 <p>SketchUp/3ds Max/V-Ray/Rhino/Cinema 4D/Blender</p>
                 <ul>
-                    <li>用 SketchUp 布置展厅模型, 3dsMAX+Vray 做家具类产品建模渲染.</li>
+                    <li class="tooltip">用 SketchUp 布置展厅模型, 3dsMAX+Vray 做家具类产品建模渲染.
+                        <span class="tooltiptext">在上海木里木外实业有限公司工作期间，主要负责展厅和家具类产品的建模和渲染工作。通过 SketchUp 布置展厅模型，使用 3ds Max 和 V-Ray 进行高质量的建模和渲染，提升了产品的展示效果。</span>
+                    </li>
                     <li>接触 Rhino/C4D 希望可以加强自己建模能力.</li>
                     <li><a href="portfolio3.html" target="_blank">作品链接</a></li>
                 </ul>
@@ -230,7 +268,9 @@
                 <p>薪资: 15k</p>
                 <p>Rhino/Enscape/Grasshopper/V-ray</p>
                 <ul>
-                    <li>使用 Rhino 制作曲面景观雕塑模型, Enscape 渲染输出.</li>
+                    <li class="tooltip">使用 Rhino 制作曲面景观雕塑模型, Enscape 渲染输出.
+                        <span class="tooltiptext">在上海伍鼎景观设计咨询有限公司工作期间，主要负责艺术装置和卡通 IP 形象的设计，以及参数化建模设计。通过 Rhino 和 Grasshopper 等工具，完成了多个创新的景观雕塑和艺术装置项目。</span>
+                    </li>
                     <li>学习grasshopper让制作的模型融入更多参数化设计的内容.</li>
                     <li><a href="portfolio4.html" target="_blank">作品链接</a></li>
                 </ul>
@@ -242,7 +282,9 @@
                 <p>薪资: -</p>
                 <p>Cinema 4D/Stable Diffusion/Blender/OC/RS</p>
                 <ul>
-                    <li>学习 C4D 动画及相关插件, 积累完成独立动画作品.</li>
+                    <li class="tooltip">学习 C4D 动画及相关插件, 积累完成独立动画作品.
+                        <span class="tooltiptext">在离职期间，专注于学习和研究 Cinema 4D 动画制作及其相关插件，完成了多个独立动画作品。同时，对 Stable Diffusion 及其主流插件和模型进行了深入探索。</span>
+                    </li>
                     <li>本地stable diffusion及其主流插件和models的研究探索.</li>
                     <li><a href="portfolio5.html" target="_blank">作品链接</a></li>
                 </ul>
@@ -254,7 +296,9 @@
                 <p>薪资: 15K-19K</p>
                 <p>Rhino/Cinema 4D/X-particles/Unreal Engine 4/AE/PS</p>
                 <ul>
-                    <li>用 Rhino 建模, C4D 制作动画, UE4 制作实时动态场景.</li>
+                    <li class="tooltip">用 Rhino 建模, C4D 制作动画, UE4 制作实时动态场景.
+                        <span class="tooltiptext">在杭州青缇智能有限公司工作期间，主要负责动态虚拟直播场景的设计与制作。通过 Rhino 建模、C4D 动画制作和 Unreal Engine 4 实现实时动态场景，提升了直播间的视觉效果。</span>
+                    </li>
                     <li>用PS/AE处理简单的直播间贴片以及动态效果.</li>
                     <li><a href="portfolio6.html" target="_blank">作品链接</a></li>
                 </ul>
@@ -266,7 +310,9 @@
                 <p>薪资: 18k</p>
                 <p>Cinema 4D/Rhino/AE</p>
                 <ul>
-                    <li>确定渲染出图规范, C4D中配置好相应的渲染场次文件确保快速批量渲染产品图片.</li>
+                    <li class="tooltip">确定渲染出图规范, C4D中配置好相应的渲染场次文件确保快速批量渲染产品图片.
+                        <span class="tooltiptext">在杭州顺颂商祺科技有限公司工作期间，主要负责产品主图的渲染和产品动画的设计制作。通过 Cinema 4D 和 Rhino 等工具，完成了多个高质量的产品展示项目。</span>
+                    </li>
                     <li>响应运营需求, 独立构思并且制作产品动画, 包括模型灯光材质处理, 后期音乐音效设计制作.</li>
                     <li>制作售后需要的产品安装动画.</li>
                     <li><a href="portfolio7.html" target="_blank">作品链接</a></li>
@@ -279,7 +325,9 @@
                 <p>薪资: -</p>
                 <p>Unreal E5/Babylon.js/Git/Blender/figma</p>
                 <ul>
-                    <li>研究 UE5 蓝图功能, 独立制作音乐可视化项目及简单消除类游戏.</li>
+                    <li class="tooltip">研究 UE5 蓝图功能, 独立制作音乐可视化项目及简单消除类游戏.
+                        <span class="tooltiptext">在离职期间，专注于研究 Unreal Engine 5 蓝图功能，独立完成了音乐可视化项目和简单的消除类游戏。同时，结合 Babylon.js 和 GitPages 制作了多个静态网页项目。</span>
+                    </li>
                     <li>用babylon.js和copilot的结合使用gitpages制作静态网页.</li>
                     <li><a href="portfolio8.html" target="_blank">作品链接</a></li>
                 </ul>

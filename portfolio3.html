@@ -134,6 +134,28 @@
                 grid-template-columns: 1fr; /* 超小屏幕调整为单列 */
             }
         }
+
+        /* 禁用图片拖拽 */
+        img {
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* 添加透明覆盖层 */
+        .gallery-item {
+            position: relative;
+        }
+
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -235,6 +257,11 @@
     </div>
 
     <script>
+        // 禁用右键菜单
+        document.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+        });
+
         // 点击显示和关闭大图的逻辑
         const overlay = document.getElementById('fullscreen-overlay');
         const overlayImage = overlay.querySelector('img');
