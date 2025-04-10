@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展厅/家具类产品建模渲染</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei Light", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
+            background-size: 300% 300%;
+            animation: gradientBG 15s ease infinite;
+            color: #ddd;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            background: rgba(50, 50, 50, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        #fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fullscreen-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        #fullscreen-overlay .rotate-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #fullscreen-overlay .rotate-button:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>展厅/家具类产品建模渲染</h1>
+        <div class="gallery">
+            <!-- 列举所有图片 -->
+            <div class="gallery-item">
+                <img src="works/木里木外/image1.webp" alt="作品1">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image2.webp" alt="作品2">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image3.webp" alt="作品3">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image4.webp" alt="作品4">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image5.webp" alt="作品5">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image6.webp" alt="作品6">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image7.webp" alt="作品7">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image8.webp" alt="作品8">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image9.webp" alt="作品9">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image10.webp" alt="作品10">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image11.webp" alt="作品11">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image12.webp" alt="作品12">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image13.webp" alt="作品13">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image14.webp" alt="作品14">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image15.webp" alt="作品15">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image16.webp" alt="作品16">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image17.webp" alt="作品17">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image18.webp" alt="作品18">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image19.webp" alt="作品19">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image20.webp" alt="作品20">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image21.webp" alt="作品21">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image22.webp" alt="作品22">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image23.webp" alt="作品23">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image24.webp" alt="作品24">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image25.webp" alt="作品25">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image26.webp" alt="作品26">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image27.webp" alt="作品27">
+            </div>
+            <div class="gallery-item">
+                <img src="works/木里木外/image28.webp" alt="作品28">
+            </div>
+        </div>
+        <a href="portfolio.html" class="back-link">返回作品展示</a>
+    </div>
+
+    <!-- 全屏透明窗口 -->
+    <div id="fullscreen-overlay">
+        <button class="rotate-button">⟳</button>
+        <img src="" alt="全屏预览">
+    </div>
+
+    <script>
+        // 点击显示和关闭大图的逻辑
+        const overlay = document.getElementById('fullscreen-overlay');
+        const overlayImage = overlay.querySelector('img');
+        const rotateButton = overlay.querySelector('.rotate-button');
+        let rotation = 0;
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                overlayImage.src = img.src;
+                overlay.style.display = 'flex';
+                rotation = 0; // 重置旋转角度
+                overlayImage.style.transform = `rotate(${rotation}deg)`;
+            });
+        });
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target !== rotateButton) { // 防止点击旋转按钮关闭大图
+                overlay.style.display = 'none';
+                overlayImage.src = '';
+            }
+        });
+
+        rotateButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // 阻止事件冒泡到 overlay
+            rotation = (rotation + 90) % 360;
+            overlayImage.style.transform = `rotate(${rotation}deg)`;
+        });
+    </script>
+</body>
+</html>
