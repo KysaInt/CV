@@ -78,28 +78,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
         }
 
-        #fullscreen-overlay .rotate-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        #fullscreen-overlay .rotate-button:hover {
-            background: rgba(255, 255, 255, 1);
-        }
-
         a {
             color: #ff9800;
             text-decoration: none;
@@ -210,7 +188,6 @@
 
     <!-- 全屏透明窗口 -->
     <div id="fullscreen-overlay">
-        <button class="rotate-button">⟳</button>
         <img src="" alt="全屏预览">
     </div>
 
@@ -218,29 +195,17 @@
         // 点击显示和关闭大图的逻辑
         const overlay = document.getElementById('fullscreen-overlay');
         const overlayImage = overlay.querySelector('img');
-        const rotateButton = overlay.querySelector('.rotate-button');
-        let rotation = 0;
 
         document.querySelectorAll('.gallery-item img').forEach(img => {
             img.addEventListener('click', () => {
                 overlayImage.src = img.src;
                 overlay.style.display = 'flex';
-                rotation = 0; // 重置旋转角度
-                overlayImage.style.transform = `rotate(${rotation}deg)`;
             });
         });
 
-        overlay.addEventListener('click', (e) => {
-            if (e.target !== rotateButton) { // 防止点击旋转按钮关闭大图
-                overlay.style.display = 'none';
-                overlayImage.src = '';
-            }
-        });
-
-        rotateButton.addEventListener('click', (e) => {
-            e.stopPropagation(); // 阻止事件冒泡到 overlay
-            rotation = (rotation + 90) % 360;
-            overlayImage.style.transform = `rotate(${rotation}deg)`;
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            overlayImage.src = '';
         });
     </script>
 </body>
