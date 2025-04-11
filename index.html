@@ -122,11 +122,13 @@
         .experience-card h3 {
             margin: 0 0 10px;
             color: #fff;
+            margin-left: 20px; /* 与 <li> 对齐 */
         }
 
         .experience-card .company {
             font-size: 14px;
-            color: #aaa;
+            color: #fff; /* 改为白色 */
+            margin-left: 20px; /* 与 <li> 对齐 */
             margin-bottom: 10px;
         }
 
@@ -136,6 +138,14 @@
             right: 15px;
             font-size: 16px; /* 加大字号 */
             color: #fff; /* 换成白色 */
+        }
+
+        .experience-card .salary {
+            position: absolute;
+            top: 40px; /* 调整位置到时间的下面 */
+            right: 15px;
+            font-size: 14px;
+            color: #aaa;
         }
 
         .experience-card p {
@@ -149,6 +159,7 @@
         }
 
         .experience-card ul li {
+            display: block; /* 确保每个 <li> 独占一行 */
             margin-bottom: 5px;
         }
 
@@ -159,6 +170,26 @@
 
         .experience-card a:hover {
             text-decoration: underline;
+        }
+
+        .experience-card .portfolio-link {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 0.9rem;
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        .experience-card .portfolio-link:hover {
+            text-decoration: underline;
+        }
+
+        .experience-card .software {
+            font-size: 0.9rem; /* 缩小字体 */
+            color: #aaa; /* 灰色显示 */
+            margin-left: 20px; /* 与下方 <li> 对齐 */
+            margin-bottom: 10px; /* 增加下方间距 */
         }
 
         .tooltip {
@@ -226,8 +257,8 @@
                 <h3>儿童插画设计</h3>
                 <div class="company">武汉品胜文化传媒有限公司</div>
                 <div class="time">2016.06-2016.11</div>
-                <p>薪资: 2k实习</p>
-                <p>Photoshop</p>
+                <div class="salary">2k实习</div>
+                <p class="software">Photoshop</p>
                 <ul>
                     <li class="tooltip">使用数位板配合 Photoshop 等软件为线稿上色.
                         <span class="tooltiptext">在武汉品胜文化传媒有限公司实习期间，主要负责儿童插画的上色工作。通过使用数位板和 Photoshop 等工具，为线稿插画赋予生动的色彩，提升了插画的视觉表现力。</span>
@@ -238,107 +269,118 @@
                 <h3>CAD施工图制图/工装空间效果图建模及渲染</h3>
                 <div class="company">武汉东湖装饰工程有限公司</div>
                 <div class="time">2017.03-2019.03</div>
-                <p>薪资: 2K-5K</p>
-                <p>Photoshop/AutoCAD/3ds Max/V-Ray</p>
+                <div class="salary">2K-5K</div>
+                <p class="software">Photoshop/AutoCAD/3ds Max/V-Ray</p>
                 <ul>
                     <li class="tooltip">使用 PS/CAD/3DSMAX/VRAY 绘制规范的施工图及工装效果图.
                         <span class="tooltiptext">在武汉东湖装饰工程有限公司工作期间，主要负责工装项目的施工图制图和效果图建模渲染。通过 Photoshop、AutoCAD、3ds Max 和 V-Ray 等工具，完成了多个高质量的工装项目设计，积累了丰富的实践经验。</span>
                     </li>
-                    <li><a href="portfolio2.html" target="_blank">作品链接</a></li>
                 </ul>
+                <a href="portfolio2.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card">
                 <h3>展厅/家具类产品建模渲染</h3>
                 <div class="company">上海木里木外实业有限公司</div>
                 <div class="time">2020.05-2021.04</div>
-                <p>薪资: 8k-12k</p>
-                <p>SketchUp/3ds Max/V-Ray/Rhino/Cinema 4D/Blender</p>
+                <div class="salary">8k-12k</div>
+                <p class="software">SketchUp/3ds Max/V-Ray/Rhino/Cinema 4D/Blender</p>
                 <ul>
                     <li class="tooltip">用 SketchUp 布置展厅模型, 3dsMAX+Vray 做家具类产品建模渲染.
                         <span class="tooltiptext">在上海木里木外实业有限公司工作期间，主要负责展厅和家具类产品的建模和渲染工作。通过 SketchUp 布置展厅模型，使用 3ds Max 和 V-Ray 进行高质量的建模和渲染，提升了产品的展示效果。</span>
                     </li>
-                    <li>接触 Rhino/C4D 希望可以加强自己建模能力.</li>
-                    <li><a href="portfolio3.html" target="_blank">作品链接</a></li>
+                    <li class="tooltip">接触 Rhino/C4D 希望可以加强自己建模能力.
+                        <span class="tooltiptext">通过学习 Rhino 和 C4D 提升建模能力。</span>
+                    </li>
                 </ul>
+                <a href="portfolio3.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card">
-                <h3>艺术装置/卡通IP形象设计/参数化建模设计</h3>
+                <h3>艺术装置/参数化建模设计</h3>
                 <div class="company">上海伍鼎景观设计咨询有限公司</div>
                 <div class="time">2021.05-2022.04</div>
-                <p>薪资: 15k</p>
-                <p>Rhino/Enscape/Grasshopper/V-ray</p>
+                <div class="salary">15k</div>
+                <p class="software">Rhino/Enscape/Grasshopper/V-ray</p>
                 <ul>
                     <li class="tooltip">使用 Rhino 制作曲面景观雕塑模型, Enscape 渲染输出.
                         <span class="tooltiptext">在上海伍鼎景观设计咨询有限公司工作期间，主要负责艺术装置和卡通 IP 形象的设计，以及参数化建模设计。通过 Rhino 和 Grasshopper 等工具，完成了多个创新的景观雕塑和艺术装置项目。</span>
                     </li>
-                    <li>学习grasshopper让制作的模型融入更多参数化设计的内容.</li>
-                    <li><a href="portfolio4.html" target="_blank">作品链接</a></li>
+                    <li class="tooltip">学习grasshopper让制作的模型融入更多参数化设计的内容.
+                        <span class="tooltiptext">通过学习 Grasshopper 提升参数化设计能力。</span>
+                    </li>
                 </ul>
+                <a href="portfolio4.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card">
                 <h3>学习与研究</h3>
                 <div class="company">离职期间</div>
                 <div class="time">2022.05-2023.04</div>
-                <p>薪资: -</p>
-                <p>Cinema 4D/Stable Diffusion/Blender/OC/RS</p>
+                <div class="salary">-</div>
+                <p class="software">Cinema 4D/Stable Diffusion/Blender/OC/RS</p>
                 <ul>
                     <li class="tooltip">学习 C4D 动画及相关插件, 积累完成独立动画作品.
                         <span class="tooltiptext">在离职期间，专注于学习和研究 Cinema 4D 动画制作及其相关插件，完成了多个独立动画作品。同时，对 Stable Diffusion 及其主流插件和模型进行了深入探索。</span>
                     </li>
-                    <li>本地stable diffusion及其主流插件和models的研究探索.</li>
-                    <li><a href="portfolio5.html" target="_blank">作品链接</a></li>
+                    <li class="tooltip">本地stable diffusion及其主流插件和models的研究探索.
+                        <span class="tooltiptext">深入研究本地 Stable Diffusion 及其主流插件和模型。</span>
+                    </li>
                 </ul>
+                <a href="portfolio5.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card">
                 <h3>动态虚拟直播场景设计</h3>
                 <div class="company">杭州青缇智能有限公司</div>
                 <div class="time">2023.05-2024.01</div>
-                <p>薪资: 15K-19K</p>
-                <p>Rhino/Cinema 4D/X-particles/Unreal Engine 4/AE/PS</p>
+                <div class="salary">15K-19K</div>
+                <p class="software">Rhino/Cinema 4D/X-particles/Unreal Engine 4/AE/PS</p>
                 <ul>
                     <li class="tooltip">用 Rhino 建模, C4D 制作动画, UE4 制作实时动态场景.
                         <span class="tooltiptext">在杭州青缇智能有限公司工作期间，主要负责动态虚拟直播场景的设计与制作。通过 Rhino 建模、C4D 动画制作和 Unreal Engine 4 实现实时动态场景，提升了直播间的视觉效果。</span>
                     </li>
-                    <li>用PS/AE处理简单的直播间贴片以及动态效果.</li>
-                    <li><a href="portfolio6.html" target="_blank">作品链接</a></li>
+                    <li class="tooltip">用PS/AE处理简单的直播间贴片以及动态效果.
+                        <span class="tooltiptext">使用 PS 和 AE 处理直播间贴片及动态效果。</span>
+                    </li>
                 </ul>
+                <a href="portfolio6.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card">
                 <h3>产品主图渲染/产品动画设计制作</h3>
                 <div class="company">杭州顺颂商祺科技有限公司</div>
                 <div class="time">2024.03-2024.08</div>
-                <p>薪资: 18k</p>
-                <p>Cinema 4D/Rhino/AE</p>
+                <div class="salary">18k</div>
+                <p class="software">Cinema 4D/Rhino/AE</p>
                 <ul>
                     <li class="tooltip">确定渲染出图规范, C4D中配置好相应的渲染场次文件确保快速批量渲染产品图片.
                         <span class="tooltiptext">在杭州顺颂商祺科技有限公司工作期间，主要负责产品主图的渲染和产品动画的设计制作。通过 Cinema 4D 和 Rhino 等工具，完成了多个高质量的产品展示项目。</span>
                     </li>
-                    <li>响应运营需求, 独立构思并且制作产品动画, 包括模型灯光材质处理, 后期音乐音效设计制作.</li>
-                    <li>制作售后需要的产品安装动画.</li>
-                    <li><a href="portfolio7.html" target="_blank">作品链接</a></li>
+                    <li class="tooltip">响应运营需求, 独立构思并且制作产品动画, 包括模型灯光材质处理, 后期音乐音效设计制作.
+                        <span class="tooltiptext">根据运营需求，独立完成产品动画的设计与制作。</span>
+                    </li>
+                    <li class="tooltip">制作售后需要的产品安装动画.
+                        <span class="tooltiptext">制作售后所需的产品安装动画。</span>
+                    </li>
                 </ul>
+                <a href="portfolio7.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card">
                 <h3>学习与研究</h3>
                 <div class="company">离职期间</div>
                 <div class="time">2024.08-至今</div>
-                <p>薪资: -</p>
-                <p>Unreal E5/Babylon.js/Git/Blender/figma</p>
+                <div class="salary">-</div>
+                <p class="software">Unreal E5/Babylon.js/Git/Blender/figma</p>
                 <ul>
                     <li class="tooltip">研究 UE5 蓝图功能, 独立制作音乐可视化项目及简单消除类游戏.
                         <span class="tooltiptext">在离职期间，专注于研究 Unreal Engine 5 蓝图功能，独立完成了音乐可视化项目和简单的消除类游戏。同时，结合 Babylon.js 和 GitPages 制作了多个静态网页项目。</span>
                     </li>
-                    <li>用babylon.js和copilot的结合使用gitpages制作静态网页.</li>
-                    <li><a href="portfolio8.html" target="_blank">作品链接</a></li>
+                    
+                    <li class="tooltip">用babylon.js和copilot的结合使用gitpages制作静态网页.
+                        <span class="tooltiptext">结合 Babylon.js 和 Copilot 使用 GitPages 制作静态网页。</span>
+                    </li>
                 </ul>
+                <a href="portfolio8.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
         </div>
 
-        <h2>个人说明</h2>
-        <p>
-            我是一名热爱设计与技术的创意工作者, 拥有丰富的建模/渲染和动画制作经验. 擅长使用多种设计工具, 能够快速适应新技术并将其应用于实际项目中.
-            我追求细节与创新, 致力于为每个项目提供高质量的解决方案.
-        </p>
+
 
         <h2>职业技能</h2>
         <ul>
