@@ -61,35 +61,14 @@
             backdrop-filter: blur(10px);
             background: rgba(50, 50, 50, 0.9);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            aspect-ratio: 9 / 16; /* 限制比例为 9:16 */
         }
 
-        .gallery-item video,
-        .gallery-item img {
+        .gallery-item iframe,
+        .gallery-item video {
             width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover video,
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .loading-progress {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            font-size: 1rem;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .gallery-item.loading .loading-progress {
+            height: 100%;
+            object-fit: cover; /* 确保内容填充整个区域 */
             display: block;
         }
 
@@ -126,153 +105,105 @@
         <h2>V-Ray 渲染</h2>
         <div class="gallery">
             <!-- VR 文件夹 -->
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video1.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151156787&bvid=BV1iDdSY7EUh&cid=29360983733&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video2.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151222587&bvid=BV1oDdSY7EHC&cid=29360983699&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video3.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155265&bvid=BV1qDdSY7EYE&cid=29360983610&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video4.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155269&bvid=BV1qDdSY7EYp&cid=29360983766&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video5.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155277&bvid=BV1qDdSY7EY5&cid=29360983719&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video6.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151157072&bvid=BV1iDdSY7EQJ&cid=29360983928&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video7.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155795&bvid=BV1qDdSY7ENh&cid=29360983941&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video8.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155799&bvid=BV1qDdSY7ENv&cid=29360983955&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video9.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155290&bvid=BV1qDdSY7EaX&cid=29360983815&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video10.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151221341&bvid=BV1oDdSY7Ees&cid=29360984024&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video11.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151220404&bvid=BV1oDdSY7EQ6&cid=29360983980&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video12.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155650&bvid=BV1qDdSY7Ev8&cid=29360983862&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video13.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155401&bvid=BV1qDdSY7E8Z&cid=29360984038&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video14.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151220428&bvid=BV1oDdSY7EDu&cid=29360984053&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video15.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151287248&bvid=BV17DdSYEENB&cid=29360984006&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            <div class="gallery-item loading">
-                <video src="works/QTZN/vr/video16.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
+            <div class="gallery-item">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151156949&bvid=BV1iDdSY7Ey1&cid=29360984058&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
             </div>
-            
         </div>
 
         <!-- Twinmotion Section -->
         <h2>Twinmotion 渲染</h2>
         <div class="gallery">
             <!-- TM 文件夹 -->
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/tm/video1.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/tm/video2.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/tm/video3.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/tm/video4.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/tm/video5.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/tm/video6.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/tm/video7.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/tm/video8.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            
         </div>
 
         <!-- UE4 Section -->
         <h2>UE4 渲染</h2>
         <div class="gallery">
             <!-- UE 文件夹 -->
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/ue/video1.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/ue/video2.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/ue/video3.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item loading">
+            <div class="gallery-item">
                 <video src="works/QTZN/ue/video4.webm" muted loop controls></video>
-                <div class="loading-progress">加载中...</div>
             </div>
         </div>
 
-    
-
         <a href="portfolio.html" class="back-link">返回作品展示</a>
     </div>
-
-    <script>
-        // 为每个视频添加加载事件监听
-        document.querySelectorAll('.gallery-item video').forEach(video => {
-            const galleryItem = video.closest('.gallery-item');
-            const loadingProgress = galleryItem.querySelector('.loading-progress');
-
-            video.addEventListener('loadeddata', () => {
-                galleryItem.classList.remove('loading'); // 移除加载状态
-            });
-
-            video.addEventListener('error', () => {
-                loadingProgress.textContent = '加载失败';
-            });
-        });
-    </script>
 </body>
 </html>
