@@ -117,6 +117,21 @@
             padding: 15px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             color: #ddd;
+            overflow: hidden; /* 防止内容溢出 */
+        }
+
+        .experience-card .time,
+        .experience-card .salary {
+            white-space: nowrap; /* 防止文字换行 */
+        }
+
+        @media (max-width: 480px) {
+            .experience-card .time,
+            .experience-card .salary {
+                position: static; /* 取消绝对定位 */
+                margin-top: 10px; /* 添加间距 */
+                text-align: left; /* 左对齐 */
+            }
         }
 
         .experience-card h3 {
@@ -266,7 +281,7 @@
                 </ul>
             </div>
             <div class="experience-card">
-                <h3>CAD施工图制图/工装空间效果图建模及渲染</h3>
+                <h3>工装空间CAD施工图/效果图制图</h3>
                 <div class="company">武汉东湖装饰工程有限公司</div>
                 <div class="time">2017.03-2019.03</div>
                 <div class="salary">2K-5K</div>
