@@ -63,15 +63,34 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .gallery-item video {
+        .gallery-item video,
+        .gallery-item img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover video {
+        .gallery-item:hover video,
+        .gallery-item:hover img {
             transform: scale(1.1);
+        }
+
+        .loading-progress {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .gallery-item.loading .loading-progress {
+            display: block;
         }
 
         a {
@@ -107,53 +126,69 @@
         <h2>V-Ray 渲染</h2>
         <div class="gallery">
             <!-- VR 文件夹 -->
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video1.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video2.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video3.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video4.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video5.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video6.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video7.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video8.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video9.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video10.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video11.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video12.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video13.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video14.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video15.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/vr/video16.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
             
         </div>
@@ -162,29 +197,37 @@
         <h2>Twinmotion 渲染</h2>
         <div class="gallery">
             <!-- TM 文件夹 -->
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/tm/video1.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/tm/video2.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/tm/video3.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/tm/video4.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/tm/video5.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/tm/video6.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/tm/video7.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/tm/video8.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
             
         </div>
@@ -193,17 +236,21 @@
         <h2>UE4 渲染</h2>
         <div class="gallery">
             <!-- UE 文件夹 -->
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/ue/video1.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/ue/video2.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/ue/video3.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/ue/video4.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
         </div>
 
@@ -211,69 +258,105 @@
         <h2>记录</h2>
         <div class="gallery">
             <!-- JL 文件夹 -->
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video1.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video2.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video3.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video4.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video5.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video6.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video7.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video8.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video9.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video10.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video11.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video12.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video13.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video14.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video15.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video16.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video17.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video18.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video19.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item loading">
                 <video src="works/QTZN/jl/video20.webm" muted loop controls></video>
+                <div class="loading-progress">加载中...</div>
             </div>
         </div>
 
         <a href="portfolio.html" class="back-link">返回作品展示</a>
     </div>
+
+    <script>
+        // 为每个视频添加加载事件监听
+        document.querySelectorAll('.gallery-item video').forEach(video => {
+            const galleryItem = video.closest('.gallery-item');
+            const loadingProgress = galleryItem.querySelector('.loading-progress');
+
+            video.addEventListener('loadeddata', () => {
+                galleryItem.classList.remove('loading'); // 移除加载状态
+            });
+
+            video.addEventListener('error', () => {
+                loadingProgress.textContent = '加载失败';
+            });
+        });
+    </script>
 </body>
 </html>
