@@ -9,7 +9,7 @@
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
+            padding: 20px; /* 添加内边距 */
             background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -22,22 +22,8 @@
             100% { background-position: 0% 0%; }
         }
 
-        .container {
-            max-width: 80vw; /* 设置宽度为视口宽度的 80% */
-            margin: 10px auto;
-            padding: 15px;
-            background: rgba(50, 50, 50, 0.9);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            color: #fff;
-        }
-
         .gallery {
-            max-width: 80vw; /* 设置最大宽度为视口宽度的 80% */
+            max-width: 100%; /* 取消宽度限制 */
             margin: 0 auto; /* 居中对齐 */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 自动适配列宽 */
@@ -105,11 +91,13 @@
             text-decoration: underline;
         }
 
-        @media (min-width: 768px) {
-            .container {
-                max-width: 800px; /* 保持中等屏幕的宽度限制 */
-            }
+        h1, h2 {
+            border-bottom: 1px solid #555; /* 添加分割线 */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
+        @media (min-width: 768px) {
             h1 {
                 font-size: 2rem;
             }
@@ -137,102 +125,98 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>展厅/家具类产品建模渲染</h1>
-        <p style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
-            本页面展示了展厅及家具类产品的建模与渲染作品。这些作品主要使用 SketchUp、3ds Max、V-Ray 等工具完成，旨在呈现高质量的视觉效果和设计细节。
-        </p>
-        <div class="gallery">
-            <!-- 确保文件名正确 -->
-            <div class="gallery-item">
-                <img src="works/MLMW/image1.webp" alt="作品1">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image2.webp" alt="作品2">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image3.webp" alt="作品3">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image4.webp" alt="作品4">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image5.webp" alt="作品5">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image6.webp" alt="作品6">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image7.webp" alt="作品7">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image8.webp" alt="作品8">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image9.webp" alt="作品9">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image10.webp" alt="作品10">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image11.webp" alt="作品11">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image12.webp" alt="作品12">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image13.webp" alt="作品13">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image14.webp" alt="作品14">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image15.webp" alt="作品15">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image16.webp" alt="作品16">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image17.webp" alt="作品17">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image18.webp" alt="作品18">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image19.webp" alt="作品19">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image20.webp" alt="作品20">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image21.webp" alt="作品21">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image22.webp" alt="作品22">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image23.webp" alt="作品23">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image24.webp" alt="作品24">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image25.webp" alt="作品25">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image26.webp" alt="作品26">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image27.webp" alt="作品27">
-            </div>
-            <div class="gallery-item">
-                <img src="works/MLMW/image28.webp" alt="作品28">
-            </div>
+    <h1>展厅/家具类产品建模渲染</h1>
+    <p style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
+        本页面展示了展厅及家具类产品的建模与渲染作品。这些作品主要使用 SketchUp、3ds Max、V-Ray 等工具完成，旨在呈现高质量的视觉效果和设计细节。
+    </p>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="works/MLMW/image1.webp" alt="作品1">
         </div>
-        <a href="portfolio.html" class="back-link">返回作品展示</a>
+        <div class="gallery-item">
+            <img src="works/MLMW/image2.webp" alt="作品2">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image3.webp" alt="作品3">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image4.webp" alt="作品4">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image5.webp" alt="作品5">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image6.webp" alt="作品6">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image7.webp" alt="作品7">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image8.webp" alt="作品8">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image9.webp" alt="作品9">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image10.webp" alt="作品10">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image11.webp" alt="作品11">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image12.webp" alt="作品12">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image13.webp" alt="作品13">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image14.webp" alt="作品14">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image15.webp" alt="作品15">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image16.webp" alt="作品16">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image17.webp" alt="作品17">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image18.webp" alt="作品18">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image19.webp" alt="作品19">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image20.webp" alt="作品20">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image21.webp" alt="作品21">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image22.webp" alt="作品22">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image23.webp" alt="作品23">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image24.webp" alt="作品24">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image25.webp" alt="作品25">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image26.webp" alt="作品26">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image27.webp" alt="作品27">
+        </div>
+        <div class="gallery-item">
+            <img src="works/MLMW/image28.webp" alt="作品28">
+        </div>
     </div>
+    <a href="portfolio.html" class="back-link">返回作品展示</a>
 
-    <!-- 全屏透明窗口 -->
     <div id="fullscreen-overlay">
         <img src="" alt="全屏预览">
     </div>
