@@ -100,69 +100,75 @@
         <img id="fullscreen-image" src="" alt="全屏展示">
     </div>
     <script>
-        const gallery = document.getElementById('gallery');
-        const totalImages = 416; // 更新图片总数
-        const imagePath = 'works/SHWD/ENS/'; // 确保路径相对于项目根目录正确
+        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+        const fullscreenImage = document.getElementById('fullscreen-image');
 
+        // 通用点击事件处理函数
+        function setupGalleryClick(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            gallery.addEventListener('click', (event) => {
+                if (event.target.tagName === 'IMG') {
+                    fullscreenImage.src = event.target.src;
+                    fullscreenOverlay.style.display = 'flex';
+                }
+            });
+        }
+
+        // 点击遮罩关闭全屏
+        fullscreenOverlay.addEventListener('click', () => {
+            fullscreenOverlay.style.display = 'none';
+        });
+
+        // 加载 ENSCAPE 渲染图片
+        const totalImages = 416;
+        const imagePath = 'works/SHWD/ENS/';
+        const gallery = document.getElementById('gallery');
         for (let i = 1; i <= totalImages; i++) {
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery-item';
 
             const imgElement = document.createElement('img');
-            imgElement.src = `${imagePath}ens${i}.webp`; // 更新文件名格式
-            imgElement.alt = `作品 ${i}`;
+            imgElement.src = `${imagePath}ens${i}.webp`;
+            imgElement.alt = `ENSCAPE 渲染 ${i}`;
 
             galleryItem.appendChild(imgElement);
             gallery.appendChild(galleryItem);
         }
-
-        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-        const fullscreenImage = document.getElementById('fullscreen-image');
-
-        gallery.addEventListener('click', (event) => {
-            if (event.target.tagName === 'IMG') {
-                fullscreenImage.src = event.target.src;
-                fullscreenOverlay.style.display = 'flex';
-            }
-        });
-
-        fullscreenOverlay.addEventListener('click', () => {
-            fullscreenOverlay.style.display = 'none';
-        });
+        setupGalleryClick('gallery');
 
         // 加载提案阶段杂项图片
+        const proposalTotalImages = 245;
+        const proposalImagePath = 'works/SHWD/ZX/';
         const proposalGallery = document.getElementById('proposal-gallery');
-        const proposalTotalImages = 245; // 提案阶段杂项图片总数
-        const proposalImagePath = 'works/SHWD/ZX/'; // 提案阶段杂项图片路径
-
         for (let i = 1; i <= proposalTotalImages; i++) {
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery-item';
 
             const imgElement = document.createElement('img');
-            imgElement.src = `${proposalImagePath}zx${i}.webp`; // 提案阶段杂项文件名格式
+            imgElement.src = `${proposalImagePath}zx${i}.webp`;
             imgElement.alt = `提案阶段杂项 ${i}`;
 
             galleryItem.appendChild(imgElement);
             proposalGallery.appendChild(galleryItem);
         }
+        setupGalleryClick('proposal-gallery');
 
         // 加载标识标牌图片
+        const signageTotalImages = 442;
+        const signageImagePath = 'works/SHWD/BSBP/';
         const signageGallery = document.getElementById('signage-gallery');
-        const signageTotalImages = 442; // 标识标牌图片总数
-        const signageImagePath = 'works/SHWD/BSBP/'; // 标识标牌图片路径
-
         for (let i = 1; i <= signageTotalImages; i++) {
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery-item';
 
             const imgElement = document.createElement('img');
-            imgElement.src = `${signageImagePath}bsbp${i}.webp`; // 标识标牌文件名格式
+            imgElement.src = `${signageImagePath}bsbp${i}.webp`;
             imgElement.alt = `标识标牌 ${i}`;
 
             galleryItem.appendChild(imgElement);
             signageGallery.appendChild(galleryItem);
         }
+        setupGalleryClick('signage-gallery');
     </script>
 </body>
 </html>
