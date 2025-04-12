@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品展示 4</title>
     <style>
         body {
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
@@ -11,6 +14,7 @@
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: #ddd;
+            overflow-x: hidden; /* 禁用横向滚动条 */
         }
 
         @keyframes gradientBG {
@@ -18,23 +22,147 @@
             50% { background-position: 100% 100%; }
             100% { background-position: 0% 0%; }
         }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .gallery {
+            column-count: 4; /* 设置列数 */
+            column-gap: 10px; /* 列之间的间距 */
+        }
+        .gallery-item {
+            break-inside: avoid; /* 防止元素被拆分到不同列 */
+            margin-bottom: 10px; /* 每个元素之间的间距 */
+            border-radius: 5px; /* 调整圆角 */
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 调整阴影 */
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto; /* 确保图片比例不变 */
+            display: block;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #00f;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>作品展示 4</h1>
+        <h1>伍鼎景观作品展示</h1>
         <p style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
-            本页面展示了作品 4 的内容，主要使用相关工具完成。
+            本页面展示了上海伍鼎景观公司时期作品,主要是enscape渲染,也有提案阶段的模型,以及部分参考图.
         </p>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="works/P4/image1.webp" alt="作品1">
-            </div>
-            <div class="gallery-item">
-                <img src="works/P4/image2.webp" alt="作品2">
-            </div>
+        <h2>ENSCAPE渲染</h2>
+        <div class="gallery" id="gallery">
+            <!-- 图片将通过 JavaScript 动态加载 -->
+        </div>
+        <h2>提案阶段杂项</h2>
+        <div class="gallery" id="proposal-gallery">
+            <!-- 图片将通过 JavaScript 动态加载 -->
+        </div>
+        <h2>标识标牌</h2>
+        <div class="gallery" id="signage-gallery">
+            <!-- 图片将通过 JavaScript 动态加载 -->
         </div>
         <a href="portfolio.html" class="back-link">返回作品展示</a>
     </div>
+    <div id="fullscreen-overlay" style="display: none;" class="overlay">
+        <img id="fullscreen-image" src="" alt="全屏展示">
+    </div>
+    <script>
+        const gallery = document.getElementById('gallery');
+        const totalImages = 416; // 更新图片总数
+        const imagePath = 'works/SHWD/ENS/'; // 确保路径相对于项目根目录正确
+
+        for (let i = 1; i <= totalImages; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = `${imagePath}ens${i}.webp`; // 更新文件名格式
+            imgElement.alt = `作品 ${i}`;
+
+            galleryItem.appendChild(imgElement);
+            gallery.appendChild(galleryItem);
+        }
+
+        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+        const fullscreenImage = document.getElementById('fullscreen-image');
+
+        gallery.addEventListener('click', (event) => {
+            if (event.target.tagName === 'IMG') {
+                fullscreenImage.src = event.target.src;
+                fullscreenOverlay.style.display = 'flex';
+            }
+        });
+
+        fullscreenOverlay.addEventListener('click', () => {
+            fullscreenOverlay.style.display = 'none';
+        });
+
+        // 加载提案阶段杂项图片
+        const proposalGallery = document.getElementById('proposal-gallery');
+        const proposalTotalImages = 245; // 提案阶段杂项图片总数
+        const proposalImagePath = 'works/SHWD/ZX/'; // 提案阶段杂项图片路径
+
+        for (let i = 1; i <= proposalTotalImages; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = `${proposalImagePath}zx${i}.webp`; // 提案阶段杂项文件名格式
+            imgElement.alt = `提案阶段杂项 ${i}`;
+
+            galleryItem.appendChild(imgElement);
+            proposalGallery.appendChild(galleryItem);
+        }
+
+        // 加载标识标牌图片
+        const signageGallery = document.getElementById('signage-gallery');
+        const signageTotalImages = 442; // 标识标牌图片总数
+        const signageImagePath = 'works/SHWD/BSBP/'; // 标识标牌图片路径
+
+        for (let i = 1; i <= signageTotalImages; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = `${signageImagePath}bsbp${i}.webp`; // 标识标牌文件名格式
+            imgElement.alt = `标识标牌 ${i}`;
+
+            galleryItem.appendChild(imgElement);
+            signageGallery.appendChild(galleryItem);
+        }
+    </script>
 </body>
 </html>
