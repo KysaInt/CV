@@ -93,7 +93,7 @@
     <script>
         const gallery = document.getElementById('gallery');
         const totalImages = 235; // 更新图片总数
-        const imagePath = 'works/dhzs/'; // 确保路径相对于项目根目录正确
+        const imagePath = 'works/DHZS/'; // 确保路径相对于项目根目录正确
 
         for (let i = 1; i <= totalImages; i++) {
             if (i === 1 || i === 61) continue; // 跳过作品 1 和作品 61
@@ -102,7 +102,7 @@
             galleryItem.className = 'gallery-item';
 
             const imgElement = document.createElement('img');
-            imgElement.src = `${imagePath}dhzs${i}.webp`; // 更新文件名格式
+            imgElement.src = `${imagePath}DHZS${i}.webp`; // 更新文件名格式
             imgElement.alt = `作品 ${i}`;
 
             galleryItem.appendChild(imgElement);
