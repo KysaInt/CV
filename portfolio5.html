@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品展示 5</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei Light", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ddd;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gallery-item {
+            flex: 1 1 calc(33.333% - 10px);
+            box-sizing: border-box;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>作品展示 5</h1>
+        <p style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
+            本页面展示了作品 5 的内容，主要使用相关工具完成。
+        </p>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="works/P5/image1.webp" alt="作品1">
+            </div>
+            <div class="gallery-item">
+                <img src="works/P5/image2.webp" alt="作品2">
+            </div>
+        </div>
+        <a href="portfolio.html" class="back-link">返回作品展示</a>
+    </div>
+    <div id="fullscreen-overlay" style="display: none;">
+        <img id="fullscreen-image" src="" alt="全屏展示">
+    </div>
+    <script>
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const overlay = document.getElementById('fullscreen-overlay');
+        const fullscreenImage = document.getElementById('fullscreen-image');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                fullscreenImage.src = item.src;
+                overlay.style.display = 'flex';
+            });
+        });
+
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
