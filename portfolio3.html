@@ -215,6 +215,10 @@
             <img src="works/MLMW/image28.webp" alt="作品28">
         </div>
     </div>
+    <h2>门系列</h2>
+    <div class="gallery" id="door-series-gallery">
+        <!-- 图片将通过 JavaScript 动态加载 -->
+    </div>
     <a href="portfolio.html" class="back-link">返回作品展示</a>
 
     <div id="fullscreen-overlay">
@@ -237,6 +241,23 @@
             overlay.style.display = 'none';
             overlayImage.src = '';
         });
+
+        // 加载门系列图片
+        const doorSeriesGallery = document.getElementById('door-series-gallery');
+        const doorSeriesTotalImages = 103; // 门系列图片总数
+        const doorSeriesImagePath = 'works/MLMW/'; // 门系列图片路径
+
+        for (let i = 0; i <= doorSeriesTotalImages; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = `${doorSeriesImagePath}m${i}.webp`; // 门系列文件名格式
+            imgElement.alt = `门系列 ${i}`;
+
+            galleryItem.appendChild(imgElement);
+            doorSeriesGallery.appendChild(galleryItem);
+        }
     </script>
 </body>
 </html>
