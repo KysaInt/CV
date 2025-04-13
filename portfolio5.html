@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>作品展示 5</title>
+    <title>C4D动画作品展示</title>
     <style>
         body {
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
+            padding: 20px; /* 添加内边距 */
             background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -22,74 +22,116 @@
             100% { background-position: 0% 0%; }
         }
 
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 20px;
+        h1, h2 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 30px;
+            border-bottom: 1px solid #555; /* 添加分割线 */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
-        h1 {
-            font-size: 2rem;
-            color: #333;
+
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
         }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+
         .gallery-item {
-            flex: 1 1 calc(33.333% - 10px);
-            box-sizing: border-box;
+            margin-bottom: 20px; /* 添加间距 */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
-        .gallery-item img {
+
+        .gallery-item iframe {
+            aspect-ratio: 216 / 72; /* 设置长宽比为 216:72 */
             width: 100%;
             height: auto;
             display: block;
+            border: none; /* 移除边框 */
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
+
+        a {
+            color: #ff9800;
             text-decoration: none;
-            color: #007BFF;
         }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            font-size: 0.9rem;
+            color: #ff9800;
+            text-decoration: none;
+        }
+
         .back-link:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>作品展示 5</h1>
-        <p style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
-            本页面展示了作品 5 的内容，主要使用相关工具完成。
-        </p>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="works/P5/image1.webp" alt="作品1">
-            </div>
-            <div class="gallery-item">
-                <img src="works/P5/image2.webp" alt="作品2">
-            </div>
-        </div>
-        <a href="portfolio.html" class="back-link">返回作品展示</a>
-    </div>
-    <div id="fullscreen-overlay" style="display: none;">
-        <img id="fullscreen-image" src="" alt="全屏展示">
-    </div>
-    <script>
-        const galleryItems = document.querySelectorAll('.gallery-item img');
-        const overlay = document.getElementById('fullscreen-overlay');
-        const fullscreenImage = document.getElementById('fullscreen-image');
+    <h1>C4D动画作品展示</h1>
+    <p>
+        本页面展示了离职期间本人对于C4D及其相关插件以及渲染器的探索作品,因为不同的插件存在渲染器之间的兼容问题,所以下面的作品有用到V-ray,corona,以及C4DR21默认渲染器.
+    </p>
 
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                fullscreenImage.src = item.src;
-                overlay.style.display = 'flex';
-            });
-        });
+    <h2>第一个C4D动画系列</h2>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636914818&bvid=BV13sd6Y5EWT&cid=29393093353&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        选了三张猫咪的图片,这里主要是粘稠液体模拟的效果,调整了很久确保材质在物体变形后还能准确地显示在正确的位置上.
+    </p>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636916399&bvid=BV13sd6Y5E51&cid=29393093388&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        C4D柔体的模拟,左右两侧是在相同模型不同结构线的情况下呈现的不同效果.
+    </p>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636915368&bvid=BV13sd6Y5EYW&cid=29393093528&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        破碎和弹力物件.
+    </p>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636917153&bvid=BV1gsd6Y5EQm&cid=29393093556&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        样条线生成的柔体,花了很久找到合适的分段数量和结构线数量调整到刚好合适的光滑弹力效果.
+    </p>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636982427&bvid=BV1hsd6Y5ELE&cid=29393093681&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        柔体,气体,以及液体模拟的综合.项目做到这里的时候发现气体烟雾效果只能支持默认渲染器.尝试无果之后只好重新在默认渲染器中重新设置一遍灯光材质.
+    </p>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330637046675&bvid=BV1Qsd6Y5Eed&cid=29393093820&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        同样的液体模拟效果,不过这里的发射器做成了更有意思的形式.
+    </p>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636916113&bvid=BV13sd6Y5Euq&cid=29393093856&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        碰撞后会发生形变的盒子.
+    </p>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636916108&bvid=BV13sd6Y5EuD&cid=29393093898&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        不同的弹性恢复力的钢管!
+    </p>
+    
 
-        overlay.addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
-    </script>
+    <a href="portfolio.html" class="back-link">返回作品展示</a>
 </body>
 </html>
