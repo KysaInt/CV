@@ -52,7 +52,20 @@
             display: block;
             border: none; /* 移除边框 */
         }
-
+        .gallery-item2 iframe {
+            aspect-ratio: 344/ 144; /* 设置长宽比为 216:72 */
+            width: 100%;
+            height: auto;
+            display: block;
+            border: none; /* 移除边框 */
+        }
+        .gallery-item3 iframe {
+            aspect-ratio: 192/108; /* 设置长宽比为 216:72 */
+            width: 100%;
+            height: auto;
+            display: block;
+            border: none; /* 移除边框 */
+        }
         a {
             color: #ff9800;
             text-decoration: none;
@@ -76,11 +89,20 @@
     </style>
 </head>
 <body>
+    
     <h1>C4D动画作品展示</h1>
     <p>
         本页面展示了离职期间本人对于C4D及其相关插件以及渲染器的探索作品,因为不同的插件存在渲染器之间的兼容问题,所以下面的作品有用到V-ray,corona,以及C4DR21默认渲染器.
     </p>
-
+    <h2>仿微软风格的广告</h2>
+    <div class="gallery-item2">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=742096983&bvid=BV19k4y1p7hj&cid=1157159399&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        因为感觉前面的动画作品有些小气,所以第二个动画就参考了微软的广告,做下来比较花时间的部分是用风动等抽象的变形器去还原原视频的效果.毛玻璃以及半透明体积雾的频繁出现也导致渲染起来时间很长.
+    </p>
+    
+    
     <h2>第一个C4D动画系列</h2>
     <div class="gallery-item">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636914818&bvid=BV13sd6Y5EWT&cid=29393093353&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
@@ -130,8 +152,22 @@
     <p>
         不同的弹性恢复力的钢管!
     </p>
-    
-
+    <h2>吊扇的建模及安装动画</h2>
+    <div class="gallery-item2">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113294509611322&bvid=BV1km28YLEQD&cid=26259620993&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        建模及动画制作的过程记录.
+    </p>
+    <div class="gallery-item3">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113294509742599&bvid=BV1pm28YjERw&cid=26259620339&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <div class="gallery-item3">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113294509611320&bvid=BV1km28YLEQX&cid=26259621612&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        初版和修改版.
+    </p>
     <a href="portfolio.html" class="back-link">返回作品展示</a>
 </body>
 </html>
