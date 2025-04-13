@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杭州顺颂尚棋作品展示</title>
     <style>
         body {
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
+            padding: 20px; /* 添加内边距 */
             background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -18,23 +21,86 @@
             50% { background-position: 100% 100%; }
             100% { background-position: 0% 0%; }
         }
+
+        h1, h2 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 30px;
+            border-bottom: 1px solid #555; /* 添加分割线 */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .gallery-item {
+            margin-bottom: 20px; /* 添加间距 */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item iframe {
+            aspect-ratio: 192 / 108; /* 设置长宽比为 192:108 */
+            width: 100%;
+            height: auto;
+            display: block;
+            border: none; /* 移除边框 */
+        }
+
+        a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            font-size: 0.9rem;
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>作品展示 7</h1>
-        <p style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
-            本页面展示了作品 7 的内容，主要使用相关工具完成。
-        </p>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="works/P7/image1.webp" alt="作品1">
-            </div>
-            <div class="gallery-item">
-                <img src="works/P7/image2.webp" alt="作品2">
-            </div>
-        </div>
-        <a href="portfolio.html" class="back-link">返回作品展示</a>
+    <h1>杭州顺颂尚棋作品展示</h1>
+    <p>
+        这期间的作品主要是产品的主图和几个动画作品,图片作品这里就不放了.
+    </p>
+
+    <h2>皮卡后视镜产品第一版</h2>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113294509611570&bvid=BV1km28YLEoW&cid=26259620775&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
+    <p>
+        因为环境是张静态的hdr,所以动画的相机基本上是固定的.在音乐和音效上也额外做了一番努力.
+    </p>
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113294509611061&bvid=BV1km28YLEmz&cid=26259621874&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        修改后的第二个版本.
+    </p>
+    
+    <div class="gallery-item">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114331509331628&bvid=BV14odrY3Eu8&cid=29397876956&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p>
+        接线动画.
+    </p>
+    <a href="portfolio.html" class="back-link">返回作品展示</a>
 </body>
 </html>
