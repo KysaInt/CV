@@ -40,7 +40,7 @@
 
         .gallery-item {
             margin-bottom: 20px; /* 添加间距 */
-            border-radius: 8px;
+            border-radius: 8px; /* 统一圆角效果 */
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
@@ -58,6 +58,7 @@
             height: auto;
             display: block;
             border: none; /* 移除边框 */
+            border-radius: 8px; /* 统一圆角效果 */
         }
         .gallery-item3 iframe {
             aspect-ratio: 192/108; /* 设置长宽比为 216:72 */
@@ -65,6 +66,7 @@
             height: auto;
             display: block;
             border: none; /* 移除边框 */
+            border-radius: 8px; /* 统一圆角效果 */
         }
         a {
             color: #ff9800;
@@ -92,14 +94,14 @@
     
     <h1>C4D动画作品展示</h1>
     <p>
-        本页面展示了离职期间本人对于C4D及其相关插件以及渲染器的探索作品,因为不同的插件存在渲染器之间的兼容问题,所以下面的作品有用到V-ray,corona,以及C4DR21默认渲染器.
+        本页面展示了离职期间本人对于C4D及其相关插件以及渲染器的探索作品, 因为不同的插件存在渲染器之间的兼容问题, 所以下面的作品有用到 V-ray, corona, 以及 C4DR21 默认渲染器.
     </p>
     <h3>仿微软风格的广告</h3>
     <div class="gallery-item2">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=742096983&bvid=BV19k4y1p7hj&cid=1157159399&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
     <p>
-        因为感觉前面的动画作品有些小气,所以第二个动画就参考了微软的广告,做下来比较花时间的部分是用风动等抽象的变形器去还原原视频的效果.毛玻璃以及半透明体积雾的频繁出现也导致渲染起来时间很长.
+        因为感觉前面的动画作品有些小气, 所以第二个动画就参考了微软的广告, 做下来比较花时间的部分是用风动等抽象的变形器去还原原视频的效果. 毛玻璃以及半透明体积雾的频繁出现也导致渲染起来时间很长.
     </p>
     
     
@@ -108,13 +110,13 @@
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636914818&bvid=BV13sd6Y5EWT&cid=29393093353&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
     <p>
-        选了三张猫咪的图片,这里主要是粘稠液体模拟的效果,调整了很久确保材质在物体变形后还能准确地显示在正确的位置上.
+        选了三张猫咪的图片, 这里主要是粘稠液体模拟的效果, 调整了很久确保材质在物体变形后还能准确地显示在正确的位置上.
     </p>
     <div class="gallery-item">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636916399&bvid=BV13sd6Y5E51&cid=29393093388&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
     <p>
-        C4D柔体的模拟,左右两侧是在相同模型不同结构线的情况下呈现的不同效果.
+        C4D柔体的模拟, 左右两侧是在相同模型不同结构线的情况下呈现的不同效果.
     </p>
     <div class="gallery-item">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636915368&bvid=BV13sd6Y5EYW&cid=29393093528&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
@@ -126,19 +128,19 @@
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636917153&bvid=BV1gsd6Y5EQm&cid=29393093556&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
     <p>
-        样条线生成的柔体,花了很久找到合适的分段数量和结构线数量调整到刚好合适的光滑弹力效果.
+        样条线生成的柔体, 花了很久找到合适的分段数量和结构线数量调整到刚好合适的光滑弹力效果.
     </p>
     <div class="gallery-item">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636982427&bvid=BV1hsd6Y5ELE&cid=29393093681&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
     <p>
-        柔体,气体,以及液体模拟的综合.项目做到这里的时候发现气体烟雾效果只能支持默认渲染器.尝试无果之后只好重新在默认渲染器中重新设置一遍灯光材质.
+        柔体, 气体, 以及液体模拟的综合. 项目做到这里的时候发现气体烟雾效果只能支持默认渲染器. 尝试无果之后只好重新在默认渲染器中重新设置一遍灯光材质.
     </p>
     <div class="gallery-item">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330637046675&bvid=BV1Qsd6Y5Eed&cid=29393093820&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
     <p>
-        同样的液体模拟效果,不过这里的发射器做成了更有意思的形式.
+        同样的液体模拟效果, 不过这里的发射器做成了更有意思的形式.
     </p>
     <div class="gallery-item">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636916113&bvid=BV13sd6Y5Euq&cid=29393093856&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>

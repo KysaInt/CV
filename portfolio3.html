@@ -31,7 +31,7 @@
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 8px; /* 统一圆角效果 */
             backdrop-filter: blur(10px);
             background: rgba(50, 50, 50, 0.9);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -64,7 +64,7 @@
         #fullscreen-overlay img {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 8px;
+            border-radius: 8px; /* 统一圆角效果 */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
         }
 
@@ -125,7 +125,7 @@
 <body>
     <h1>展厅/家具类产品建模渲染</h1>
     <p style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
-        本页面展示了展厅及家具类产品的建模与渲染作品。这些作品主要使用 SketchUp、3ds Max、V-Ray 等工具完成，旨在呈现高质量的视觉效果和设计细节。
+        本页面展示了展厅及家具类产品的建模与渲染作品。这些作品主要使用 SketchUp, 3ds Max, V-Ray 等工具完成，旨在呈现高质量的视觉效果和设计细节。
     </p>
     <div class="gallery">
         <div class="gallery-item">
@@ -225,31 +225,31 @@
 
     <script>
         // 点击显示和关闭大图的逻辑
-        const overlay = document.getElementById('fullscreen-overlay');
-        const overlayImage = overlay.querySelector('img');
+        const overlay = document.getElementById("fullscreen-overlay");
+        const overlayImage = overlay.querySelector("img");
 
-        document.querySelectorAll('.gallery-item img').forEach(img => {
-            img.addEventListener('click', () => {
+        document.querySelectorAll(".gallery-item img").forEach(img => {
+            img.addEventListener("click", () => {
                 overlayImage.src = img.src;
-                overlay.style.display = 'flex';
+                overlay.style.display = "flex";
             });
         });
 
-        overlay.addEventListener('click', () => {
-            overlay.style.display = 'none';
-            overlayImage.src = '';
+        overlay.addEventListener("click", () => {
+            overlay.style.display = "none";
+            overlayImage.src = "";
         });
 
         // 加载门系列图片
-        const doorSeriesGallery = document.getElementById('door-series-gallery');
+        const doorSeriesGallery = document.getElementById("door-series-gallery");
         const doorSeriesTotalImages = 103; // 门系列图片总数
-        const doorSeriesImagePath = 'works/MLMW/'; // 门系列图片路径
+        const doorSeriesImagePath = "works/MLMW/"; // 门系列图片路径
 
         for (let i = 0; i <= doorSeriesTotalImages; i++) {
-            const galleryItem = document.createElement('div');
-            galleryItem.className = 'gallery-item';
+            const galleryItem = document.createElement("div");
+            galleryItem.className = "gallery-item";
 
-            const imgElement = document.createElement('img');
+            const imgElement = document.createElement("img");
             imgElement.src = `${doorSeriesImagePath}m${i}.webp`; // 门系列文件名格式
             imgElement.alt = `门系列 ${i}`;
 
