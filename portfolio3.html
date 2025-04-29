@@ -9,11 +9,11 @@
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px; /* 添加内边距 */
-            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
+            padding: 20px;
+            background: linear-gradient(to bottom right, #ffffff, #d1c4e9, #b39ddb);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            color: #ddd;
+            color: #4a148c;
         }
 
         @keyframes gradientBG {
@@ -24,17 +24,17 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 设置为默认 3 列 */
-            gap: 15px; /* 列之间的间距 */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px; /* 统一圆角效果 */
+            border-radius: 8px;
             backdrop-filter: blur(10px);
-            background: rgba(50, 50, 50, 0.9);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item img {
@@ -55,7 +55,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(74, 20, 140, 0.8);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -64,12 +64,12 @@
         #fullscreen-overlay img {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 8px; /* 统一圆角效果 */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
         a {
-            color: #ff9800;
+            color: #7e57c2;
             text-decoration: none;
         }
 
@@ -81,7 +81,7 @@
             margin-top: 20px;
             display: block;
             font-size: 0.9rem;
-            color: #ff9800;
+            color: #7e57c2;
             text-decoration: none;
         }
 
@@ -90,7 +90,7 @@
         }
 
         h1, h3 {
-            border-bottom: 1px solid #555; /* 添加分割线 */
+            border-bottom: 1px solid #7e57c2;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
@@ -111,20 +111,20 @@
 
         @media (max-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 小屏幕调整列宽 */
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
         }
 
         @media (max-width: 480px) {
             .gallery {
-                grid-template-columns: 1fr; /* 超小屏幕调整为单列 */
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <h1>木里木外时期作品</h1>
-    <p style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
+    <p style="margin-bottom: 20px; color: #4a148c; font-size: 1rem; line-height: 1.6;">
         本页面展示了展厅及家具类产品的建模与渲染作品。这些作品主要使用 SketchUp, 3ds Max, V-Ray 等工具完成，旨在呈现高质量的视觉效果和设计细节。
     </p>
     <div class="gallery">
