@@ -27,6 +27,23 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
+        /* 动画初始状态 */
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.visible-down {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.down {
+            transform: translateY(-60px);
+        }
 
         p {
             margin-bottom: 20px;
@@ -88,168 +105,205 @@
     </style>
 </head>
 <body>
-    <h1>杭州青缇智能时期作品</h1>
-    <p>
+    <h1 class="slide-animate">杭州青缇智能时期作品</h1>
+    <p class="slide-animate">
         虚拟绿幕直播用的背景作品,按顺序依次展示使用 V-Ray, Twinmotion, UE4 和记录的内容.
     </p>
-
-    <h3>V-Ray 渲染</h3>
+    <h3 class="slide-animate">V-Ray 渲染</h3>
     <div class="gallery">
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151156787&bvid=BV1iDdSY7EUh&cid=29360983733&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151222587&bvid=BV1oDdSY7EHC&cid=29360983699&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155265&bvid=BV1qDdSY7EYE&cid=29360983610&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155269&bvid=BV1qDdSY7EYp&cid=29360983766&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155277&bvid=BV1qDdSY7EY5&cid=29360983719&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151157072&bvid=BV1iDdSY7EQJ&cid=29360983928&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155795&bvid=BV1qDdSY7ENh&cid=29360983941&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155799&bvid=BV1qDdSY7ENv&cid=29360983955&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155290&bvid=BV1qDdSY7EaX&cid=29360983815&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151221341&bvid=BV1oDdSY7Ees&cid=29360984024&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151220404&bvid=BV1oDdSY7EQ6&cid=29360983980&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155650&bvid=BV1qDdSY7Ev8&cid=29360983862&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151155401&bvid=BV1qDdSY7E8Z&cid=29360984038&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151220428&bvid=BV1oDdSY7EDu&cid=29360984053&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151287248&bvid=BV17DdSYEENB&cid=29360984006&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151156949&bvid=BV1iDdSY7Ey1&cid=29360984058&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
     </div>
 
-    <h3>Twinmotion 渲染</h3>
+    <h3 class="slide-animate">Twinmotion 渲染</h3>
     <div class="gallery">
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151221209&bvid=BV1ZDdSY7EPw&cid=29361046942&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320167932697&bvid=BV1BUdSYUEHP&cid=29361047315&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320167999007&bvid=BV1ZUdSYUE4Z&cid=29361047357&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320167932949&bvid=BV1qUdSYUESp&cid=29361047287&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320167998492&bvid=BV1ZUdSYUEE3&cid=29361047156&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320167931921&bvid=BV1BUdSYUETZ&cid=29361047057&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320151222749&bvid=BV1oDdSY7E7Z&cid=29361047072&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320167933198&bvid=BV1qUdSYUE9R&cid=29361047037&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
     </div>
 
-    <h3>UE4 渲染</h3>
+    <h3 class="slide-animate">UE4 渲染</h3>
     <div class="gallery">
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320167998755&bvid=BV1ZUdSYUEW4&cid=29361047427&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320168063051&bvid=BV1EUdSYSEPS&cid=29361047460&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320167932999&bvid=BV1qUdSYUEUh&cid=29361047546&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320168063810&bvid=BV1EUdSYSEEV&cid=29361047512&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
     </div>
 
-    <h3>制作记录</h3>
+    <h3 class="slide-animate">制作记录</h3>
     <div class="gallery record-gallery">
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320100823275&bvid=BV1vRdSYyEGr&cid=29360786133&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117666912&bvid=BV1XFdDY3EjW&cid=29360328690&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117600400&bvid=BV1YFdDY3EP3&cid=29360328294&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117666002&bvid=BV1XFdDY3Ehf&cid=29360327967&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117600476&bvid=BV1YFdDY3EAc&cid=29360327847&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117667154&bvid=BV1XFdDY3EJo&cid=29360328618&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117668070&bvid=BV1QFdDY3Ede&cid=29360327513&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320134378650&bvid=BV1YZdSYkEbc&cid=29360981234&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117601735&bvid=BV1aFdDY3ESM&cid=29360327999&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117601207&bvid=BV1YFdDY3EEF&cid=29360328133&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117601705&bvid=BV1aFdDY3EDq&cid=29360328159&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320100824236&bvid=BV1eRdSYyEdL&cid=29360327590&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320100824534&bvid=BV1eRdSYyEZD&cid=29360786168&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117601043&bvid=BV1YFdDY3EJv&cid=29360785921&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117601344&bvid=BV1aFdDY3E2R&cid=29360785580&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117666676&bvid=BV1XFdDY3EUN&cid=29360328640&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117602598&bvid=BV1aFdDY3EvH&cid=29360785667&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320117667458&bvid=BV1XFdDY3EWa&cid=29360328400&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114320100889432&bvid=BV1RRdSYyEo7&cid=29360785551&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
     </div>
 
-    <a href="portfolio.html" class="back-link">返回作品展示</a>
+    <p class="slide-animate">
+        <!-- 若有需要补充的段落内容请补全 -->
+    </p>
+    <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+
+    <script>
+        // 滑动动画逻辑
+        let lastScrollY = window.scrollY;
+        function handleSlideAnimation() {
+            const elements = document.querySelectorAll('.slide-animate');
+            const windowHeight = window.innerHeight;
+            const currentScrollY = window.scrollY;
+            const scrollDown = currentScrollY > lastScrollY;
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    el.classList.remove('down');
+                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
+                } else {
+                    el.classList.remove('visible-up', 'visible-down');
+                    if (!scrollDown) {
+                        el.classList.add('down');
+                    } else {
+                        el.classList.remove('down');
+                    }
+                }
+            });
+            lastScrollY = currentScrollY;
+        }
+        window.addEventListener('scroll', handleSlideAnimation);
+        window.addEventListener('resize', handleSlideAnimation);
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slide-animate').forEach(el => {
+                el.classList.remove('visible-up', 'visible-down', 'down');
+            });
+            handleSlideAnimation();
+        });
+        setTimeout(handleSlideAnimation, 100);
+    </script>
 </body>
 </html>

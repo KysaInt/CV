@@ -96,6 +96,25 @@
             margin-bottom: 20px;
         }
 
+        /* 动画初始状态 */
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.visible-down {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 下沉效果 */
+        .slide-animate.down {
+            transform: translateY(-60px);
+        }
+
         @media (min-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -124,101 +143,101 @@
     </style>
 </head>
 <body>
-    <h1>木里木外时期作品</h1>
-    <p style="margin-bottom: 20px; color: #ffffff; font-size: 1rem; line-height: 1.6;">
+    <h1 class="slide-animate">木里木外时期作品</h1>
+    <p class="slide-animate" style="margin-bottom: 20px; color: #ffffff; font-size: 1rem; line-height: 1.6;">
         本页面展示了展厅及家具类产品的建模与渲染作品。这些作品主要使用 SketchUp, 3ds Max, V-Ray 等工具完成，旨在呈现高质量的视觉效果和设计细节。
     </p>
     <div class="gallery">
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image1.webp" alt="作品1">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image2.webp" alt="作品2">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image3.webp" alt="作品3">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image4.webp" alt="作品4">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image5.webp" alt="作品5">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image6.webp" alt="作品6">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image7.webp" alt="作品7">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image8.webp" alt="作品8">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image9.webp" alt="作品9">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image10.webp" alt="作品10">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image11.webp" alt="作品11">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image12.webp" alt="作品12">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image13.webp" alt="作品13">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image14.webp" alt="作品14">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image15.webp" alt="作品15">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image16.webp" alt="作品16">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image17.webp" alt="作品17">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image18.webp" alt="作品18">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image19.webp" alt="作品19">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image20.webp" alt="作品20">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image21.webp" alt="作品21">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image22.webp" alt="作品22">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image23.webp" alt="作品23">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image24.webp" alt="作品24">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image25.webp" alt="作品25">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image26.webp" alt="作品26">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image27.webp" alt="作品27">
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item slide-animate">
             <img src="works/MLMW/image28.webp" alt="作品28">
         </div>
     </div>
-    <h3>门系列</h3>
+    <h3 class="slide-animate">门系列</h3>
     <div class="gallery" id="door-series-gallery">
         <!-- 图片将通过 JavaScript 动态加载 -->
     </div>
-    <a href="portfolio.html" class="back-link">返回作品展示</a>
+    <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
 
     <div id="fullscreen-overlay">
         <img src="" alt="全屏预览">
@@ -249,7 +268,7 @@
 
         for (let i = 0; i <= doorSeriesTotalImages; i++) {
             const galleryItem = document.createElement("div");
-            galleryItem.className = "gallery-item";
+            galleryItem.className = "gallery-item slide-animate";
 
             const imgElement = document.createElement("img");
             imgElement.src = `${doorSeriesImagePath}m${i}.webp`; // 门系列文件名格式
@@ -258,6 +277,45 @@
             galleryItem.appendChild(imgElement);
             doorSeriesGallery.appendChild(galleryItem);
         }
+
+        // 滑动动画逻辑
+        let lastScrollY = window.scrollY;
+        function handleSlideAnimation() {
+            const elements = document.querySelectorAll('.slide-animate');
+            const windowHeight = window.innerHeight;
+            const currentScrollY = window.scrollY;
+            const scrollDown = currentScrollY > lastScrollY;
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                // 元素进入视口下方
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    el.classList.remove('down');
+                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
+                } else {
+                    // 离开视口时重置
+                    el.classList.remove('visible-up', 'visible-down');
+                    if (!scrollDown) {
+                        el.classList.add('down');
+                    } else {
+                        el.classList.remove('down');
+                    }
+                }
+            });
+            lastScrollY = currentScrollY;
+        }
+        window.addEventListener('scroll', handleSlideAnimation);
+        window.addEventListener('resize', handleSlideAnimation);
+        // 初始触发
+        window.addEventListener('DOMContentLoaded', () => {
+            // 初始所有元素为隐藏
+            document.querySelectorAll('.slide-animate').forEach(el => {
+                el.classList.remove('visible-up', 'visible-down', 'down');
+            });
+            handleSlideAnimation();
+        });
+        // 动态添加的门系列图片也需要动画
+        // 由于门系列图片是动态插入的，需在插入后再触发一次动画
+        setTimeout(handleSlideAnimation, 100);
     </script>
 </body>
 </html>

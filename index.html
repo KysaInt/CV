@@ -37,6 +37,23 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
+        /* 动画初始状态 */
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.visible-down {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.down {
+            transform: translateY(-60px);
+        }
 
         table {
             width: 100%;
@@ -254,25 +271,56 @@
                 });
             });
         });
+        // 滑动动画逻辑
+        let lastScrollY = window.scrollY;
+        function handleSlideAnimation() {
+            const elements = document.querySelectorAll('.slide-animate');
+            const windowHeight = window.innerHeight;
+            const currentScrollY = window.scrollY;
+            const scrollDown = currentScrollY > lastScrollY;
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    el.classList.remove('down');
+                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
+                } else {
+                    el.classList.remove('visible-up', 'visible-down');
+                    if (!scrollDown) {
+                        el.classList.add('down');
+                    } else {
+                        el.classList.remove('down');
+                    }
+                }
+            });
+            lastScrollY = currentScrollY;
+        }
+        window.addEventListener('scroll', handleSlideAnimation);
+        window.addEventListener('resize', handleSlideAnimation);
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slide-animate').forEach(el => {
+                el.classList.remove('visible-up', 'visible-down', 'down');
+            });
+            handleSlideAnimation();
+        });
+        setTimeout(handleSlideAnimation, 100);
     </script>
 </head>
 <body>
-    <div class="container">
-        <h1>AYE的简历&作品</h1>
-        <h3>基本信息</h3>
-        <div class="info-section">
-            <table>
+    <div class="container slide-animate">
+        <h1 class="slide-animate">AYE的简历&作品</h1>
+        <h3 class="slide-animate">基本信息</h3>
+        <div class="info-section slide-animate">
+            <table class="slide-animate">
                 <tr><th>姓名</th><td>祝志野</td></tr>
                 <tr><th>户籍</th><td>湖北武汉</td></tr>
                 <tr><th>生日</th><td>1995/05/05</td></tr>
                 <tr><th>电话</th><td>15900765489</td></tr>
             </table>
-            <img src="head/b.png" alt="个人照片">
+            <img src="head/b.png" alt="个人照片" class="slide-animate">
         </div>
-
-        <h3>主要经历</h3>
-        <div class="experience-container">
-            <div class="experience-card">
+        <h3 class="slide-animate">主要经历</h3>
+        <div class="experience-container slide-animate">
+            <div class="experience-card slide-animate">
                 <h3>儿童插画设计</h3>
                 <div class="company">武汉品胜文化传媒有限公司</div>
                 <div class="time">2016.06-2016.11</div>
@@ -283,7 +331,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="experience-card">
+            <div class="experience-card slide-animate">
                 <h3>公装CAD施工图/效果图制图</h3>
                 <div class="company">武汉东湖装饰工程有限公司</div>
                 <div class="time">2017.03-2019.03</div>
@@ -295,7 +343,7 @@
                 </ul>
                 <a href="portfolio2.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
-            <div class="experience-card">
+            <div class="experience-card slide-animate">
                 <h3>展厅/家具类产品建模渲染</h3>
                 <div class="company">上海木里木外实业有限公司</div>
                 <div class="time">2020.05-2021.04</div>
@@ -310,7 +358,7 @@
                 </ul>
                 <a href="portfolio3.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
-            <div class="experience-card">
+            <div class="experience-card slide-animate">
                 <h3>艺术装置/参数化建模设计</h3>
                 <div class="company">上海伍鼎景观设计咨询有限公司</div>
                 <div class="time">2021.05-2022.04</div>
@@ -325,7 +373,7 @@
                 </ul>
                 <a href="portfolio4.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
-            <div class="experience-card">
+            <div class="experience-card slide-animate">
                 <h3>学习与研究</h3>
                 <div class="company">离职期间</div>
                 <div class="time">2022.05-2023.04</div>
@@ -340,7 +388,7 @@
                 </ul>
                 <a href="portfolio5.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
-            <div class="experience-card">
+            <div class="experience-card slide-animate">
                 <h3>动态虚拟直播场景设计</h3>
                 <div class="company">杭州青缇智能有限公司</div>
                 <div class="time">2023.05-2024.01</div>
@@ -355,7 +403,7 @@
                 </ul>
                 <a href="portfolio6.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
-            <div class="experience-card">
+            <div class="experience-card slide-animate">
                 <h3>产品主图/动画设计制作</h3>
                 <div class="company">杭州顺颂商祺科技有限公司</div>
                 <div class="time">2024.03-2024.08</div>
@@ -373,7 +421,7 @@
                 </ul>
                 <a href="portfolio7.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
-            <div class="experience-card">
+            <div class="experience-card slide-animate">
                 <h3>学习与研究</h3>
                 <div class="company">离职期间</div>
                 <div class="time">2024.08-至今</div>
@@ -393,8 +441,8 @@
 
         </ul>
 
-        <h3>教育经历</h3>
-        <table>
+        <h3 class="slide-animate">教育经历</h3>
+        <table class="slide-animate">
             <tr>
                 <th>学校</th>
                 <th>专业</th>

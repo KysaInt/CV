@@ -27,7 +27,23 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-
+        /* 动画初始状态 */
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.visible-down {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.down {
+            transform: translateY(-60px);
+        }
         p {
             margin-bottom: 20px;
             color: #ccc;
@@ -89,84 +105,118 @@
 </head>
 <body>
     
-    <h1>C4D动画作品</h1>
-    <p>
+    <h1 class="slide-animate">C4D动画作品</h1>
+    <p class="slide-animate">
         本页面展示了离职期间本人对于C4D及其相关插件以及渲染器的探索作品, 因为不同的插件存在渲染器之间的兼容问题, 所以下面的作品有用到 V-ray, corona, 以及 C4DR21 默认渲染器.
     </p>
-    <h3>仿微软风格的广告</h3>
-    <div class="gallery-item2">
+    <h3 class="slide-animate">仿微软风格的广告</h3>
+    <div class="gallery-item2 slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=742096983&bvid=BV19k4y1p7hj&cid=1157159399&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         因为感觉前面的动画作品有些小气, 所以第二个动画就参考了微软的广告, 做下来比较花时间的部分是用风动等抽象的变形器去还原原视频的效果. 毛玻璃以及半透明体积雾的频繁出现也导致渲染起来时间很长.
     </p>
     
     
-    <h3>第一个C4D动画系列</h3>
-    <div class="gallery-item">
+    <h3 class="slide-animate">第一个C4D动画系列</h3>
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636914818&bvid=BV13sd6Y5EWT&cid=29393093353&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         选了三张猫咪的图片, 这里主要是粘稠液体模拟的效果, 调整了很久确保材质在物体变形后还能准确地显示在正确的位置上.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636916399&bvid=BV13sd6Y5E51&cid=29393093388&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         C4D柔体的模拟, 左右两侧是在相同模型不同结构线的情况下呈现的不同效果.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636915368&bvid=BV13sd6Y5EYW&cid=29393093528&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         破碎和弹力物件.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636917153&bvid=BV1gsd6Y5EQm&cid=29393093556&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         样条线生成的柔体, 花了很久找到合适的分段数量和结构线数量调整到刚好合适的光滑弹力效果.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636982427&bvid=BV1hsd6Y5ELE&cid=29393093681&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         柔体, 气体, 以及液体模拟的综合. 项目做到这里的时候发现气体烟雾效果只能支持默认渲染器. 尝试无果之后只好重新在默认渲染器中重新设置一遍灯光材质.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330637046675&bvid=BV1Qsd6Y5Eed&cid=29393093820&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         同样的液体模拟效果, 不过这里的发射器做成了更有意思的形式.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636916113&bvid=BV13sd6Y5Euq&cid=29393093856&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         碰撞后会发生形变的盒子.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114330636916108&bvid=BV13sd6Y5EuD&cid=29393093898&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         不同的弹性恢复力的钢管!
     </p>
-    <h3>吊扇的建模及安装动画</h3>
-    <div class="gallery-item2">
+    <h3 class="slide-animate">吊扇的建模及安装动画</h3>
+    <div class="gallery-item2 slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113294509611322&bvid=BV1km28YLEQD&cid=26259620993&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         建模及动画制作的过程记录.
     </p>
-    <div class="gallery-item3">
+    <div class="gallery-item3 slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113294509742599&bvid=BV1pm28YjERw&cid=26259620339&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <div class="gallery-item3">
+    <div class="gallery-item3 slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113294509611320&bvid=BV1km28YLEQX&cid=26259621612&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         初版和修改版.
     </p>
-    <a href="portfolio.html" class="back-link">返回作品展示</a>
+    <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+    <script>
+        // 滑动动画逻辑
+        let lastScrollY = window.scrollY;
+        function handleSlideAnimation() {
+            const elements = document.querySelectorAll('.slide-animate');
+            const windowHeight = window.innerHeight;
+            const currentScrollY = window.scrollY;
+            const scrollDown = currentScrollY > lastScrollY;
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    el.classList.remove('down');
+                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
+                } else {
+                    el.classList.remove('visible-up', 'visible-down');
+                    if (!scrollDown) {
+                        el.classList.add('down');
+                    } else {
+                        el.classList.remove('down');
+                    }
+                }
+            });
+            lastScrollY = currentScrollY;
+        }
+        window.addEventListener('scroll', handleSlideAnimation);
+        window.addEventListener('resize', handleSlideAnimation);
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slide-animate').forEach(el => {
+                el.classList.remove('visible-up', 'visible-down', 'down');
+            });
+            handleSlideAnimation();
+        });
+        setTimeout(handleSlideAnimation, 100);
+    </script>
 </body>
 </html>

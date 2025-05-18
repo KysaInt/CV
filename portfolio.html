@@ -20,36 +20,73 @@
         h1 {
             color: #fff;
         }
-        ul {
-            list-style: none;
-            padding: 0;
+        /* 动画初始状态 */
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        li {
-            margin-bottom: 10px;
+        .slide-animate.visible-up {
+            opacity: 1;
+            transform: translateY(0);
         }
-        a {
-            color: #4f9bff;
-            text-decoration: none;
+        .slide-animate.visible-down {
+            opacity: 1;
+            transform: translateY(0);
         }
-        a:hover {
-            text-decoration: underline;
+        .slide-animate.down {
+            transform: translateY(-60px);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>作品展示</h1>
+    <div class="container slide-animate">
+        <h1 class="slide-animate">作品展示</h1>
         <ul>
-            <li id="portfolio1"><a href="portfolio1.html" target="_blank">儿童插画设计</a></li>
-            <li id="portfolio2"><a href="portfolio2.html" target="_blank">CAD施工图制图/工装空间效果图建模及渲染</a></li>
-            <li id="portfolio3"><a href="portfolio3.html" target="_blank">展厅/家具类产品建模渲染</a></li>
-            <li id="portfolio4"><a href="portfolio4.html" target="_blank">艺术装置/卡通IP形象设计/参数化建模设计</a></li>
-            <li id="portfolio5"><a href="portfolio5.html" target="_blank">学习与研究 - 动画与插件</a></li>
-            <li id="portfolio6"><a href="portfolio6.html" target="_blank">动态虚拟直播场景设计</a></li>
-            <li id="portfolio7"><a href="portfolio7.html" target="_blank">产品主图渲染/产品动画设计制作</a></li>
-            <li id="portfolio8"><a href="portfolio8.html" target="_blank">学习与研究 - UE5与WebGL</a></li>
+            <li id="portfolio1" class="slide-animate"><a href="portfolio1.html" target="_blank" class="slide-animate">儿童插画设计</a></li>
+            <li id="portfolio2" class="slide-animate"><a href="portfolio2.html" target="_blank" class="slide-animate">CAD施工图制图/工装空间效果图建模及渲染</a></li>
+            <li id="portfolio3" class="slide-animate"><a href="portfolio3.html" target="_blank" class="slide-animate">展厅/家具类产品建模渲染</a></li>
+            <li id="portfolio4" class="slide-animate"><a href="portfolio4.html" target="_blank" class="slide-animate">艺术装置/卡通IP形象设计/参数化建模设计</a></li>
+            <li id="portfolio5" class="slide-animate"><a href="portfolio5.html" target="_blank" class="slide-animate">学习与研究 - 动画与插件</a></li>
+            <li id="portfolio6" class="slide-animate"><a href="portfolio6.html" target="_blank" class="slide-animate">动态虚拟直播场景设计</a></li>
+            <li id="portfolio7" class="slide-animate"><a href="portfolio7.html" target="_blank" class="slide-animate">产品主图渲染/产品动画设计制作</a></li>
+            <li id="portfolio8" class="slide-animate"><a href="portfolio8.html" target="_blank" class="slide-animate">学习与研究 - UE5与WebGL</a></li>
         </ul>
-        <a href="index.html">返回简历</a>
+        <a href="index.html" class="slide-animate">返回简历</a>
     </div>
+    <script>
+        // 滑动动画逻辑
+        let lastScrollY = window.scrollY;
+        function handleSlideAnimation() {
+            const elements = document.querySelectorAll('.slide-animate');
+            const windowHeight = window.innerHeight;
+            const currentScrollY = window.scrollY;
+            const scrollDown = currentScrollY > lastScrollY;
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    el.classList.remove('down');
+                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
+                } else {
+                    el.classList.remove('visible-up', 'visible-down');
+                    if (!scrollDown) {
+                        el.classList.add('down');
+                    } else {
+                        el.classList.remove('down');
+                    }
+                }
+            });
+            lastScrollY = currentScrollY;
+        }
+        window.addEventListener('scroll', handleSlideAnimation);
+        window.addEventListener('resize', handleSlideAnimation);
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slide-animate').forEach(el => {
+                el.classList.remove('visible-up', 'visible-down', 'down');
+            });
+            handleSlideAnimation();
+        });
+        setTimeout(handleSlideAnimation, 100);
+    </script>
 </body>
 </html>

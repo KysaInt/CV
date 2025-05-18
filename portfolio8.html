@@ -27,6 +27,23 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
+        /* 动画初始状态 */
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.visible-down {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.down {
+            transform: translateY(-60px);
+        }
 
         p {
             margin-bottom: 20px;
@@ -104,99 +121,133 @@
     </style>
 </head>
 <body>
-    <h1>近期作品</h1>
-    <p>
+    <h1 class="slide-animate">近期作品</h1>
+    <p class="slide-animate">
         以下是近期完成的一些作品, 涵盖 WebGL 和 UE 的内容.
     </p>
-    <h3>Babylon.js 动画控制</h3>
-    <div class="gallery-item">
+    <h3 class="slide-animate">Babylon.js 动画控制</h3>
+    <div class="gallery-item slide-animate">
         <iframe src="https://kysaint.github.io/K/" scrolling="no" frameborder="0"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         使用 Babylon.js 和 Copilot AI 快速实现的动画效果, 相较于 UE 蓝图更高效.
     </p>
-    <h3>鼠标模型与材质控制</h3>
-    <div class="gallery-item3">
+    <h3 class="slide-animate">鼠标模型与材质控制</h3>
+    <div class="gallery-item3 slide-animate">
         <iframe class="mouse-model-iframe" src="https://kysaint.github.io/K3/" scrolling="no" frameborder="0"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         这是一个学习 Web3D 技术的项目, 结合 Babylon.js 实现了 PBR 材质调整功能, 展示了 Web3D 的灵活性.
     </p>
-    <div class="gallery-item4">
+    <div class="gallery-item4 slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114332583073448&bvid=BV1Z1ogY3E1i&cid=29400632801&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         制作过程记录.
     </p>
-    <div class="gallery-item4">
+    <div class="gallery-item4 slide-animate">
         <img src="works\OTHER\logitechx16.png" alt="Example Image" style="width: 100%; border-radius: 8px; display: block;">
     </div>
-    <p>
+    <p class="slide-animate">
         pixel art！
     </p>
 
-    <h1>Unreal Engine 5 作品(建议开启声音)</h1>
-    <h3>UE fft音频分析效果</h3>
-    <div class="gallery-item">
+    <h1 class="slide-animate">Unreal Engine 5 作品(建议开启声音)</h1>
+    <h3 class="slide-animate">UE fft音频分析效果</h3>
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340501983438&bvid=BV1QFopYhEHt&cid=29424945874&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         使用 UE 音频 FFT 分析器控制物体缩放, 并结合物理碰撞模拟.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340501917950&bvid=BV1hFopYhEXU&cid=29424946761&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         在基础功能上增加位置限制, 呈现出类似怪物的动态效果.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340518696979&bvid=BV1bPopYZEgn&cid=29425008929&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         添加粒子发射器并绑定至 FFT 平均值阈值, 模拟烟花与音乐节奏同步的效果.
     </p>
-    <h3>UE 汽车绑定相关</h3>
-    <p>
+    <h3 class="slide-animate">UE 汽车绑定相关</h3>
+    <p class="slide-animate">
         因为之前工作中的遗留问题, 研究了 UE 的汽车绑定器.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340518762011&bvid=BV1SPopYZEKq&cid=29425009127&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         实现了车辆的基本运动, 轮胎转向和旋转动画已完成.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340518697248&bvid=BV1bPopYZELB&cid=29425009087&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         尝试制作简单的小游戏, 加入了可破坏物件、敌人、粒子效果和音效(如子弹发射、碰撞、直升机螺旋桨等).
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340518695982&bvid=BV1bPopYZEb2&cid=29425009219&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         制作了一个自动生成地图的赛车游戏雏形, 采用简单的加速度控制逻辑, 音乐及光影效果炫酷.
     </p>
     
-    <h3>简单消除游戏</h3>
+    <h3 class="slide-animate">简单消除游戏</h3>
   
-    <p>
+    <p class="slide-animate">
         因为手机上玩到了一款类似的游戏, 所以看看能不能做一个一样的出来.
     </p>
-    <div class="gallery-item">
+    <div class="gallery-item slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340518696337&bvid=BV1bPopYZEh5&cid=29425010076&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         逐步实现游戏逻辑的过程.
     </p>
-    <div class="gallery-item2 iframe">
+    <div class="gallery-item2 iframe slide-animate">
         <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340518696526&bvid=BV1bPopYZEio&cid=29425009635&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-    <p>
+    <p class="slide-animate">
         最终打包到安卓手机上的呈现效果. 背景的落日继承了之前fft控制的经验.
     </p>
 
 
-    <a href="portfolio.html" class="back-link">返回作品展示</a>
+    <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+    <script>
+        // 滑动动画逻辑
+        let lastScrollY = window.scrollY;
+        function handleSlideAnimation() {
+            const elements = document.querySelectorAll('.slide-animate');
+            const windowHeight = window.innerHeight;
+            const currentScrollY = window.scrollY;
+            const scrollDown = currentScrollY > lastScrollY;
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    el.classList.remove('down');
+                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
+                } else {
+                    el.classList.remove('visible-up', 'visible-down');
+                    if (!scrollDown) {
+                        el.classList.add('down');
+                    } else {
+                        el.classList.remove('down');
+                    }
+                }
+            });
+            lastScrollY = currentScrollY;
+        }
+        window.addEventListener('scroll', handleSlideAnimation);
+        window.addEventListener('resize', handleSlideAnimation);
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slide-animate').forEach(el => {
+                el.classList.remove('visible-up', 'visible-down', 'down');
+            });
+            handleSlideAnimation();
+        });
+        setTimeout(handleSlideAnimation, 100);
+    </script>
 </body>
 </html>
