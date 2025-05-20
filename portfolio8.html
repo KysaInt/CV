@@ -213,6 +213,100 @@
         最终打包到安卓手机上的呈现效果. 背景的落日继承了之前fft控制的经验.
     </p>
 
+        <h1 class="slide-animate">其他</h1>
+        <div class="gallery slide-animate" style="grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 32px;">
+            <div class="gallery-img-item">
+                <img src="works/OTHER/jjck.webp" alt="家居场景1" class="zoomable-img">
+            </div>
+            <div class="gallery-img-item">
+                <img src="works/OTHER/jjxr.webp" alt="家居场景2" class="zoomable-img">
+            </div>
+        </div>
+        <style>
+        .gallery-img-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            background: #232323;
+            transition: box-shadow 0.3s cubic-bezier(.4,2,.6,1);
+            will-change: transform;
+        }
+        .gallery-img-item img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+            transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.3s cubic-bezier(.4,2,.6,1);
+            object-fit: cover;
+            cursor: zoom-in;
+        }
+        .gallery-img-item:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.28), 0 1.5px 8px rgba(255,152,0,0.08);
+            z-index: 2;
+        }
+        .gallery-img-item:hover img {
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+        }
+        .img-zoom-modal {
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            animation: fadeInZoom 0.25s;
+        }
+        .img-zoom-modal img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+            background: #232323;
+            animation: zoomInImg 0.25s;
+        }
+        @keyframes fadeInZoom {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomInImg {
+            from { transform: scale(0.92);}
+            to { transform: scale(1);}
+        }
+        </style>
+        <script>
+        document.querySelectorAll('.zoomable-img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                // 防止多次打开
+                if(document.querySelector('.img-zoom-modal')) return;
+                const modal = document.createElement('div');
+                modal.className = 'img-zoom-modal';
+                const zoomImg = document.createElement('img');
+                zoomImg.src = img.src;
+                zoomImg.alt = img.alt;
+                modal.appendChild(zoomImg);
+                document.body.appendChild(modal);
+                // 点击关闭
+                modal.addEventListener('click', function() {
+                    modal.remove();
+                });
+                // Esc关闭
+                document.addEventListener('keydown', function escHandler(ev){
+                    if(ev.key === 'Escape'){
+                        modal.remove();
+                        document.removeEventListener('keydown', escHandler);
+                    }
+                });
+            });
+        });
+        </script>
+     <div class="gallery-item4 iframe slide-animate">
+       <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114542247941124&bvid=BV1JMJYzREwo&cid=30065231325&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p class="slide-animate">
+       近期家居场景制作过程记录（左侧是原图）.
+    </p>
 
     <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
     <script>
