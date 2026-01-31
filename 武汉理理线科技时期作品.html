@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>产品动画设计</title>
+    <title>武汉理理线科技时期作品</title>
     <style>
         body {
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
@@ -114,7 +114,24 @@
             -webkit-backdrop-filter: blur(10px);
             color: #fff;
             z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text {
             font-size: 1rem;
+        }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover {
+            background: rgba(255,255,255,0.16);
         }
 
         @media (max-width: 600px) {
@@ -125,8 +142,11 @@
     </style>
 </head>
 <body>
-    <div id="sticky-title" class="sticky-title">产品动画设计</div>
-    <h1 class="slide-animate">产品动画设计</h1>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">武汉理理线科技时期作品</span>
+        <a class="sticky-back" href="index.html">返回简历</a>
+    </div>
+    <h1 class="slide-animate">武汉理理线科技时期作品</h1>
     <p class="slide-animate">
         武汉理理线科技有限公司｜C4D/AE/RHINO/grasshopper/vscode/python
     </p>
@@ -227,8 +247,6 @@
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692108190&bvid=BV1gx6JBBEJW&cid=35738420992&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
     </div>
-
-    <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
 
     <script src="assets/js/scroll-animate.js"></script>
     <script src="assets/js/sticky-title.js"></script>

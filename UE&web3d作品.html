@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学习与研究UE&WebGl作品</title>
+    <title>UE&web3d作品</title>
     <style>
         body {
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
@@ -121,8 +121,11 @@
     </style>
 </head>
 <body>
-    <div id="sticky-title" class="sticky-title">学习与研究 - UE5与WebGL</div>
-    <h1 class="slide-animate">近期作品</h1>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">UE&web3d作品</span>
+        <a class="sticky-back" href="index.html">返回简历</a>
+    </div>
+    <h1 class="slide-animate">UE&web3d作品</h1>
     <p class="slide-animate">
         以下是近期完成的一些作品, 涵盖 WebGL 和 UE 的内容.
     </p>
@@ -311,7 +314,7 @@
        近期家居场景制作过程记录（左侧是原图）.
     </p>
 
-    <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+    
     <style>
         .sticky-title {
             position: fixed;
@@ -322,7 +325,24 @@
             -webkit-backdrop-filter: blur(10px);
             color: #fff;
             z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text {
             font-size: 1rem;
+        }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover {
+            background: rgba(255,255,255,0.16);
         }
     </style>
     <script src="assets/js/sticky-title.js"></script>

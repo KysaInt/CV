@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>东湖装饰时期作品</title>
+    <title>上海木里木外时期作品</title>
     <style>
         body {
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
@@ -13,6 +13,7 @@
             background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            color: #ddd;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 0%; }
@@ -42,18 +43,30 @@
             gap: 10px;
         }
         .gallery-item {
-            margin: 0; /* 交给 grid 的 gap 控制间距 */
-            border-radius: 8px; /* 统一圆角效果 */
+            margin: 0;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            aspect-ratio: 4 / 3; /* 固定卡片比例，避免上下错位 */
+            aspect-ratio: 4 / 3;
             background: #222;
         }
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 裁切填充，行高统一 */
+            object-fit: cover;
             display: block;
+        }
+        h1, h3 {
+            color: #fff;
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         .back-link {
             display: inline-block;
@@ -81,52 +94,133 @@
         #fullscreen-image {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 8px; /* 统一圆角效果 */
+            border-radius: 8px;
+        }
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text {
+            font-size: 1rem;
+        }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover {
+            background: rgba(255,255,255,0.16);
+        }
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="sticky-title" class="sticky-title">东湖装饰时期作品</div>
-    <div class="container">
-        <h1 class="slide-animate">东湖装饰时期作品</h1>
-        <p class="slide-animate" style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
-            最初接触建模渲染时期的作品,一些渲染有关的基本概念都是从这个时候开始有的.
-        </p>
-        <h3 class="slide-animate">VRAY 渲染</h3>
-        <div class="gallery" id="gallery">
-            <!-- 图片将通过 JavaScript 动态加载 -->
-        </div>
-        <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">上海木里木外时期作品</span>
+        <a class="sticky-back" href="index.html">返回简历</a>
     </div>
+    <div class="container">
+        <h1 class="slide-animate">上海木里木外时期作品</h1>
+        <p class="slide-animate">
+            本页面展示了展厅及家具类产品的建模与渲染作品。这些作品主要使用 3ds Max, V-Ray 等工具完成，旨在呈现高质量的视觉效果和设计细节。
+        </p>
+
+        <h3 class="slide-animate">作品展示</h3>
+        <div class="gallery" id="gallery-main">
+            <!-- image1~image28 动态加载 -->
+        </div>
+
+        <h3 class="slide-animate">门系列</h3>
+        <div class="gallery" id="gallery-doors">
+            <!-- m0~m14 动态加载 -->
+        </div>
+
+        <h3 class="slide-animate">细节类</h3>
+        <div class="gallery" id="gallery-details">
+            <!-- m15 及以后动态加载 -->
+        </div>
+
+        
+    </div>
+
     <div id="fullscreen-overlay" style="display: none;" class="overlay">
         <img id="fullscreen-image" src="" alt="全屏展示">
     </div>
+
     <script>
-        const gallery = document.getElementById('gallery');
-        const totalImages = 235; // 更新图片总数
-        const imagePath = 'works/DHZS/'; // 确保路径相对于项目根目录正确
+        const mainGallery = document.getElementById('gallery-main');
+        const doorsGallery = document.getElementById('gallery-doors');
+        const detailsGallery = document.getElementById('gallery-details');
 
-        for (let i = 1; i <= totalImages; i++) {
-            if (i === 1 || i === 61) continue; // 跳过作品 1 和作品 61
+        const imageTotal = 28;
+        const mTotal = 102;
+        const imagePath = 'works/MLMW/';
 
+        for (let i = 1; i <= imageTotal; i++) {
             const galleryItem = document.createElement('div');
             galleryItem.className = 'gallery-item slide-animate';
 
-            const imgElement = document.createElement('img');
-            imgElement.src = `${imagePath}DHZS${i}.webp`; // 更新文件名格式
-            imgElement.alt = `作品 ${i}`;
+            const img = document.createElement('img');
+            img.src = `${imagePath}image${i}.webp`;
+            img.alt = `作品 ${i}`;
 
-            galleryItem.appendChild(imgElement);
-            gallery.appendChild(galleryItem);
+            galleryItem.appendChild(img);
+            mainGallery.appendChild(galleryItem);
+        }
+
+        for (let i = 0; i <= 14; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item slide-animate';
+
+            const img = document.createElement('img');
+            img.src = `${imagePath}m${i}.webp`;
+            img.alt = `门系列 ${i}`;
+
+            galleryItem.appendChild(img);
+            doorsGallery.appendChild(galleryItem);
+        }
+
+        for (let i = 15; i <= mTotal; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item slide-animate';
+
+            const img = document.createElement('img');
+            img.src = `${imagePath}m${i}.webp`;
+            img.alt = `细节 ${i}`;
+
+            galleryItem.appendChild(img);
+            detailsGallery.appendChild(galleryItem);
         }
 
         const fullscreenOverlay = document.getElementById('fullscreen-overlay');
         const fullscreenImage = document.getElementById('fullscreen-image');
         let currentEscHandler = null;
 
-        gallery.addEventListener('click', (event) => {
-            if (event.target.tagName === 'IMG') {
-                fullscreenImage.src = event.target.src;
+        document.querySelectorAll('#gallery-main img, #gallery-doors img, #gallery-details img').forEach(img => {
+            img.addEventListener('click', () => {
+                fullscreenImage.src = img.src;
                 fullscreenOverlay.style.display = 'flex';
                 currentEscHandler = function(ev){
                     if(ev.key === 'Escape'){
@@ -136,7 +230,7 @@
                     }
                 };
                 document.addEventListener('keydown', currentEscHandler);
-            }
+            });
         });
 
         fullscreenOverlay.addEventListener('click', () => {
@@ -180,19 +274,6 @@
         });
         setTimeout(handleSlideAnimation, 100);
     </script>
-    <style>
-        .sticky-title {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            padding: 10px 16px;
-            background: rgba(0,0,0,0.45);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #fff;
-            z-index: 900;
-            font-size: 1rem;
-        }
-    </style>
     <script src="assets/js/sticky-title.js"></script>
 </body>
 </html>

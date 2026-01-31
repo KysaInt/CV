@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C4D动画作品</title>
+    <title>C4D业余作品</title>
     <style>
         body {
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
@@ -130,9 +130,12 @@
     </style>
 </head>
 <body>
-    <div id="sticky-title" class="sticky-title">C4D动画作品</div>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">C4D业余作品</span>
+        <a class="sticky-back" href="index.html">返回简历</a>
+    </div>
     
-    <h1 class="slide-animate">C4D动画作品</h1>
+    <h1 class="slide-animate">C4D业余作品</h1>
     <p class="slide-animate">
         本页面展示了离职期间本人对于C4D及其相关插件以及渲染器的探索作品, 因为不同的插件存在渲染器之间的兼容问题, 所以下面的作品有用到 V-ray, corona, 以及 C4DR21 默认渲染器.
     </p>
@@ -210,7 +213,7 @@
     <p class="slide-animate">
         初版和修改版.
     </p>
-    <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+    
     <div id="fullscreen-overlay" class="overlay">
         <div class="overlay-content"></div>
     </div>
@@ -258,7 +261,24 @@
             -webkit-backdrop-filter: blur(10px);
             color: #fff;
             z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text {
             font-size: 1rem;
+        }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover {
+            background: rgba(255,255,255,0.16);
         }
     </style>
     <script src="assets/js/sticky-title.js"></script>

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const sticky = document.getElementById('sticky-title');
   if (!sticky) return;
+  const stickyText = sticky.querySelector('.sticky-title-text') || sticky;
   const headings = Array.from(document.querySelectorAll('h1, h3'));
   if (headings.length === 0) return;
 
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateSticky() {
     const active = pickActiveHeading();
     const text = (active.dataset.title || active.textContent || '').trim();
-    if (text) sticky.textContent = text;
+    if (text) stickyText.textContent = text;
   }
 
   const observer = new IntersectionObserver(() => updateSticky(), {

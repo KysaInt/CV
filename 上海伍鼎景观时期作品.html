@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伍鼎景观时期作品
-    </title>
+    <title>上海伍鼎景观时期作品</title>
     <style>
         body {
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
@@ -14,7 +13,20 @@
             background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            color: #ddd;
         }
+                h1, h3 {
+                    color: #fff;
+                    border-bottom: 1px solid #555;
+                    padding-bottom: 10px;
+                    margin-bottom: 20px;
+                }
+                p {
+                    margin-bottom: 20px;
+                    color: #ccc;
+                    font-size: 1rem;
+                    line-height: 1.6;
+                }
         @keyframes gradientBG {
             0% { background-position: 0% 0%; }
             50% { background-position: 100% 100%; }
@@ -86,10 +98,13 @@
     </style>
 </head>
 <body>
-    <div id="sticky-title" class="sticky-title">伍鼎景观时期作品</div>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">上海伍鼎景观时期作品</span>
+        <a class="sticky-back" href="index.html">返回简历</a>
+    </div>
     <div class="container">
-        <h1 class="slide-animate">伍鼎景观时期作品</h1>
-        <p class="slide-animate" style="margin-bottom: 20px; color: #ccc; font-size: 1rem; line-height: 1.6;">
+        <h1 class="slide-animate">上海伍鼎景观时期作品</h1>
+        <p class="slide-animate">
             本页面展示了上海伍鼎景观公司时期作品, 主要是 enscape 渲染, 也有提案阶段的模型, 以及部分参考图。
         </p>
         <h3 class="slide-animate">ENSCAPE 渲染</h3>
@@ -104,7 +119,7 @@
         <div class="gallery" id="signage-gallery">
             <!-- 图片将通过 JavaScript 动态加载 -->
         </div>
-        <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+        
     </div>
     <div id="fullscreen-overlay" style="display: none;" class="overlay">
         <img id="fullscreen-image" src="" alt="全屏展示">
@@ -236,7 +251,24 @@
             -webkit-backdrop-filter: blur(10px);
             color: #fff;
             z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text {
             font-size: 1rem;
+        }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover {
+            background: rgba(255,255,255,0.16);
         }
     </style>
     <script src="assets/js/sticky-title.js"></script>

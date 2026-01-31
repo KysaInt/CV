@@ -310,7 +310,7 @@
                         <span class="tooltiptext">在武汉东湖装饰工程有限公司工作期间，主要负责工装项目的施工图制图和效果图建模渲染。通过 Photoshop、AutoCAD、3ds Max 和 V-Ray 等工具，完成了多个高质量的工装项目设计，积累了丰富的实践经验。</span>
                     </li>
                 </ul>
-                <a href="东湖装饰时期作品.html" target="_blank" class="portfolio-link">作品链接</a>
+                <a href="武汉东湖装饰时期作品.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card slide-animate">
                 <h3>展厅/家具类产品建模渲染</h3>
@@ -325,7 +325,7 @@
                         <span class="tooltiptext">通过学习 Rhino 和 C4D 提升建模能力。</span>
                     </li>
                 </ul>
-                <a href="木里木外时期作品.html" target="_blank" class="portfolio-link">作品链接</a>
+                <a href="上海木里木外时期作品.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card slide-animate">
                 <h3>艺术装置/参数化建模设计</h3>
@@ -340,7 +340,7 @@
                         <span class="tooltiptext">通过学习 Grasshopper 提升参数化设计能力。</span>
                     </li>
                 </ul>
-                <a href="伍鼎景观时期作品.html" target="_blank" class="portfolio-link">作品链接</a>
+                <a href="上海伍鼎景观时期作品.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card slide-animate">
                 <h3>离职学习阶段</h3>
@@ -355,7 +355,7 @@
                         <span class="tooltiptext">深入研究本地 Stable Diffusion 及其主流插件和模型。</span>
                     </li>
                 </ul>
-                <a href="C4D动画作品.html" target="_blank" class="portfolio-link">作品链接</a>
+                <a href="C4D业余作品.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card slide-animate">
                 <h3>动态虚拟直播场景设计</h3>
@@ -404,10 +404,10 @@
                         <span class="tooltiptext">结合 Babylon.js 和 Copilot 使用 GitPages 制作静态网页。</span>
                     </li>
                 </ul>
-                <a href="学习与研究.html" target="_blank" class="portfolio-link">作品链接</a>
+                <a href="UE&web3d作品.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
             <div class="experience-card slide-animate">
-                <h3>产品动画设计</h3>
+                <h3>武汉理理线科技时期作品</h3>
                 <div class="company">武汉理理线科技有限公司</div>
                 <div class="time">2025.05-2026.02</div>
                 <p class="software">C4D/AE/RHINO/grasshopper/vscode/python</p>
@@ -422,7 +422,7 @@
                         <span class="tooltiptext">创建渲染流程所需的 Python 工具，以及 Grasshopper 复用的参数化建模工具。</span>
                     </li>
                 </ul>
-                <a href="产品动画设计.html" target="_blank" class="portfolio-link">作品链接</a>
+                <a href="武汉理理线科技时期作品.html" target="_blank" class="portfolio-link">作品链接</a>
             </div>
         </div>
 
@@ -448,5 +448,21 @@
         </table>
     </div>
     <script src="assets/js/scroll-animate.js"></script>
+    <script>
+        // 返回简历时恢复进入时的滚动位置（跨标签页）
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedY = localStorage.getItem('resumeScrollY');
+            if (savedY !== null) {
+                window.scrollTo(0, parseInt(savedY, 10));
+                localStorage.removeItem('resumeScrollY');
+            }
+        });
+
+        document.querySelectorAll('a.portfolio-link').forEach(link => {
+            link.addEventListener('click', () => {
+                localStorage.setItem('resumeScrollY', String(window.scrollY));
+            });
+        });
+    </script>
 </body>
 </html>
