@@ -257,6 +257,7 @@
         }
     </style>
     <script>
+        // 展开/折叠逻辑保留在本页
         document.addEventListener("DOMContentLoaded", () => {
             const expandableElements = document.querySelectorAll(".expandable");
             expandableElements.forEach(element => {
@@ -271,38 +272,6 @@
                 });
             });
         });
-        // 滑动动画逻辑
-        let lastScrollY = window.scrollY;
-        function handleSlideAnimation() {
-            const elements = document.querySelectorAll('.slide-animate');
-            const windowHeight = window.innerHeight;
-            const currentScrollY = window.scrollY;
-            const scrollDown = currentScrollY > lastScrollY;
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < windowHeight && rect.bottom > 0) {
-                    el.classList.remove('down');
-                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
-                } else {
-                    el.classList.remove('visible-up', 'visible-down');
-                    if (!scrollDown) {
-                        el.classList.add('down');
-                    } else {
-                        el.classList.remove('down');
-                    }
-                }
-            });
-            lastScrollY = currentScrollY;
-        }
-        window.addEventListener('scroll', handleSlideAnimation);
-        window.addEventListener('resize', handleSlideAnimation);
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.slide-animate').forEach(el => {
-                el.classList.remove('visible-up', 'visible-down', 'down');
-            });
-            handleSlideAnimation();
-        });
-        setTimeout(handleSlideAnimation, 100);
     </script>
 </head>
 <body>
@@ -460,5 +429,6 @@
             </tr>
         </table>
     </div>
+    <script src="assets/js/scroll-animate.js"></script>
 </body>
 </html>

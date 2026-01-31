@@ -287,35 +287,5 @@
             const scrollDown = currentScrollY > lastScrollY;
             elements.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                // 元素进入视口下方
+                <script src="assets/js/scroll-animate.js"></script>
                 if (rect.top < windowHeight && rect.bottom > 0) {
-                    el.classList.remove('down');
-                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
-                } else {
-                    // 离开视口时重置
-                    el.classList.remove('visible-up', 'visible-down');
-                    if (!scrollDown) {
-                        el.classList.add('down');
-                    } else {
-                        el.classList.remove('down');
-                    }
-                }
-            });
-            lastScrollY = currentScrollY;
-        }
-        window.addEventListener('scroll', handleSlideAnimation);
-        window.addEventListener('resize', handleSlideAnimation);
-        // 初始触发
-        window.addEventListener('DOMContentLoaded', () => {
-            // 初始所有元素为隐藏
-            document.querySelectorAll('.slide-animate').forEach(el => {
-                el.classList.remove('visible-up', 'visible-down', 'down');
-            });
-            handleSlideAnimation();
-        });
-        // 动态添加的门系列图片也需要动画
-        // 由于门系列图片是动态插入的，需在插入后再触发一次动画
-        setTimeout(handleSlideAnimation, 100);
-    </script>
-</body>
-</html>
