@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品动画设计</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei Light", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ddd;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        h1, h3 {
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* 动画初始状态 */
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.visible-down {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.down {
+            transform: translateY(-60px);
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .gallery {
+            max-width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            background: rgba(50, 50, 50, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            aspect-ratio: 3 / 4;
+        }
+
+        .gallery-item iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border: none;
+        }
+
+        a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            font-size: 0.9rem;
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 1200px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 900px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="sticky-title" class="sticky-title">产品动画设计</div>
+    <h1 class="slide-animate">产品动画设计</h1>
+    <p class="slide-animate">
+        武汉理理线科技有限公司｜C4D/AE/RHINO/grasshopper/vscode/python
+    </p>
+
+    <h3 class="slide-animate">主要</h3>
+    <div class="gallery">
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641776556&bvid=BV1dR6JBmErU&cid=35738225580&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641841852&bvid=BV1jR6JBUEKA&cid=35738226210&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641776568&bvid=BV1dR6JBmErt&cid=35738225943&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641841856&bvid=BV1jR6JBUEPy&cid=35738226498&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+
+    <h3 class="slide-animate">刚性防护系列</h3>
+    <div class="gallery">
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990675331596&bvid=BV19Z6JB1ERN&cid=35738355190&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990675330587&bvid=BV1RZ6JB1EGn&cid=35738355393&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990675330846&bvid=BV1RZ6JB1EjD&cid=35738355486&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990675330084&bvid=BV1RZ6JB1EPi&cid=35738355605&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990675331110&bvid=BV19Z6JB1E1R&cid=35738355649&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+
+    <h3 class="slide-animate">理线架系列</h3>
+    <div class="gallery">
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692108247&bvid=BV1gx6JBBEEs&cid=35738422892&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692107996&bvid=BV1gx6JBBEVR&cid=35738422990&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692173024&bvid=BV18x6JBBEeR&cid=35738423193&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692173816&bvid=BV18x6JBBEmy&cid=35738484913&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990709016351&bvid=BV1Qs6JBuEAK&cid=35738485260&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990708885285&bvid=BV13s6JBuEK5&cid=35738485409&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+
+    <h3 class="slide-animate">配套辅助产品系列</h3>
+    <div class="gallery">
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692107596&bvid=BV1gx6JBBE3f&cid=35738420056&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692108369&bvid=BV1ux6JBBEUr&cid=35738420207&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692106580&bvid=BV1gx6JBBE88&cid=35738419970&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692107864&bvid=BV1gx6JBBEjA&cid=35738420302&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692107869&bvid=BV1gx6JBBEjK&cid=35738420333&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692106848&bvid=BV1gx6JBBEv6&cid=35738420729&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692108132&bvid=BV1gx6JBBEH8&cid=35738420730&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692174439&bvid=BV18x6JBBEtE&cid=35738420477&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692172138&bvid=BV1hx6JBBEFc&cid=35738421226&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692106861&bvid=BV1gx6JBBEvv&cid=35738421118&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692108400&bvid=BV1ux6JBBESL&cid=35738421021&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692108915&bvid=BV1ux6JBBEfw&cid=35738420731&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <div class="gallery-item slide-animate">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692108190&bvid=BV1gx6JBBEJW&cid=35738420992&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+
+    <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+
+    <script src="assets/js/scroll-animate.js"></script>
+    <script src="assets/js/sticky-title.js"></script>
+</body>
+</html>
