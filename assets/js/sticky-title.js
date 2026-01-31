@@ -2,6 +2,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const sticky = document.getElementById('sticky-title');
   if (!sticky) return;
   const stickyText = sticky.querySelector('.sticky-title-text') || sticky;
+  const hiddenStyles = {
+    opacity: '0',
+    transform: 'translateY(-100%)',
+    pointerEvents: 'none'
+  };
+  const visibleStyles = {
+    opacity: '1',
+    transform: 'translateY(0)',
+    pointerEvents: 'auto'
+  };
+
+  sticky.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
   const headings = Array.from(document.querySelectorAll('h1, h3'));
   if (headings.length === 0) return;
 
@@ -23,6 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const active = pickActiveHeading();
     const text = (active.dataset.title || active.textContent || '').trim();
     if (text) stickyText.textContent = text;
+
+    const shouldShow = window.scrollY > 20;
+    if (shouldShow) {
+      Object.assign(sticky.style, visibleStyles);
+      document.body.style.paddingTop = `${sticky.offsetHeight}px`;
+    } else {
+      Object.assign(sticky.style, hiddenStyles);
+      document.body.style.paddingTop = '0px';
+    }
   }
 
   const observer = new IntersectionObserver(() => updateSticky(), {

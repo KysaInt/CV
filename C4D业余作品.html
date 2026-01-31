@@ -9,7 +9,7 @@
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px; /* 添加内边距 */
+            padding: 0 20px;
             background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -26,6 +26,9 @@
             border-bottom: 1px solid #555; /* 添加分割线 */
             padding-bottom: 10px;
             margin-bottom: 20px;
+        }
+        h1:first-of-type {
+            margin-top: 0;
         }
         /* 动画初始状态 */
         .slide-animate {
@@ -64,6 +67,9 @@
             height: auto;
             display: block;
             border: none; /* 移除边框 */
+        }
+        .top-spacer {
+            height: 20px;
         }
         .gallery-item2 iframe {
             aspect-ratio: 344/ 144; /* 设置长宽比为 216:72 */
@@ -130,6 +136,7 @@
     </style>
 </head>
 <body>
+    <div class="top-spacer"></div>
     <div id="sticky-title" class="sticky-title">
         <span class="sticky-title-text">C4D业余作品</span>
         <a class="sticky-back" href="index.html">返回简历</a>
@@ -267,7 +274,7 @@
             gap: 12px;
         }
         .sticky-title-text {
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         .sticky-back {
             color: #fff;

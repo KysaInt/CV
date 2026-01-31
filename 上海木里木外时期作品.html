@@ -9,7 +9,7 @@
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 0;
+            padding: 0 20px;
             background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -56,11 +56,17 @@
             object-fit: cover;
             display: block;
         }
+        .top-spacer {
+            height: 20px;
+        }
         h1, h3 {
             color: #fff;
             border-bottom: 1px solid #555;
             padding-bottom: 10px;
             margin-bottom: 20px;
+        }
+        h1:first-of-type {
+            margin-top: 0;
         }
         p {
             margin-bottom: 20px;
@@ -111,7 +117,7 @@
             gap: 12px;
         }
         .sticky-title-text {
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         .sticky-back {
             color: #fff;
@@ -137,6 +143,7 @@
     </style>
 </head>
 <body>
+    <div class="top-spacer"></div>
     <div id="sticky-title" class="sticky-title">
         <span class="sticky-title-text">上海木里木外时期作品</span>
         <a class="sticky-back" href="index.html">返回简历</a>
