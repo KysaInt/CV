@@ -57,8 +57,13 @@
             max-width: 100%;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
+        }
+        .gallery-main {
+            grid-template-columns: 1fr;
+        }
+        .gallery-secondary {
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .gallery-item {
@@ -112,18 +117,8 @@
             font-size: 1rem;
         }
 
-        @media (max-width: 1200px) {
-            .gallery {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        @media (max-width: 900px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
         @media (max-width: 600px) {
-            .gallery {
+            .gallery-secondary {
                 grid-template-columns: 1fr;
             }
         }
@@ -137,15 +132,15 @@
     </p>
 
     <h3 class="slide-animate">主要</h3>
-    <div class="gallery">
+    <div class="gallery gallery-main">
         <div class="gallery-item slide-animate">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641776556&bvid=BV1dR6JBmErU&cid=35738225580&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641776568&bvid=BV1dR6JBmErt&cid=35738225943&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
         <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641841852&bvid=BV1jR6JBUEKA&cid=35738226210&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
         <div class="gallery-item slide-animate">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641776568&bvid=BV1dR6JBmErt&cid=35738225943&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641776556&bvid=BV1dR6JBmErU&cid=35738225580&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
         <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990641841856&bvid=BV1jR6JBUEPy&cid=35738226498&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
@@ -153,7 +148,7 @@
     </div>
 
     <h3 class="slide-animate">刚性防护系列</h3>
-    <div class="gallery">
+    <div class="gallery gallery-secondary">
         <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990675331596&bvid=BV19Z6JB1ERN&cid=35738355190&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
@@ -166,13 +161,10 @@
         <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990675330084&bvid=BV1RZ6JB1EPi&cid=35738355605&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
-        <div class="gallery-item slide-animate">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990675331110&bvid=BV19Z6JB1E1R&cid=35738355649&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-        </div>
     </div>
 
     <h3 class="slide-animate">理线架系列</h3>
-    <div class="gallery">
+    <div class="gallery gallery-secondary">
         <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692108247&bvid=BV1gx6JBBEEs&cid=35738422892&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
@@ -194,7 +186,7 @@
     </div>
 
     <h3 class="slide-animate">配套辅助产品系列</h3>
-    <div class="gallery">
+    <div class="gallery gallery-secondary">
         <div class="gallery-item slide-animate">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115990692107596&bvid=BV1gx6JBBE3f&cid=35738420056&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
         </div>
