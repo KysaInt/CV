@@ -102,9 +102,37 @@
         .back-link:hover {
             text-decoration: underline;
         }
+
+        /* 全屏视频/iframe 预览遮罩（毛玻璃） */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .overlay .overlay-content {
+            width: min(90vw, 1280px);
+            height: min(90vh, 720px);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .overlay .overlay-content iframe,
+        .overlay .overlay-content video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border: none;
+        }
     </style>
 </head>
 <body>
+    <div id="sticky-title" class="sticky-title">杭州青缇智能时期作品</div>
     <h1 class="slide-animate">杭州青缇智能时期作品</h1>
     <p class="slide-animate">
         虚拟绿幕直播用的背景作品,按顺序依次展示使用 V-Ray, Twinmotion, UE4 和记录的内容.
@@ -271,6 +299,66 @@
     </p>
     <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
 
+    <div id="fullscreen-overlay" class="overlay">
+        <div class="overlay-content"></div>
+    </div>
+
+    <script>
+        // 视频/iframe 点击放大与 ESC 关闭
+        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+        const overlayContent = fullscreenOverlay.querySelector('.overlay-content');
+        let currentEscHandler = null;
+
+        function openOverlayWithElement(el){
+            overlayContent.innerHTML = '';
+            if (el.tagName === 'IFRAME') {
+                const iframe = document.createElement('iframe');
+                iframe.src = el.src;
+                iframe.allowFullscreen = true;
+                iframe.setAttribute('allow', 'autoplay');
+                overlayContent.appendChild(iframe);
+            } else { // VIDEO
+                const video = document.createElement('video');
+                video.src = el.currentSrc || el.src;
+                video.controls = true;
+                video.autoplay = true;
+                overlayContent.appendChild(video);
+            }
+            fullscreenOverlay.style.display = 'flex';
+            currentEscHandler = function(ev){
+                if(ev.key === 'Escape') closeOverlay();
+            };
+            document.addEventListener('keydown', currentEscHandler);
+        }
+
+        function closeOverlay(){
+            fullscreenOverlay.style.display = 'none';
+            overlayContent.innerHTML = '';
+            if (currentEscHandler){
+                document.removeEventListener('keydown', currentEscHandler);
+                currentEscHandler = null;
+            }
+        }
+
+        document.querySelectorAll('.gallery-item iframe, .gallery-item video').forEach(el => {
+            el.addEventListener('click', () => openOverlayWithElement(el));
+        });
+        fullscreenOverlay.addEventListener('click', closeOverlay);
+    </script>
+    <style>
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            font-size: 1rem;
+        }
+    </style>
+    <script src="assets/js/sticky-title.js"></script>
     <script src="assets/js/scroll-animate.js"></script>
 </body>
 </html>

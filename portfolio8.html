@@ -121,6 +121,7 @@
     </style>
 </head>
 <body>
+    <div id="sticky-title" class="sticky-title">学习与研究 - UE5与WebGL</div>
     <h1 class="slide-animate">近期作品</h1>
     <p class="slide-animate">
         以下是近期完成的一些作品, 涵盖 WebGL 和 UE 的内容.
@@ -251,7 +252,9 @@
             position: fixed;
             z-index: 9999;
             left: 0; top: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -309,6 +312,20 @@
     </p>
 
     <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+    <style>
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            font-size: 1rem;
+        }
+    </style>
+    <script src="assets/js/sticky-title.js"></script>
     <script src="assets/js/scroll-animate.js"></script>
 </body>
 </html>

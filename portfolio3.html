@@ -9,94 +9,18 @@
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131); /* 保持背景一致 */
+            padding: 0;
+            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            color: #ddd; /* 修改文字颜色 */
+            color: #ddd;
         }
-
         @keyframes gradientBG {
             0% { background-position: 0% 0%; }
             50% { background-position: 100% 100%; }
             100% { background-position: 0% 0%; }
         }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        #fullscreen-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8); /* 修改背景颜色 */
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #fullscreen-overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        a {
-            color: #ff9800; /* 链接颜色与其他页面一致 */
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .back-link {
-            margin-top: 20px;
-            display: block;
-            font-size: 0.9rem;
-            color: #ff9800; /* 修改返回链接颜色 */
-            text-decoration: none;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        h1, h3 {
-            color: #fff; /* 标题颜色与其他页面一致 */
-            border-bottom: 1px solid #555; /* 添加分割线 */
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* 动画初始状态 */
+        /* 动画初始状态与可视状态 */
         .slide-animate {
             opacity: 0;
             transform: translateY(60px);
@@ -110,31 +34,84 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* 下沉效果 */
         .slide-animate.down {
             transform: translateY(-60px);
         }
-
-        @media (min-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .gallery {
-                gap: 15px;
-            }
-
-            .back-link {
-                font-size: 1rem;
-            }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
         }
-
+        .gallery-item {
+            margin: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            aspect-ratio: 4 / 3;
+            background: #222;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        h1, h3 {
+            color: #fff;
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #00f;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            font-size: 1rem;
+        }
         @media (max-width: 768px) {
             .gallery {
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
         }
-
         @media (max-width: 480px) {
             .gallery {
                 grid-template-columns: 1fr;
@@ -143,140 +120,106 @@
     </style>
 </head>
 <body>
-    <h1 class="slide-animate">木里木外时期作品</h1>
-    <p class="slide-animate" style="margin-bottom: 20px; color: #ffffff; font-size: 1rem; line-height: 1.6;">
-        本页面展示了展厅及家具类产品的建模与渲染作品。这些作品主要使用 SketchUp, 3ds Max, V-Ray 等工具完成，旨在呈现高质量的视觉效果和设计细节。
-    </p>
-    <div class="gallery">
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image1.webp" alt="作品1">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image2.webp" alt="作品2">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image3.webp" alt="作品3">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image4.webp" alt="作品4">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image5.webp" alt="作品5">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image6.webp" alt="作品6">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image7.webp" alt="作品7">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image8.webp" alt="作品8">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image9.webp" alt="作品9">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image10.webp" alt="作品10">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image11.webp" alt="作品11">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image12.webp" alt="作品12">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image13.webp" alt="作品13">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image14.webp" alt="作品14">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image15.webp" alt="作品15">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image16.webp" alt="作品16">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image17.webp" alt="作品17">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image18.webp" alt="作品18">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image19.webp" alt="作品19">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image20.webp" alt="作品20">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image21.webp" alt="作品21">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image22.webp" alt="作品22">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image23.webp" alt="作品23">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image24.webp" alt="作品24">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image25.webp" alt="作品25">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image26.webp" alt="作品26">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image27.webp" alt="作品27">
-        </div>
-        <div class="gallery-item slide-animate">
-            <img src="works/MLMW/image28.webp" alt="作品28">
-        </div>
-    </div>
-    <h3 class="slide-animate">门系列</h3>
-    <div class="gallery" id="door-series-gallery">
-        <!-- 图片将通过 JavaScript 动态加载 -->
-    </div>
-    <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+    <div id="sticky-title" class="sticky-title">木里木外时期作品</div>
+    <div class="container">
+        <h1 class="slide-animate">木里木外时期作品</h1>
+        <p class="slide-animate">
+            本页面展示了展厅及家具类产品的建模与渲染作品。这些作品主要使用 SketchUp, 3ds Max, V-Ray 等工具完成，旨在呈现高质量的视觉效果和设计细节。
+        </p>
 
-    <div id="fullscreen-overlay">
-        <img src="" alt="全屏预览">
+        <h3 class="slide-animate">作品展示</h3>
+        <div class="gallery" id="gallery-main">
+            <!-- image1~image28 动态加载 -->
+        </div>
+
+        <h3 class="slide-animate">门系列</h3>
+        <div class="gallery" id="gallery-doors">
+            <!-- m0~m14 动态加载 -->
+        </div>
+
+        <h3 class="slide-animate">细节类</h3>
+        <div class="gallery" id="gallery-details">
+            <!-- m15 及以后动态加载 -->
+        </div>
+
+        <a href="portfolio.html" class="back-link slide-animate">返回作品展示</a>
+    </div>
+
+    <div id="fullscreen-overlay" style="display: none;" class="overlay">
+        <img id="fullscreen-image" src="" alt="全屏展示">
     </div>
 
     <script>
-        // 点击显示和关闭大图的逻辑
-        const overlay = document.getElementById("fullscreen-overlay");
-        const overlayImage = overlay.querySelector("img");
+        const mainGallery = document.getElementById('gallery-main');
+        const doorsGallery = document.getElementById('gallery-doors');
+        const detailsGallery = document.getElementById('gallery-details');
 
-        // 为所有图片（包括门系列及其下方图片）添加点击放大功能
-        document.querySelectorAll(".gallery img, #door-series-gallery img").forEach(img => {
-            img.addEventListener("click", () => {
-                overlayImage.src = img.src;
-                overlay.style.display = "flex";
+        const imageTotal = 28;
+        const mTotal = 102;
+        const imagePath = 'works/MLMW/';
+
+        for (let i = 1; i <= imageTotal; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item slide-animate';
+
+            const img = document.createElement('img');
+            img.src = `${imagePath}image${i}.webp`;
+            img.alt = `作品 ${i}`;
+
+            galleryItem.appendChild(img);
+            mainGallery.appendChild(galleryItem);
+        }
+
+        for (let i = 0; i <= 14; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item slide-animate';
+
+            const img = document.createElement('img');
+            img.src = `${imagePath}m${i}.webp`;
+            img.alt = `门系列 ${i}`;
+
+            galleryItem.appendChild(img);
+            doorsGallery.appendChild(galleryItem);
+        }
+
+        for (let i = 15; i <= mTotal; i++) {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item slide-animate';
+
+            const img = document.createElement('img');
+            img.src = `${imagePath}m${i}.webp`;
+            img.alt = `细节 ${i}`;
+
+            galleryItem.appendChild(img);
+            detailsGallery.appendChild(galleryItem);
+        }
+
+        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+        const fullscreenImage = document.getElementById('fullscreen-image');
+        let currentEscHandler = null;
+
+        document.querySelectorAll('#gallery-main img, #gallery-doors img, #gallery-details img').forEach(img => {
+            img.addEventListener('click', () => {
+                fullscreenImage.src = img.src;
+                fullscreenOverlay.style.display = 'flex';
+                currentEscHandler = function(ev){
+                    if(ev.key === 'Escape'){
+                        fullscreenOverlay.style.display = 'none';
+                        document.removeEventListener('keydown', currentEscHandler);
+                        currentEscHandler = null;
+                    }
+                };
+                document.addEventListener('keydown', currentEscHandler);
             });
         });
 
-        overlay.addEventListener("click", () => {
-            overlay.style.display = "none";
-            overlayImage.src = "";
+        fullscreenOverlay.addEventListener('click', () => {
+            fullscreenOverlay.style.display = 'none';
+            if (currentEscHandler) {
+                document.removeEventListener('keydown', currentEscHandler);
+                currentEscHandler = null;
+            }
         });
-
-        // 加载门系列图片
-        const doorSeriesGallery = document.getElementById("door-series-gallery");
-        const doorSeriesTotalImages = 102; // 门系列图片总数
-        const doorSeriesImagePath = "works/MLMW/"; // 门系列图片路径
-
-        for (let i = 0; i <= doorSeriesTotalImages; i++) {
-            const galleryItem = document.createElement("div");
-            galleryItem.className = "gallery-item slide-animate";
-
-            const imgElement = document.createElement("img");
-            imgElement.src = `${doorSeriesImagePath}m${i}.webp`; // 门系列文件名格式
-            imgElement.alt = `门系列 ${i}`;
-
-            galleryItem.appendChild(imgElement);
-            doorSeriesGallery.appendChild(galleryItem);
-        }
 
         // 滑动动画逻辑
         let lastScrollY = window.scrollY;
@@ -287,5 +230,30 @@
             const scrollDown = currentScrollY > lastScrollY;
             elements.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                <script src="assets/js/scroll-animate.js"></script>
                 if (rect.top < windowHeight && rect.bottom > 0) {
+                    el.classList.remove('down');
+                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
+                } else {
+                    el.classList.remove('visible-up', 'visible-down');
+                    if (!scrollDown) {
+                        el.classList.add('down');
+                    } else {
+                        el.classList.remove('down');
+                    }
+                }
+            });
+            lastScrollY = currentScrollY;
+        }
+        window.addEventListener('scroll', handleSlideAnimation);
+        window.addEventListener('resize', handleSlideAnimation);
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slide-animate').forEach(el => {
+                el.classList.remove('visible-up', 'visible-down', 'down');
+            });
+            handleSlideAnimation();
+        });
+        setTimeout(handleSlideAnimation, 100);
+    </script>
+    <script src="assets/js/sticky-title.js"></script>
+</body>
+</html>
