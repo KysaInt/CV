@@ -16,20 +16,20 @@
 
         el.classList.remove('down', 'visible-up', 'visible-down');
         if (enteringFromTop) {
-          // 从上方进入：先 -60px，再到 0
+          // 从上方进入: 先 -60px, 再到 0
           el.classList.add('visible-down');
         } else {
-          // 从下进入或已在视口内：先 +60px，再到 0
+          // 从下进入或已在视口内: 先 +60px, 再到 0
           el.classList.add('visible-up');
         }
       } else {
-        // 不可见时，根据在视口的上下位置预设偏移
+        // 不可见时, 根据在视口的上下位置预设偏移
         el.classList.remove('visible-up', 'visible-down');
         if (rect.top >= windowHeight) {
-          // 在视口下方：保持 +60px 初始偏移
+          // 在视口下方: 保持 +60px 初始偏移
           el.classList.remove('down');
         } else if (rect.bottom <= 0) {
-          // 在视口上方：设置 -60px 预偏移
+          // 在视口上方: 设置 -60px 预偏移
           el.classList.add('down');
         }
       }

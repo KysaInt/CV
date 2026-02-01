@@ -58,13 +58,13 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            aspect-ratio: 4 / 3; /* 固定卡片比例，避免上下错位 */
+            aspect-ratio: 4 / 3; /* 固定卡片比例, 避免上下错位 */
             background: #222;
         }
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 裁切填充，行高统一 */
+            object-fit: cover; /* 裁切填充, 行高统一 */
             display: block;
         }
         .top-spacer {
@@ -124,9 +124,9 @@
     <div class="container">
         <h1 class="slide-animate">上海伍鼎景观时期作品</h1>
         <p class="slide-animate">
-            本页面展示了上海伍鼎景观公司时期作品, 主要是 enscape 渲染, 也有提案阶段的模型, 以及部分参考图。
+            本页面展示了上海伍鼎景观公司时期作品, 主要是 Enscape 渲染, 也有提案阶段的模型, 以及部分参考图.
         </p>
-        <h3 class="slide-animate">ENSCAPE 渲染</h3>
+        <h3 class="slide-animate">Enscape 渲染</h3>
         <div class="gallery" id="gallery">
             <!-- 图片将通过 JavaScript 动态加载 -->
         </div>
@@ -186,7 +186,7 @@
 
             const imgElement = document.createElement('img');
             imgElement.src = `${imagePath}ens${i}.webp`;
-            imgElement.alt = `ENSCAPE 渲染 ${i}`;
+            imgElement.alt = `Enscape 渲染 ${i}`;
 
             galleryItem.appendChild(imgElement);
             gallery.appendChild(galleryItem);
