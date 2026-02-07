@@ -61,13 +61,13 @@
             margin: 0 auto;
             display: grid;
             gap: 15px;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
         .gallery-main {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
         .gallery-secondary {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .gallery-item {
@@ -141,55 +141,6 @@
             background: rgba(255,255,255,0.16);
         }
 
-        .viewer-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.86);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
-            z-index: 1000;
-        }
-        .viewer-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .viewer-content {
-            position: relative;
-            width: min(96vw, 1400px);
-            height: min(92vh, 900px);
-            background: #111;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-            display: flex;
-            align-items: stretch;
-            justify-content: stretch;
-        }
-        .viewer-content iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .viewer-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.12);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            padding: 6px 10px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-        .viewer-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
     </style>
 </head>
 <body>
@@ -300,69 +251,7 @@
         </div>
     </div>
 
-    <div id="viewer-overlay" class="viewer-overlay" aria-hidden="true">
-        <div class="viewer-content" role="dialog" aria-modal="true">
-            <button id="viewer-close" class="viewer-close" type="button">返回</button>
-        </div>
-    </div>
-
     <script src="assets/js/scroll-animate.js"></script>
     <script src="assets/js/sticky-title.js"></script>
-    <script>
-        (function () {
-            const overlay = document.getElementById("viewer-overlay");
-            const content = overlay.querySelector(".viewer-content");
-            const closeBtn = document.getElementById("viewer-close");
-
-            let activeIframe = null;
-            let placeholder = null;
-
-            function openViewer(iframe) {
-                if (!iframe) return;
-                activeIframe = iframe;
-                placeholder = document.createElement("div");
-                placeholder.style.display = "none";
-                iframe.parentNode.insertBefore(placeholder, iframe);
-                content.appendChild(iframe);
-                overlay.classList.add("active");
-                overlay.setAttribute("aria-hidden", "false");
-            }
-
-            function closeViewer() {
-                if (!activeIframe || !placeholder) return;
-                placeholder.parentNode.insertBefore(activeIframe, placeholder);
-                placeholder.remove();
-                activeIframe = null;
-                placeholder = null;
-                overlay.classList.remove("active");
-                overlay.setAttribute("aria-hidden", "true");
-            }
-
-            document.querySelectorAll(".gallery-item").forEach((item) => {
-                item.addEventListener("click", (event) => {
-                    const iframe = item.querySelector("iframe");
-                    if (!iframe) return;
-                    event.preventDefault();
-                    openViewer(iframe);
-                });
-            });
-
-            overlay.addEventListener("click", (event) => {
-                if (event.target === overlay) {
-                    closeViewer();
-                }
-            });
-
-            closeBtn.addEventListener("click", () => {
-                closeViewer();
-            });
-
-            document.addEventListener("keydown", (event) => {
-                if (event.key === "Escape") {
-                    closeViewer();
-                }
-            });
-        })();
-    </script>
 </body>
 </html>
