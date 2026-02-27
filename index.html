@@ -255,6 +255,90 @@
             visibility: visible;
             opacity: 1;
         }
+
+        /* 音乐程序作品 视频卡片 */
+        .featured-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #ddd;
+            display: flex;
+            flex-direction: column;
+            min-height: 140px;
+            margin: 24px 0 8px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+            transition: box-shadow 0.28s, transform 0.22s, border-color 0.28s;
+            cursor: pointer;
+        }
+        .featured-card:hover {
+            box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 1px 6px rgba(255,152,0,0.18);
+            transform: translateY(-3px) scale(1.015);
+            border-color: rgba(255,152,0,0.35);
+            text-decoration: none;
+        }
+        .featured-card .card-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .featured-card .card-bg iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 220%;
+            height: 220%;
+            transform: translate(-50%, -50%);
+            filter: blur(14px) brightness(0.55) saturate(1.3);
+            border: none;
+        }
+        .featured-card .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.32) 100%);
+            z-index: 1;
+            transition: background 0.28s;
+        }
+        .featured-card:hover .card-overlay {
+            background: linear-gradient(135deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.18) 100%);
+        }
+        .featured-card .card-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 28px;
+        }
+        .featured-card .card-content-text .card-label {
+            font-size: 0.78rem;
+            color: rgba(255,152,0,0.85);
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+        .featured-card .card-content-text .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+        }
+        .featured-card .card-content-text .card-desc {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.72);
+            margin-top: 6px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+        .featured-card .card-arrow {
+            font-size: 1.6rem;
+            color: #ff9800;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
     </style>
     <script>
         // 展开/折叠逻辑保留在本页
@@ -427,6 +511,21 @@
         </div>
 
         </ul>
+
+        <a class="featured-card slide-animate" href="音乐及程序相关作品.html" target="_blank">
+            <div class="card-bg">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV1daASzsEXX&p=1&autoplay=1&muted=1&danmaku=0" scrolling="no" frameborder="no"></iframe>
+            </div>
+            <div class="card-overlay"></div>
+            <div class="card-content">
+                <div class="card-content-text">
+                    <div class="card-label">FEATURED WORKS</div>
+                    <div class="card-title">音乐及程序相关作品</div>
+                    <div class="card-desc">Web3D · Python 音频 · UE5 FFT · 赛车游戏 · 消除游戏</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </div>
+        </a>
 
         <h3 class="slide-animate">教育经历</h3>
         <table class="slide-animate">
