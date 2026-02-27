@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐及程序相关作品</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei Light", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0 20px;
+            min-height: 100vh;
+            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ddd;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        h1, h3 {
+            border-bottom: 1px solid #555; /* 添加分割线 */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h1:first-of-type {
+            margin-top: 0;
+        }
+        /* 动画初始状态 */
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.visible-down {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.down {
+            transform: translateY(-60px);
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .gallery-item {
+            margin-bottom: 20px; /* 添加间距 */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item iframe {
+            aspect-ratio: 1920 / 720; /* 设置长宽比为 1920:720 */
+            width: 100%;
+            height: auto;
+            display: block;
+            border: none; /* 移除边框 */
+        }
+        .top-spacer {
+            height: 20px;
+        }
+
+        .gallery-item2 iframe {
+            aspect-ratio: 1644 / 3840; /* 设置长宽比为 216:72 */
+            width: 100%;
+            border-radius: 8px; /* 统一圆角效果 */
+            height: auto;
+            display: block;
+            border: none; /* 移除边框 */
+        }
+
+        .gallery-item3 iframe {
+            aspect-ratio: 1/ 1; /* 设置长宽比为 216:72 */
+            width: 100%;
+            border-radius: 8px; /* 统一圆角效果 */
+            height: auto;
+            display: block;
+            border: none; /* 移除边框 */
+        }
+        .gallery-item4 iframe {
+            aspect-ratio: 344/ 144; /* 设置长宽比为 216:72 */
+            width: 100%;
+            border-radius: 8px; /* 统一圆角效果 */
+            height: auto;
+            display: block;
+            border: none; /* 移除边框 */
+        }
+        a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: block;
+            font-size: 0.9rem;
+            color: #ff9800;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        /* 导航卡片 */
+        .nav-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+        .nav-card {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #ddd;
+            transition: box-shadow 0.28s, transform 0.22s, border-color 0.28s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+            cursor: pointer;
+            min-height: 130px;
+        }
+        .nav-card:hover {
+            box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 1px 6px rgba(255,152,0,0.18);
+            transform: translateY(-3px) scale(1.015);
+            border-color: rgba(255,152,0,0.35);
+            text-decoration: none;
+        }
+        /* 视频背景层 */
+        .card-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .card-bg iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 220%;
+            height: 220%;
+            transform: translate(-50%, -50%);
+            filter: blur(14px) brightness(0.55) saturate(1.3);
+            border: none;
+        }
+        /* 深色遮罩，保持文字可读 */
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.32) 100%);
+            z-index: 1;
+            transition: background 0.28s;
+        }
+        .nav-card:hover .card-overlay {
+            background: linear-gradient(135deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.18) 100%);
+        }
+        /* 文字内容层 */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 24px 24px 20px 24px;
+            min-height: 130px;
+        }
+        .nav-card-title {
+            font-size: 1.18rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+        }
+        .nav-card-desc {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.78);
+            line-height: 1.5;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+        .nav-card-arrow {
+            margin-top: 16px;
+            color: #ff9800;
+            font-size: 1.1rem;
+            align-self: flex-end;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-spacer"></div>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">音乐及程序相关作品</span>
+        <a class="sticky-back" href="index.html">返回简历</a>
+    </div>
+
+    <h1 class="slide-animate">音乐及程序相关作品</h1>
+    <p class="slide-animate">
+        以下内容涵盖 WebGL / Web3D、Python 音频处理、以及 Unreal Engine 5 的多个方向.
+    </p>
+
+    <div class="nav-grid slide-animate">
+        <a class="nav-card" href="音乐程序-web3d.html">
+            <div class="card-bg">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV1Z1ogY3E1i&p=1&autoplay=1&muted=1&danmaku=0" scrolling="no" frameborder="no"></iframe>
+            </div>
+            <div class="card-overlay"></div>
+            <div class="card-content">
+                <div>
+                    <div class="nav-card-title">WEB3D</div>
+                    <div class="nav-card-desc">Babylon.js 动画控制、鼠标 PBR 材质调整、Pixel Art 等 Web3D 内容.</div>
+                </div>
+                <div class="nav-card-arrow">→</div>
+            </div>
+        </a>
+        <a class="nav-card" href="音乐程序-python.html">
+            <div class="card-bg">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV1daASzsEXX&p=1&autoplay=1&muted=1&danmaku=0" scrolling="no" frameborder="no"></iframe>
+            </div>
+            <div class="card-overlay"></div>
+            <div class="card-content">
+                <div>
+                    <div class="nav-card-title">Python 音频程序</div>
+                    <div class="nav-card-desc">使用 Python 实现的音频可视化与处理程序.</div>
+                </div>
+                <div class="nav-card-arrow">→</div>
+            </div>
+        </a>
+        <a class="nav-card" href="音乐程序-ue-fft.html">
+            <div class="card-bg">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV1QFopYhEHt&p=1&autoplay=1&muted=1&danmaku=0" scrolling="no" frameborder="no"></iframe>
+            </div>
+            <div class="card-overlay"></div>
+            <div class="card-content">
+                <div>
+                    <div class="nav-card-title">UE FFT 音频</div>
+                    <div class="nav-card-desc">UE5 音频 FFT 分析器驱动物理、粒子与音乐节奏同步效果.</div>
+                </div>
+                <div class="nav-card-arrow">→</div>
+            </div>
+        </a>
+        <a class="nav-card" href="音乐程序-ue-racing.html">
+            <div class="card-bg">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV1bPopYZEb2&p=1&autoplay=1&muted=1&danmaku=0" scrolling="no" frameborder="no"></iframe>
+            </div>
+            <div class="card-overlay"></div>
+            <div class="card-content">
+                <div>
+                    <div class="nav-card-title">UE 赛车游戏</div>
+                    <div class="nav-card-desc">汽车绑定、可破坏物件小游戏、自动生成地图赛车雏形.</div>
+                </div>
+                <div class="nav-card-arrow">→</div>
+            </div>
+        </a>
+        <a class="nav-card" href="音乐程序-ue-puzzle.html">
+            <div class="card-bg">
+                <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV1bPopYZEio&p=1&autoplay=1&muted=1&danmaku=0" scrolling="no" frameborder="no"></iframe>
+            </div>
+            <div class="card-overlay"></div>
+            <div class="card-content">
+                <div>
+                    <div class="nav-card-title">UE 消除游戏</div>
+                    <div class="nav-card-desc">仿手机消除游戏, 最终打包至安卓, 含落日 FFT 背景效果.</div>
+                </div>
+                <div class="nav-card-arrow">→</div>
+            </div>
+        </a>
+    </div>
+
+    <style>
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text { font-size: 1.1rem; }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover { background: rgba(255,255,255,0.16); }
+    </style>
+    <script src="assets/js/sticky-title.js"></script>
+    <script src="assets/js/scroll-animate.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python 音频程序</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei Light", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0 20px;
+            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ddd;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        h1, h3 {
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up { opacity: 1; transform: translateY(0); }
+        .slide-animate.visible-down { opacity: 1; transform: translateY(0); }
+        .slide-animate.down { transform: translateY(-60px); }
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .gallery-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .gallery-item iframe {
+            aspect-ratio: 1920 / 720;
+            width: 100%;
+            height: auto;
+            display: block;
+            border: none;
+        }
+        .top-spacer { height: 20px; }
+        a { color: #ff9800; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text { font-size: 1.1rem; }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover { background: rgba(255,255,255,0.16); }
+
+        /* 杂志布局 */
+        .mag-block {
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        .mag-thumb-group {
+            float: right;
+            margin: 4px 0 12px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 140px;
+        }
+        .mag-thumb {
+            width: 140px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            background: #1a1a1a;
+            cursor: zoom-in;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .mag-thumb:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.6), 0 1px 4px rgba(255,152,0,0.15);
+            transform: scale(1.04);
+        }
+        .mag-thumb img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+            border-radius: 6px 6px 0 0;
+        }
+        .mag-caption {
+            font-size: 0.75rem;
+            color: #888;
+            text-align: center;
+            padding: 4px 0 3px 0;
+            background: #1a1a1a;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .mag-block p {
+            margin-bottom: 0;
+        }
+        .img-zoom-modal {
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            animation: fadeInZoom 0.22s;
+        }
+        .img-zoom-modal img {
+            max-width: 88vw;
+            max-height: 88vh;
+            border-radius: 10px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.55);
+            animation: zoomInImg 0.22s;
+        }
+        @keyframes fadeInZoom { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomInImg { from { transform: scale(0.93); } to { transform: scale(1); } }
+    </style>
+</head>
+<body>
+    <div class="top-spacer"></div>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">Python 音频程序</span>
+        <a class="sticky-back" href="音乐及程序相关作品.html">返回</a>
+    </div>
+
+    <h1 class="slide-animate">Python 音频程序</h1>
+
+    <h3 class="slide-animate">音频可视化与处理</h3>
+    <div class="gallery-item slide-animate">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV1daASzsEXX&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p class="slide-animate">
+        这个程序最早的出发点其实很简单: 我看到玩音乐的朋友买了氛围小灯, 但灯的频率和她的音乐没有联系, 所以我想做一个可视化程序, 让她的音乐视频能够通过屏幕发出的光更有氛围感. 在这个基础上, 我也想测试一下 pygame 在实时渲染上的性能边界, 以及它到底能做出多强的视觉反馈. 后来在反复尝试中, 我决定把它做成一个"自己可以编辑, 自己可以玩"的音乐可视化工具, 而不是只做一次性的演示效果.
+    </p>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/python/基本控制.png" alt="基本控制面板" class="zoomable-img">
+                <div class="mag-caption">基本控制</div>
+            </div>
+        </div>
+        <p>
+            它监听的是 Windows 系统音频输出, 所以只要本机在播放音乐, 画面就会立即响应, 不需要额外导入音频文件. 为了让每一首歌都能被"重新诠释", 我把大量参数都做成了可调, 包括频率范围、条形长度、颜色和节奏相关控制. 每组参数的基础上下限, 我都在性能和画面效果之间反复找平衡 —— 范围太保守会不够有冲击, 范围太激进又会拖性能或让画面失真. 除了手动调参, 我还加了随机控制与自动变化机制, 而且可以指定"哪些属性参与随机", 包括图元数量这类关键项 (因为图元太多、图形过于复杂时, 画面反而容易显得混乱).
+        </p>
+    </div>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/python/图元控制.png" alt="图元控制面板" class="zoomable-img">
+                <div class="mag-caption">图元控制</div>
+            </div>
+        </div>
+        <p>
+            在视觉形态上, 这个程序也经历了一个逐步迭代的过程: 最初只是最基本、最常见的频谱条, 后来我把它改成了环状结构, 让多列频谱围成圆环. 再往后, 我把每个频谱条的端点连成 B 样条曲线, 并加入了间隔取样设计, 用更少的控制点换来更平滑的曲线表现. 在这基础上, 我又尝试用闭合样条区域生成多层封闭填充图案, 再叠加不同端点之间的直接连线效果, 让画面在节奏之外也有更强的结构层次感.
+        </p>
+    </div>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/python/运动表现.png" alt="运动表现面板" class="zoomable-img">
+                <div class="mag-caption">运动表现</div>
+            </div>
+        </div>
+        <p>
+            在动态表现上, 我比较在意"跟节奏走"但不"乱跳". 目前放大和旋转的驱动, 会参考平均响度变化率的 pow 结果来做响应, 这样能把音乐里的起伏感和节拍变化放大出来, 同时尽量避免画面失控. 这个平衡点我调了很久, 也是这个项目里我最享受的一部分.
+        </p>
+    </div>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/python/预设列表.png" alt="预设列表面板" class="zoomable-img">
+                <div class="mag-caption">预设列表</div>
+            </div>
+        </div>
+        <p>
+            功能层面目前已经具备完整的预设工作流: 可以另存预设、刷新列表、删除当前预设、重命名当前预设, 也支持多预设自动随机切换 (固定间隔或随机区间). 我也手动调了几组比较有代表性的风格化预设, 并给它们取了更形象的名字, 方便在不同氛围之间快速切换. 这让我在不同风格之间切换时更高效, 也更适合长时间播放时自动演化.
+        </p>
+    </div>
+
+    <p class="slide-animate">
+        中间我也尝试过一个更"理想化"的方向: 自动分离乐器和人声, 然后走多轨道控制, 让不同元素驱动不同视觉层. 但实际测试下来, 这部分效果并不理想. 核心问题是实时分离的运算开销太大, 难以做到每一帧都稳定流畅. 如果拉大分析间隔来换性能, 画面和音乐之间的同步感又会明显丢失. 权衡之后, 我把这条路暂时放下, 转而采用更可靠的方案: 先做预分轨处理, 再把不同轨道接入不同的控制系统中.
+    </p>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/python/节点程序.png" alt="节点程序界面" class="zoomable-img">
+                <div class="mag-caption">节点程序 (调试中)</div>
+            </div>
+        </div>
+        <p>
+            后续我准备把预设设置界面升级为节点式自由接线的控制方式. 这个方向还在调试中, 因为我想先搭建一个自己熟悉、可复用的节点编程基础框架. 等这套编辑器稳定后, 不仅能用于这个可视化程序, 也能复用到我后续的其他项目里.
+        </p>
+    </div>
+
+    <script>
+        document.querySelectorAll('.zoomable-img').forEach(img => {
+            img.addEventListener('click', function() {
+                if (document.querySelector('.img-zoom-modal')) return;
+                const modal = document.createElement('div');
+                modal.className = 'img-zoom-modal';
+                const zoomImg = document.createElement('img');
+                zoomImg.src = img.src;
+                zoomImg.alt = img.alt;
+                modal.appendChild(zoomImg);
+                document.body.appendChild(modal);
+                modal.addEventListener('click', () => modal.remove());
+                document.addEventListener('keydown', function escHandler(ev) {
+                    if (ev.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', escHandler); }
+                });
+            });
+        });
+    </script>
+
+    <script src="assets/js/sticky-title.js"></script>
+    <script src="assets/js/scroll-animate.js"></script>
+</body>
+</html>

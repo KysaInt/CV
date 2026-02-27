@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UE FFT 音频</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei Light", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0 20px;
+            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ddd;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        h1, h3 {
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up { opacity: 1; transform: translateY(0); }
+        .slide-animate.visible-down { opacity: 1; transform: translateY(0); }
+        .slide-animate.down { transform: translateY(-60px); }
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .gallery-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .gallery-item iframe {
+            aspect-ratio: 1920 / 720;
+            width: 100%;
+            height: auto;
+            display: block;
+            border: none;
+        }
+        .top-spacer { height: 20px; }
+        a { color: #ff9800; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text { font-size: 1.1rem; }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover { background: rgba(255,255,255,0.16); }
+    </style>
+</head>
+<body>
+    <div class="top-spacer"></div>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">UE FFT 音频</span>
+        <a class="sticky-back" href="音乐及程序相关作品.html">返回</a>
+    </div>
+
+    <h1 class="slide-animate">UE FFT 音频分析效果 (建议开启声音)</h1>
+
+    <div class="gallery-item slide-animate">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340501983438&bvid=BV1QFopYhEHt&cid=29424945874&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p class="slide-animate">
+        使用 UE 音频 FFT 分析器控制物体缩放, 并结合物理碰撞模拟.
+    </p>
+
+    <div class="gallery-item slide-animate">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340501917950&bvid=BV1hFopYhEXU&cid=29424946761&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p class="slide-animate">
+        在基础功能上增加位置限制, 呈现出类似怪物的动态效果.
+    </p>
+
+    <div class="gallery-item slide-animate">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114340518696979&bvid=BV1bPopYZEgn&cid=29425008929&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+    <p class="slide-animate">
+        添加粒子发射器并绑定至 FFT 平均值阈值, 模拟烟花与音乐节奏同步的效果.
+    </p>
+
+    <script src="assets/js/sticky-title.js"></script>
+    <script src="assets/js/scroll-animate.js"></script>
+</body>
+</html>
