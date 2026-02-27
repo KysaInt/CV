@@ -155,7 +155,7 @@
             const gallery = document.getElementById(galleryId);
             gallery.addEventListener('click', (event) => {
                 if (event.target.tagName === 'IMG') {
-                    fullscreenImage.src = event.target.src;
+                    fullscreenImage.src = event.target.dataset.fullsrc || event.target.src;
                     fullscreenOverlay.style.display = 'flex';
                     currentEscHandler = function(ev){
                         if(ev.key === 'Escape'){
@@ -187,7 +187,12 @@
             galleryItem.className = 'gallery-item slide-animate';
 
             const imgElement = document.createElement('img');
-            imgElement.src = `${imagePath}ens${i}.webp`;
+            const fn = `ens${i}.webp`;
+            imgElement.src = `${imagePath}thumbs/640/${fn}`;
+            imgElement.srcset = `${imagePath}thumbs/320/${fn} 320w, ${imagePath}thumbs/640/${fn} 640w, ${imagePath}thumbs/1280/${fn} 1280w`;
+            imgElement.sizes = '100vw';
+            imgElement.loading = 'lazy';
+            imgElement.dataset.fullsrc = `${imagePath}${fn}`;
             imgElement.alt = `Enscape 渲染 ${i}`;
 
             galleryItem.appendChild(imgElement);
@@ -204,7 +209,12 @@
             galleryItem.className = 'gallery-item slide-animate';
 
             const imgElement = document.createElement('img');
-            imgElement.src = `${proposalImagePath}zx${i}.webp`;
+            const fn = `zx${i}.webp`;
+            imgElement.src = `${proposalImagePath}thumbs/640/${fn}`;
+            imgElement.srcset = `${proposalImagePath}thumbs/320/${fn} 320w, ${proposalImagePath}thumbs/640/${fn} 640w, ${proposalImagePath}thumbs/1280/${fn} 1280w`;
+            imgElement.sizes = '100vw';
+            imgElement.loading = 'lazy';
+            imgElement.dataset.fullsrc = `${proposalImagePath}${fn}`;
             imgElement.alt = `提案阶段杂项 ${i}`;
 
             galleryItem.appendChild(imgElement);
@@ -221,7 +231,12 @@
             galleryItem.className = 'gallery-item slide-animate';
 
             const imgElement = document.createElement('img');
-            imgElement.src = `${signageImagePath}bsbp${i}.webp`;
+            const fn = `bsbp${i}.webp`;
+            imgElement.src = `${signageImagePath}thumbs/640/${fn}`;
+            imgElement.srcset = `${signageImagePath}thumbs/320/${fn} 320w, ${signageImagePath}thumbs/640/${fn} 640w, ${signageImagePath}thumbs/1280/${fn} 1280w`;
+            imgElement.sizes = '100vw';
+            imgElement.loading = 'lazy';
+            imgElement.dataset.fullsrc = `${signageImagePath}${fn}`;
             imgElement.alt = `标识标牌 ${i}`;
 
             galleryItem.appendChild(imgElement);

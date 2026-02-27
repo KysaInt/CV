@@ -129,7 +129,12 @@
             galleryItem.className = 'gallery-item slide-animate';
 
             const imgElement = document.createElement('img');
-            imgElement.src = `${imagePath}DHZS${i}.webp`; // 更新文件名格式
+            const fn = `DHZS${i}.webp`;
+            imgElement.src = `${imagePath}thumbs/640/${fn}`;
+            imgElement.srcset = `${imagePath}thumbs/320/${fn} 320w, ${imagePath}thumbs/640/${fn} 640w, ${imagePath}thumbs/1280/${fn} 1280w`;
+            imgElement.sizes = '100vw';
+            imgElement.loading = 'lazy';
+            imgElement.dataset.fullsrc = `${imagePath}${fn}`;
             imgElement.alt = `作品 ${i}`;
 
             galleryItem.appendChild(imgElement);
@@ -142,7 +147,7 @@
 
         gallery.addEventListener('click', (event) => {
             if (event.target.tagName === 'IMG') {
-                fullscreenImage.src = event.target.src;
+                fullscreenImage.src = event.target.dataset.fullsrc || event.target.src;
                 fullscreenOverlay.style.display = 'flex';
                 currentEscHandler = function(ev){
                     if(ev.key === 'Escape'){

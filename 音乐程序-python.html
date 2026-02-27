@@ -171,7 +171,7 @@
     <div class="mag-block slide-animate">
         <div class="mag-thumb-group">
             <div class="mag-thumb zoomable-img-wrap">
-                <img src="works/python/基本控制.png" alt="基本控制面板" class="zoomable-img">
+                <img src="works/python/thumbs/640/基本控制.png" srcset="works/python/thumbs/320/基本控制.png 320w, works/python/thumbs/640/基本控制.png 640w, works/python/thumbs/1280/基本控制.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/python/基本控制.png" alt="基本控制面板" class="zoomable-img">
                 <div class="mag-caption">基本控制</div>
             </div>
         </div>
@@ -183,7 +183,7 @@
     <div class="mag-block slide-animate">
         <div class="mag-thumb-group">
             <div class="mag-thumb zoomable-img-wrap">
-                <img src="works/python/图元控制.png" alt="图元控制面板" class="zoomable-img">
+                <img src="works/python/thumbs/640/图元控制.png" srcset="works/python/thumbs/320/图元控制.png 320w, works/python/thumbs/640/图元控制.png 640w, works/python/thumbs/1280/图元控制.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/python/图元控制.png" alt="图元控制面板" class="zoomable-img">
                 <div class="mag-caption">图元控制</div>
             </div>
         </div>
@@ -195,7 +195,7 @@
     <div class="mag-block slide-animate">
         <div class="mag-thumb-group">
             <div class="mag-thumb zoomable-img-wrap">
-                <img src="works/python/运动表现.png" alt="运动表现面板" class="zoomable-img">
+                <img src="works/python/thumbs/640/运动表现.png" srcset="works/python/thumbs/320/运动表现.png 320w, works/python/thumbs/640/运动表现.png 640w, works/python/thumbs/1280/运动表现.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/python/运动表现.png" alt="运动表现面板" class="zoomable-img">
                 <div class="mag-caption">运动表现</div>
             </div>
         </div>
@@ -207,7 +207,7 @@
     <div class="mag-block slide-animate">
         <div class="mag-thumb-group">
             <div class="mag-thumb zoomable-img-wrap">
-                <img src="works/python/预设列表.png" alt="预设列表面板" class="zoomable-img">
+                <img src="works/python/thumbs/640/预设列表.png" srcset="works/python/thumbs/320/预设列表.png 320w, works/python/thumbs/640/预设列表.png 640w, works/python/thumbs/1280/预设列表.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/python/预设列表.png" alt="预设列表面板" class="zoomable-img">
                 <div class="mag-caption">预设列表</div>
             </div>
         </div>
@@ -223,7 +223,7 @@
     <div class="mag-block slide-animate">
         <div class="mag-thumb-group">
             <div class="mag-thumb zoomable-img-wrap">
-                <img src="works/python/节点程序.png" alt="节点程序界面" class="zoomable-img">
+                <img src="works/python/thumbs/640/节点程序.png" srcset="works/python/thumbs/320/节点程序.png 320w, works/python/thumbs/640/节点程序.png 640w, works/python/thumbs/1280/节点程序.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/python/节点程序.png" alt="节点程序界面" class="zoomable-img">
                 <div class="mag-caption">节点程序 (调试中)</div>
             </div>
         </div>
@@ -239,7 +239,7 @@
                 const modal = document.createElement('div');
                 modal.className = 'img-zoom-modal';
                 const zoomImg = document.createElement('img');
-                zoomImg.src = img.src;
+                zoomImg.src = img.dataset.fullsrc || img.src;
                 zoomImg.alt = img.alt;
                 modal.appendChild(zoomImg);
                 document.body.appendChild(modal);

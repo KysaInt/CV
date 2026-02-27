@@ -192,7 +192,12 @@
             galleryItem.className = 'gallery-item slide-animate';
 
             const img = document.createElement('img');
-            img.src = `${imagePath}image${i}.webp`;
+            const fn = `image${i}.webp`;
+            img.src = `${imagePath}thumbs/640/${fn}`;
+            img.srcset = `${imagePath}thumbs/320/${fn} 320w, ${imagePath}thumbs/640/${fn} 640w, ${imagePath}thumbs/1280/${fn} 1280w`;
+            img.sizes = '100vw';
+            img.loading = 'lazy';
+            img.dataset.fullsrc = `${imagePath}${fn}`;
             img.alt = `作品 ${i}`;
 
             galleryItem.appendChild(img);
@@ -204,7 +209,12 @@
             galleryItem.className = 'gallery-item slide-animate';
 
             const img = document.createElement('img');
-            img.src = `${imagePath}m${i}.webp`;
+            const fn = `m${i}.webp`;
+            img.src = `${imagePath}thumbs/640/${fn}`;
+            img.srcset = `${imagePath}thumbs/320/${fn} 320w, ${imagePath}thumbs/640/${fn} 640w, ${imagePath}thumbs/1280/${fn} 1280w`;
+            img.sizes = '100vw';
+            img.loading = 'lazy';
+            img.dataset.fullsrc = `${imagePath}${fn}`;
             img.alt = `门系列 ${i}`;
 
             galleryItem.appendChild(img);
@@ -216,7 +226,12 @@
             galleryItem.className = 'gallery-item slide-animate';
 
             const img = document.createElement('img');
-            img.src = `${imagePath}m${i}.webp`;
+            const fn = `m${i}.webp`;
+            img.src = `${imagePath}thumbs/640/${fn}`;
+            img.srcset = `${imagePath}thumbs/320/${fn} 320w, ${imagePath}thumbs/640/${fn} 640w, ${imagePath}thumbs/1280/${fn} 1280w`;
+            img.sizes = '100vw';
+            img.loading = 'lazy';
+            img.dataset.fullsrc = `${imagePath}${fn}`;
             img.alt = `细节 ${i}`;
 
             galleryItem.appendChild(img);
@@ -229,7 +244,7 @@
 
         document.querySelectorAll('#gallery-main img, #gallery-doors img, #gallery-details img').forEach(img => {
             img.addEventListener('click', () => {
-                fullscreenImage.src = img.src;
+                fullscreenImage.src = img.dataset.fullsrc || img.src;
                 fullscreenOverlay.style.display = 'flex';
                 currentEscHandler = function(ev){
                     if(ev.key === 'Escape'){

@@ -159,7 +159,7 @@
         制作过程记录.
     </p>
     <div class="gallery-item4 slide-animate">
-        <img src="works\OTHER\logitechx16.png" alt="Example Image" style="width: 100%; border-radius: 8px; display: block;">
+        <img src="works/OTHER/thumbs/640/logitechx16.png" srcset="works/OTHER/thumbs/320/logitechx16.png 320w, works/OTHER/thumbs/640/logitechx16.png 640w, works/OTHER/thumbs/1280/logitechx16.png 1280w" sizes="100vw" loading="lazy" alt="Example Image" style="width: 100%; border-radius: 8px; display: block;">
     </div>
     <p class="slide-animate">
         Pixel Art!
@@ -229,10 +229,10 @@
         <h1 class="slide-animate">其他</h1>
         <div class="gallery slide-animate" style="grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 32px;">
             <div class="gallery-img-item">
-                <img src="works/OTHER/jjck.webp" alt="家居场景1" class="zoomable-img">
+                <img src="works/OTHER/thumbs/640/jjck.webp" srcset="works/OTHER/thumbs/320/jjck.webp 320w, works/OTHER/thumbs/640/jjck.webp 640w, works/OTHER/thumbs/1280/jjck.webp 1280w" sizes="50vw" loading="lazy" data-fullsrc="works/OTHER/jjck.webp" alt="家居场暯1" class="zoomable-img">
             </div>
             <div class="gallery-img-item">
-                <img src="works/OTHER/jjxr.webp" alt="家居场景2" class="zoomable-img">
+                <img src="works/OTHER/thumbs/640/jjxr.webp" srcset="works/OTHER/thumbs/320/jjxr.webp 320w, works/OTHER/thumbs/640/jjxr.webp 640w, works/OTHER/thumbs/1280/jjxr.webp 1280w" sizes="50vw" loading="lazy" data-fullsrc="works/OTHER/jjxr.webp" alt="家居场暯2" class="zoomable-img">
             </div>
         </div>
         <style>
@@ -298,7 +298,7 @@
                 const modal = document.createElement('div');
                 modal.className = 'img-zoom-modal';
                 const zoomImg = document.createElement('img');
-                zoomImg.src = img.src;
+                zoomImg.src = img.dataset.fullsrc || img.src;
                 zoomImg.alt = img.alt;
                 modal.appendChild(zoomImg);
                 document.body.appendChild(modal);
