@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>香水瓶作品</title>
+    <title>新作品页面</title>
     <style>
         body {
             font-family: "Microsoft YaHei Light", Arial, sans-serif;
@@ -22,7 +22,6 @@
             50% { background-position: 100% 100%; }
             100% { background-position: 0% 0%; }
         }
-        /* 动画初始状态与可视状态 */
         .slide-animate {
             opacity: 0;
             transform: translateY(60px);
@@ -77,7 +76,6 @@
             font-size: 1rem;
             line-height: 1.6;
         }
-        /* 置顶视频容器 */
         .video-top {
             margin-bottom: 30px;
             border-radius: 12px;
@@ -91,7 +89,6 @@
             display: block;
             border: none;
         }
-        /* 全屏图片遮罩 */
         .overlay {
             position: fixed;
             top: 0;
@@ -154,28 +151,23 @@
 <body>
     <div class="top-spacer"></div>
     <div id="sticky-title" class="sticky-title">
-        <span class="sticky-title-text">香水瓶作品</span>
+        <span class="sticky-title-text">新作品页面</span>
         <a class="sticky-back" href="index.html">返回简历</a>
     </div>
 
-    <h1 class="slide-animate">香水瓶作品</h1>
+    <h1 class="slide-animate">新作品页面</h1>
     <p class="slide-animate">
-        以下为香水瓶系列建模渲染作品, Rhino 建模, C4D + V-Ray 渲染, 整体历时 4 天. 后续利用渲染图片训练了对应风格的场景与玻璃焦散 LoRA, 主模型为 SDXL 1.0, 并通过 ComfyUI 输出一批 AI 生成图.
+        以下为 [作品描述]，[所用软件]，整体历时 [X] 天。
     </p>
 
+    <!-- ========== B站视频（替换 BV号）========== -->
     <div class="video-top slide-animate">
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV1KgGt6WEZb&p=1&autoplay=0&muted=0&danmaku=0" scrolling="no" frameborder="no" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV号替换&p=1&autoplay=0&muted=0&danmaku=0" scrolling="no" frameborder="no" allowfullscreen="true"></iframe>
     </div>
 
     <h3 class="slide-animate">作品展示</h3>
     <div class="gallery slide-animate" id="gallery-main">
-        <!-- XS0001~XS0035 动态加载 -->
-    </div>
-
-    <h3 class="slide-animate">ComfyUI LoRA 输出</h3>
-    <p class="slide-animate">基于渲染图训练的场景与玻璃焦散 LoRA 模型, 主模型为 SDXL 1.0, 由 ComfyUI 生成.</p>
-    <div class="gallery slide-animate" id="gallery-comfyui">
-        <!-- COMFYUIOUTPUT 动态加载 -->
+        <!-- 图片由下方 JS 动态加载 -->
     </div>
 
     <div id="fullscreen-overlay" style="display: none;" class="overlay">
@@ -183,12 +175,15 @@
     </div>
 
     <script>
+        // ========== 修改这里 ==========
         const gallery = document.getElementById('gallery-main');
-        const imagePath = 'works/20260522香水瓶/';
-        const total = 35;
+        const imagePath = 'works/[你的图片文件夹名]/';   // 图片存放路径
+        const total = 0;                                    // 图片总数
+        const filePrefix = '';                              // 文件名前缀（如 XS、IMG 等）
+        const fileExt = '.webp';                            // 图片格式
 
         for (let i = 1; i <= total; i++) {
-            const fn = `XS${String(i).padStart(4, '0')}.webp`;
+            const fn = `${filePrefix}${String(i).padStart(4, '0')}${fileExt}`;
             const item = document.createElement('div');
             item.className = 'gallery-item slide-animate';
 
@@ -198,60 +193,26 @@
             img.sizes = '(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw';
             img.loading = 'lazy';
             img.dataset.fullsrc = `${imagePath}${fn}`;
-            img.alt = `香水瓶 ${i}`;
+            img.alt = `作品 ${i}`;
 
             item.appendChild(img);
             gallery.appendChild(item);
         }
 
-        // ComfyUI 输出图加载 (8 张 PNG)
-        const comfyGallery = document.getElementById('gallery-comfyui');
-        const comfyImagePath = 'works/20260522香水瓶/COMFYUIOUTPUT/';
-        const comfyImages = [
-            'aye_bottle_00014_.png',
-            'aye_bottle_00015_.png',
-            'aye_bottle_00016_.png',
-            'aye_bottle_00036_.png',
-            'aye_bottle_00039_.png',
-            'aye_bottle_00083_.png',
-            'aye_bottle_00084_.png',
-            'Flux.1_Dev_00003_.png',
-        ];
-
-        comfyImages.forEach((fn, i) => {
-            const item = document.createElement('div');
-            item.className = 'gallery-item slide-animate';
-
-            const img = document.createElement('img');
-            img.src = `${comfyImagePath}thumbs/640/${fn}`;
-            img.srcset = `${comfyImagePath}thumbs/320/${fn} 320w, ${comfyImagePath}thumbs/640/${fn} 640w, ${comfyImagePath}thumbs/1280/${fn} 1280w`;
-            img.sizes = '(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw';
-            img.loading = 'lazy';
-            img.dataset.fullsrc = `${comfyImagePath}${fn}`;
-            img.alt = `ComfyUI 输出 ${i + 1}`;
-
-            item.appendChild(img);
-            comfyGallery.appendChild(item);
-        });
-
         const fullscreenOverlay = document.getElementById('fullscreen-overlay');
         const fullscreenImage = document.getElementById('fullscreen-image');
         let currentEscHandler = null;
 
-        function bindGalleryClick(galleryEl) {
-            galleryEl.addEventListener('click', e => {
-                const img = e.target.closest('img');
-                if (!img) return;
-                fullscreenImage.src = img.dataset.fullsrc || img.src;
-                fullscreenOverlay.style.display = 'flex';
-                currentEscHandler = ev => {
-                    if (ev.key === 'Escape') closeOverlay();
-                };
-                document.addEventListener('keydown', currentEscHandler);
-            });
-        }
-        bindGalleryClick(document.getElementById('gallery-main'));
-        bindGalleryClick(document.getElementById('gallery-comfyui'));
+        document.getElementById('gallery-main').addEventListener('click', e => {
+            const img = e.target.closest('img');
+            if (!img) return;
+            fullscreenImage.src = img.dataset.fullsrc || img.src;
+            fullscreenOverlay.style.display = 'flex';
+            currentEscHandler = ev => {
+                if (ev.key === 'Escape') closeOverlay();
+            };
+            document.addEventListener('keydown', currentEscHandler);
+        });
 
         fullscreenOverlay.addEventListener('click', closeOverlay);
 
@@ -265,32 +226,6 @@
         }
     </script>
 
-    <style>
-        .sticky-title {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            padding: 10px 16px;
-            background: rgba(0,0,0,0.45);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #fff;
-            z-index: 900;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-        .sticky-title-text { font-size: 1.1rem; }
-        .sticky-back {
-            color: #fff;
-            text-decoration: none;
-            padding: 6px 10px;
-            border: 1px solid rgba(255,255,255,0.35);
-            border-radius: 6px;
-            background: rgba(255,255,255,0.08);
-        }
-        .sticky-back:hover { background: rgba(255,255,255,0.16); }
-    </style>
     <script src="assets/js/sticky-title.js"></script>
     <script src="assets/js/scroll-animate.js"></script>
 </body>

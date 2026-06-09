@@ -22,6 +22,7 @@ IMAGE_DIRS = [
     "works/SHWD/BSBP",
     "works/OTHER",
     "works/python",
+    "works/20260522香水瓶/COMFYUIOUTPUT",
     "head",
 ]
 
