@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity 音频可视化原型</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei Light", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0 20px;
+            min-height: 100vh;
+            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
+            background-size: 400% 400%;
+            background-attachment: fixed;
+            animation: gradientBG 15s ease infinite;
+            color: #ddd;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        h1, h3 {
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up { opacity: 1; transform: translateY(0); }
+        .slide-animate.visible-down { opacity: 1; transform: translateY(0); }
+        .slide-animate.down { transform: translateY(-60px); }
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .gallery-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .gallery-item iframe {
+            aspect-ratio: 1920 / 720;
+            width: 100%;
+            height: auto;
+            display: block;
+            border: none;
+        }
+        .top-spacer { height: 20px; }
+        a { color: #ff9800; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text { font-size: 1.1rem; }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover { background: rgba(255,255,255,0.16); }
+
+        /* 杂志布局 */
+        .mag-block {
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        .mag-thumb-group {
+            float: right;
+            margin: 4px 0 12px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 140px;
+        }
+        .mag-thumb {
+            width: 140px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            background: #1a1a1a;
+            cursor: zoom-in;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .mag-thumb:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.6), 0 1px 4px rgba(255,152,0,0.15);
+            transform: scale(1.04);
+        }
+        .mag-thumb img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+            border-radius: 6px 6px 0 0;
+        }
+        .mag-caption {
+            font-size: 0.75rem;
+            color: #888;
+            text-align: center;
+            padding: 4px 0 3px 0;
+            background: #1a1a1a;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .mag-block p {
+            margin-bottom: 0;
+        }
+        .img-zoom-modal {
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            animation: fadeInZoom 0.22s;
+        }
+        .img-zoom-modal img {
+            max-width: 88vw;
+            max-height: 88vh;
+            border-radius: 10px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.55);
+            animation: zoomInImg 0.22s;
+        }
+        @keyframes fadeInZoom { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomInImg { from { transform: scale(0.93); } to { transform: scale(1); } }
+
+        /* 占位缩略图(暂无图片资源时) */
+        .mag-thumb.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 10px;
+            min-height: 160px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+        }
+
+        /* 信息条 */
+        .meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 0 0 24px 0;
+            padding: 12px 16px;
+            background: rgba(50, 50, 50, 0.6);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.88rem;
+            color: #ccc;
+        }
+        .meta-bar .meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .meta-bar .meta-label {
+            color: rgba(255,152,0,0.85);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-spacer"></div>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">Unity 音频可视化原型</span>
+        <a class="sticky-back" href="index.html">返回简历</a>
+    </div>
+
+    <h1 class="slide-animate">Unity 音频可视化原型开发</h1>
+
+    <div class="meta-bar slide-animate">
+        <span class="meta-item"><span class="meta-label">项目周期</span> 2026.02 - 2026.04</span>
+        <span class="meta-item"><span class="meta-label">团队规模</span> 2 人</span>
+        <span class="meta-item"><span class="meta-label">主要技术</span> Unity / Visual Scripting / Python / 音频分析 / AI 辅助开发</span>
+        <span class="meta-item"><span class="meta-label">当前状态</span> 原型验证阶段（已停止推进）</span>
+    </div>
+
+    <h3 class="slide-animate">项目背景与目标</h3>
+    <p class="slide-animate">待编辑</p>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb placeholder">
+                [音频分析面板截图]
+            </div>
+        </div>
+        <h3>音频分析面板</h3>
+        <p>待编辑</p>
+    </div>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb placeholder">
+                [Visual Scripting<br>对接接口截图]
+            </div>
+        </div>
+        <h3>音频数据 → Visual Scripting 接口</h3>
+        <p>待编辑</p>
+    </div>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb placeholder">
+                [镜头后处理<br>划痕效果截图]
+            </div>
+        </div>
+        <h3>音频驱动的镜头后处理（划痕效果）</h3>
+        <p>待编辑</p>
+    </div>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb placeholder">
+                [AI 辅助开发<br>工作流截图]
+            </div>
+        </div>
+        <h3>AI 辅助开发工作流</h3>
+        <p>待编辑</p>
+    </div>
+
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb placeholder">
+                [Python 迁移<br>对比截图]
+            </div>
+        </div>
+        <h3>把 Python 视觉逻辑迁移到 Unity</h3>
+        <p>待编辑</p>
+    </div>
+
+    <h3 class="slide-animate">项目总结与反思</h3>
+    <p class="slide-animate">待编辑</p>
+
+    <script>
+        // 由于本页为原型阶段（无实拍/截图资源），缩略图全部为占位块。
+        // 此处保留与 Python 页一致的图片放大逻辑，便于以后补图后直接启用。
+        document.querySelectorAll('.zoomable-img').forEach(img => {
+            img.addEventListener('click', function() {
+                if (document.querySelector('.img-zoom-modal')) return;
+                const modal = document.createElement('div');
+                modal.className = 'img-zoom-modal';
+                const zoomImg = document.createElement('img');
+                zoomImg.src = img.dataset.fullsrc || img.src;
+                zoomImg.alt = img.alt;
+                modal.appendChild(zoomImg);
+                document.body.appendChild(modal);
+                modal.addEventListener('click', () => modal.remove());
+                document.addEventListener('keydown', function escHandler(ev) {
+                    if (ev.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', escHandler); }
+                });
+            });
+        });
+    </script>
+
+    <script src="assets/js/sticky-title.js"></script>
+    <script src="assets/js/scroll-animate.js"></script>
+</body>
+</html>
