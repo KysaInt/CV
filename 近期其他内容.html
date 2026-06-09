@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待添加作品</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei Light", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0 20px;
+            min-height: 100vh;
+            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
+            background-size: 400% 400%;
+            background-attachment: fixed;
+            animation: gradientBG 15s ease infinite;
+            color: #ddd;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        .slide-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .slide-animate.visible-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.visible-down {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-animate.down {
+            transform: translateY(-60px);
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .gallery-item {
+            margin: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            aspect-ratio: 4 / 3;
+            background: #222;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: zoom-in;
+        }
+        .top-spacer {
+            height: 20px;
+        }
+        h1, h3 {
+            color: #fff;
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h1:first-of-type {
+            margin-top: 0;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .video-top {
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .video-top iframe {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            height: auto;
+            display: block;
+            border: none;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        .sticky-title {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 10px 16px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .sticky-title-text {
+            font-size: 1.1rem;
+        }
+        .sticky-back {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.08);
+        }
+        .sticky-back:hover {
+            background: rgba(255,255,255,0.16);
+        }
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-spacer"></div>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">待添加作品</span>
+        <a class="sticky-back" href="index.html">返回简历</a>
+    </div>
+
+    <h1 class="slide-animate">待添加作品</h1>
+    <p class="slide-animate">
+        以下为 [作品描述]，[所用软件]，整体历时 [X] 天。
+    </p>
+
+    <!-- ========== B站视频（替换 BV号）========== -->
+    <div class="video-top slide-animate">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV号替换&p=1&autoplay=0&muted=0&danmaku=0" scrolling="no" frameborder="no" allowfullscreen="true"></iframe>
+    </div>
+
+    <h3 class="slide-animate">作品展示</h3>
+    <div class="gallery slide-animate" id="gallery-main">
+        <!-- 图片由下方 JS 动态加载 -->
+    </div>
+
+    <div id="fullscreen-overlay" style="display: none;" class="overlay">
+        <img id="fullscreen-image" src="" alt="全屏展示">
+    </div>
+
+    <script>
+        // ========== 修改这里 ==========
+        const gallery = document.getElementById('gallery-main');
+        const imagePath = 'works/[你的图片文件夹名]/';   // 图片存放路径
+        const total = 0;                                    // 图片总数
+        const filePrefix = '';                              // 文件名前缀（如 XS、IMG 等）
+        const fileExt = '.webp';                            // 图片格式
+
+        for (let i = 1; i <= total; i++) {
+            const fn = `${filePrefix}${String(i).padStart(4, '0')}${fileExt}`;
+            const item = document.createElement('div');
+            item.className = 'gallery-item slide-animate';
+
+            const img = document.createElement('img');
+            img.src = `${imagePath}thumbs/640/${fn}`;
+            img.srcset = `${imagePath}thumbs/320/${fn} 320w, ${imagePath}thumbs/640/${fn} 640w, ${imagePath}thumbs/1280/${fn} 1280w`;
+            img.sizes = '(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw';
+            img.loading = 'lazy';
+            img.dataset.fullsrc = `${imagePath}${fn}`;
+            img.alt = `作品 ${i}`;
+
+            item.appendChild(img);
+            gallery.appendChild(item);
+        }
+
+        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+        const fullscreenImage = document.getElementById('fullscreen-image');
+        let currentEscHandler = null;
+
+        document.getElementById('gallery-main').addEventListener('click', e => {
+            const img = e.target.closest('img');
+            if (!img) return;
+            fullscreenImage.src = img.dataset.fullsrc || img.src;
+            fullscreenOverlay.style.display = 'flex';
+            currentEscHandler = ev => {
+                if (ev.key === 'Escape') closeOverlay();
+            };
+            document.addEventListener('keydown', currentEscHandler);
+        });
+
+        fullscreenOverlay.addEventListener('click', closeOverlay);
+
+        function closeOverlay() {
+            fullscreenOverlay.style.display = 'none';
+            fullscreenImage.src = '';
+            if (currentEscHandler) {
+                document.removeEventListener('keydown', currentEscHandler);
+                currentEscHandler = null;
+            }
+        }
+    </script>
+
+    <script src="assets/js/sticky-title.js"></script>
+    <script src="assets/js/scroll-animate.js"></script>
+</body>
+</html>
