@@ -197,72 +197,53 @@
 
     <h1 class="slide-animate">Unity 音频可视化原型开发</h1>
 
-    <div class="meta-bar slide-animate">
-        <span class="meta-item"><span class="meta-label">项目周期</span> 2026.02 - 2026.04</span>
-        <span class="meta-item"><span class="meta-label">团队规模</span> 2 人</span>
-        <span class="meta-item"><span class="meta-label">主要技术</span> Unity / Visual Scripting / Python / 音频分析 / AI 辅助开发</span>
-        <span class="meta-item"><span class="meta-label">当前状态</span> 原型验证阶段（已停止推进）</span>
+    <div class="gallery-item slide-animate">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&bvid=BV1uMEZ6ZEtG&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
-
-    <h3 class="slide-animate">项目背景与目标</h3>
-    <p class="slide-animate">待编辑</p>
+    <p class="slide-animate">
+        这是一段我自己在 Unity 里做的短周期原型开发: 因为时间比较紧、项目初期目标也不太明晰, 所以我先从一些通用的可复用组件着手, 避免做无意义工作. 最终我做出了一套音频驱动视觉系统, 核心思路是把音频输入转成控制数据, 再用 Visual Scripting 去驱动 Shader 和我自己写的镜头后处理相机组件, 让画面跟着声音一起变化.
+    </p>
 
     <div class="mag-block slide-animate">
         <div class="mag-thumb-group">
-            <div class="mag-thumb placeholder">
-                [音频分析面板截图]
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/UTY/thumbs/640/AA.png" srcset="works/UTY/thumbs/320/AA.png 320w, works/UTY/thumbs/640/AA.png 640w, works/UTY/thumbs/1280/AA.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/UTY/AA.png" alt="音频分析面板截图" class="zoomable-img">
+                <div class="mag-caption">音频分析面板</div>
             </div>
         </div>
-        <h3>音频分析面板</h3>
-        <p>待编辑</p>
-    </div>
-
-    <div class="mag-block slide-animate">
-        <div class="mag-thumb-group">
-            <div class="mag-thumb placeholder">
-                [Visual Scripting<br>对接接口截图]
-            </div>
-        </div>
-        <h3>音频数据 → Visual Scripting 接口</h3>
-        <p>待编辑</p>
+        <h3>音频分析面板截图</h3>
+        <p>
+            这张截图展示了音频分析模块的界面, 图中各项参数右键可以提取为 Unity 场景变量交由 Visual Scripting 分发处理.
+        </p>
     </div>
 
     <div class="mag-block slide-animate">
         <div class="mag-thumb-group">
-            <div class="mag-thumb placeholder">
-                [镜头后处理<br>划痕效果截图]
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/UTY/thumbs/640/VS.png" srcset="works/UTY/thumbs/320/VS.png 320w, works/UTY/thumbs/640/VS.png 640w, works/UTY/thumbs/1280/VS.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/UTY/VS.png" alt="Visual Scripting 接线图（镜头划痕效果）" class="zoomable-img">
+                <div class="mag-caption">Visual Scripting 接线图（镜头划痕效果）</div>
             </div>
         </div>
-        <h3>音频驱动的镜头后处理（划痕效果）</h3>
-        <p>待编辑</p>
+        <h3>Visual Scripting 接线图（镜头划痕效果）</h3>
+        <p>
+            这张图展示了音频分析如何驱动镜头后处理的划痕效果.
+        </p>
     </div>
 
     <div class="mag-block slide-animate">
         <div class="mag-thumb-group">
-            <div class="mag-thumb placeholder">
-                [AI 辅助开发<br>工作流截图]
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/UTY/thumbs/640/VS2.png" srcset="works/UTY/thumbs/320/VS2.png 320w, works/UTY/thumbs/640/VS2.png 640w, works/UTY/thumbs/1280/VS2.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/UTY/VS2.png" alt="Visual Scripting 接线图（连接 shader）" class="zoomable-img">
+                <div class="mag-caption">Visual Scripting 接线图（连接 shader）</div>
             </div>
         </div>
-        <h3>AI 辅助开发工作流</h3>
-        <p>待编辑</p>
+        <h3>Visual Scripting 接线图（连接 shader）</h3>
+        <p>
+            这张图展示了音频分析如何驱动 shader 参数.
+        </p>
     </div>
-
-    <div class="mag-block slide-animate">
-        <div class="mag-thumb-group">
-            <div class="mag-thumb placeholder">
-                [Python 迁移<br>对比截图]
-            </div>
-        </div>
-        <h3>把 Python 视觉逻辑迁移到 Unity</h3>
-        <p>待编辑</p>
-    </div>
-
-    <h3 class="slide-animate">项目总结与反思</h3>
-    <p class="slide-animate">待编辑</p>
 
     <script>
-        // 由于本页为原型阶段（无实拍/截图资源），缩略图全部为占位块。
-        // 此处保留与 Python 页一致的图片放大逻辑，便于以后补图后直接启用。
         document.querySelectorAll('.zoomable-img').forEach(img => {
             img.addEventListener('click', function() {
                 if (document.querySelector('.img-zoom-modal')) return;
