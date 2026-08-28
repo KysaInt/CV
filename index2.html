@@ -273,23 +273,6 @@
             .experience-card .time, .experience-card .salary { display: inline; margin-left: 8px; }
         }
     </style>
-    <script>
-        // 展开/折叠逻辑保留在本页
-        document.addEventListener("DOMContentLoaded", () => {
-            const expandableElements = document.querySelectorAll(".expandable");
-            expandableElements.forEach(element => {
-                element.addEventListener("click", () => {
-                    const id = element.getAttribute("data-target");
-                    const details = document.getElementById(id);
-                    if (details.style.display === "none" || details.style.display === "") {
-                        details.style.display = "block";
-                    } else {
-                        details.style.display = "none";
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="container slide-animate">
@@ -584,21 +567,6 @@
             </tr>
         </table>
     </div>
-    <script>
-        // 返回简历时恢复进入时的滚动位置(跨标签页)
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedY = localStorage.getItem('resumeScrollY');
-            if (savedY !== null) {
-                window.scrollTo(0, parseInt(savedY, 10));
-                localStorage.removeItem('resumeScrollY');
-            }
-        });
-
-        document.querySelectorAll('a.portfolio-link').forEach(link => {
-            link.addEventListener('click', () => {
-                localStorage.setItem('resumeScrollY', String(window.scrollY));
-            });
-        });
-    </script>
+    <script src="assets/js/resume-common.js"></script>
 </body>
 </html>

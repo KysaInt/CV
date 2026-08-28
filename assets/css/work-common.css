@@ -1,0 +1,57 @@
+@import url("site-theme.css");
+
+body {
+    padding: 0 20px;
+}
+
+h1,
+h3 {
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.top-spacer {
+    height: 20px;
+}
+
+.sticky-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.sticky-title-text {
+    font-size: 1.1rem;
+}
+
+.sticky-back {
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.sticky-back:hover {
+    background: rgba(255, 255, 255, 0.16);
+}

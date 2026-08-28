@@ -4,140 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>香水瓶作品</title>
+    <link rel="stylesheet" href="assets/css/work-common.css">
+    <link rel="stylesheet" href="assets/css/gallery-common.css">
+    <link rel="stylesheet" href="assets/css/lightbox-common.css">
     <style>
-        body {
-            font-family: "Microsoft YaHei Light", Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0 20px;
-            min-height: 100vh;
-            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
-            background-size: 400% 400%;
-            background-attachment: fixed;
-            animation: gradientBG 15s ease infinite;
-            color: #ddd;
-        }
-        @keyframes gradientBG {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
-        }
-        /* 动画初始状态与可视状态 */
-        .slide-animate {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .slide-animate.visible-up {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .slide-animate.visible-down {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .slide-animate.down {
-            transform: translateY(-60px);
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .gallery-item {
-            margin: 0;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            aspect-ratio: 4 / 3;
-            background: #222;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            cursor: zoom-in;
-        }
-        .top-spacer {
-            height: 20px;
-        }
-        h1, h3 {
-            color: #fff;
-            border-bottom: 1px solid #555;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
+        .gallery-item img { cursor: zoom-in; }
+        h1, h3 { color: #fff; }
         h1:first-of-type {
             margin-top: 0;
-        }
-        p {
-            margin-bottom: 20px;
-            color: #ccc;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        /* 置顶视频容器 */
-        .video-top {
-            margin-bottom: 30px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-        .video-top iframe {
-            aspect-ratio: 16 / 9;
-            width: 100%;
-            height: auto;
-            display: block;
-            border: none;
-        }
-        /* 全屏图片遮罩 */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        #fullscreen-image {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-        }
-        .sticky-title {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            padding: 10px 16px;
-            background: rgba(0,0,0,0.45);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #fff;
-            z-index: 900;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-        .sticky-title-text {
-            font-size: 1.1rem;
-        }
-        .sticky-back {
-            color: #fff;
-            text-decoration: none;
-            padding: 6px 10px;
-            border: 1px solid rgba(255,255,255,0.35);
-            border-radius: 6px;
-            background: rgba(255,255,255,0.08);
-        }
-        .sticky-back:hover {
-            background: rgba(255,255,255,0.16);
         }
         @media (max-width: 768px) {
             .gallery {
@@ -151,7 +25,7 @@
         }
     </style>
 </head>
-<body>
+<body data-lightbox-selector=".gallery img" data-lightbox-clear="true">
     <div class="top-spacer"></div>
     <div id="sticky-title" class="sticky-title">
         <span class="sticky-title-text">香水瓶作品</span>
@@ -234,63 +108,9 @@
             comfyGallery.appendChild(item);
         });
 
-        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-        const fullscreenImage = document.getElementById('fullscreen-image');
-        let currentEscHandler = null;
-
-        function bindGalleryClick(galleryEl) {
-            galleryEl.addEventListener('click', e => {
-                const img = e.target.closest('img');
-                if (!img) return;
-                fullscreenImage.src = img.dataset.fullsrc || img.src;
-                fullscreenOverlay.style.display = 'flex';
-                currentEscHandler = ev => {
-                    if (ev.key === 'Escape') closeOverlay();
-                };
-                document.addEventListener('keydown', currentEscHandler);
-            });
-        }
-        bindGalleryClick(document.getElementById('gallery-main'));
-        bindGalleryClick(document.getElementById('gallery-comfyui'));
-
-        fullscreenOverlay.addEventListener('click', closeOverlay);
-
-        function closeOverlay() {
-            fullscreenOverlay.style.display = 'none';
-            fullscreenImage.src = '';
-            if (currentEscHandler) {
-                document.removeEventListener('keydown', currentEscHandler);
-                currentEscHandler = null;
-            }
-        }
     </script>
 
-    <style>
-        .sticky-title {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            padding: 10px 16px;
-            background: rgba(0,0,0,0.45);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #fff;
-            z-index: 900;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-        .sticky-title-text { font-size: 1.1rem; }
-        .sticky-back {
-            color: #fff;
-            text-decoration: none;
-            padding: 6px 10px;
-            border: 1px solid rgba(255,255,255,0.35);
-            border-radius: 6px;
-            background: rgba(255,255,255,0.08);
-        }
-        .sticky-back:hover { background: rgba(255,255,255,0.16); }
-    </style>
+    <script src="assets/js/image-lightbox.js"></script>
     <script src="assets/js/sticky-title.js"></script>
     <script src="assets/js/scroll-animate.js"></script>
     <script src="assets/js/focus-work.js"></script>

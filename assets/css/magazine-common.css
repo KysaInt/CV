@@ -1,0 +1,49 @@
+.mag-block {
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.mag-thumb-group {
+    float: right;
+    margin: 4px 0 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 140px;
+}
+
+.mag-thumb {
+    width: 140px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    background: #1a1a1a;
+    cursor: zoom-in;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.mag-thumb:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 1px 4px rgba(255, 152, 0, 0.15);
+    transform: scale(1.04);
+}
+
+.mag-thumb img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px 6px 0 0;
+}
+
+.mag-caption {
+    font-size: 0.75rem;
+    color: #888;
+    text-align: center;
+    padding: 4px 0 3px;
+    background: #1a1a1a;
+    border-radius: 0 0 6px 6px;
+}
+
+.mag-block p {
+    margin-bottom: 0;
+}

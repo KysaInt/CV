@@ -4,65 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>武汉东湖装饰时期作品</title>
+    <link rel="stylesheet" href="assets/css/work-common.css">
+    <link rel="stylesheet" href="assets/css/gallery-common.css">
+    <link rel="stylesheet" href="assets/css/lightbox-common.css">
     <style>
-        body {
-            font-family: "Microsoft YaHei Light", Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0 20px;
-            min-height: 100vh;
-            background: linear-gradient(to bottom right, #413131, #265158, #5e8646, #2c2c2c, #413131);
-            background-size: 400% 400%;
-            background-attachment: fixed;
-            animation: gradientBG 15s ease infinite;
-            color: #fff;
-        }
+        body { color: #fff; }
         h1, h2, h3, h4, h5, h6 {
             color: #fff;
-        }
-        @keyframes gradientBG {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
-        }
-        /* 动画初始状态与可视状态 */
-        .slide-animate {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1), transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .slide-animate.visible-up {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .slide-animate.visible-down {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .slide-animate.down {
-            transform: translateY(-60px);
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .gallery-item {
-            margin: 0; /* 交给 grid 的 gap 控制间距 */
-            border-radius: 8px; /* 统一圆角效果 */
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            aspect-ratio: 4 / 3; /* 固定卡片比例, 避免上下错位 */
-            background: #222;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* 裁切填充, 行高统一 */
-            display: block;
-        }
-        .top-spacer {
-            height: 20px;
         }
         h1:first-of-type {
             margin-top: 0;
@@ -76,28 +24,9 @@
         .back-link:hover {
             text-decoration: underline;
         }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        #fullscreen-image {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px; /* 统一圆角效果 */
-        }
     </style>
 </head>
-<body>
+<body data-lightbox-selector="#gallery img">
     <div class="top-spacer"></div>
     <div id="sticky-title" class="sticky-title">
         <span class="sticky-title-text">武汉东湖装饰时期作品</span>
@@ -141,97 +70,10 @@
             gallery.appendChild(galleryItem);
         }
 
-        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-        const fullscreenImage = document.getElementById('fullscreen-image');
-        let currentEscHandler = null;
-
-        gallery.addEventListener('click', (event) => {
-            if (event.target.tagName === 'IMG') {
-                fullscreenImage.src = event.target.dataset.fullsrc || event.target.src;
-                fullscreenOverlay.style.display = 'flex';
-                currentEscHandler = function(ev){
-                    if(ev.key === 'Escape'){
-                        fullscreenOverlay.style.display = 'none';
-                        document.removeEventListener('keydown', currentEscHandler);
-                        currentEscHandler = null;
-                    }
-                };
-                document.addEventListener('keydown', currentEscHandler);
-            }
-        });
-
-        fullscreenOverlay.addEventListener('click', () => {
-            fullscreenOverlay.style.display = 'none';
-            if (currentEscHandler) {
-                document.removeEventListener('keydown', currentEscHandler);
-                currentEscHandler = null;
-            }
-        });
-
-        // 滑动动画逻辑
-        let lastScrollY = window.scrollY;
-        function handleSlideAnimation() {
-            const elements = document.querySelectorAll('.slide-animate');
-            const windowHeight = window.innerHeight;
-            const currentScrollY = window.scrollY;
-            const scrollDown = currentScrollY > lastScrollY;
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < windowHeight && rect.bottom > 0) {
-                    el.classList.remove('down');
-                    el.classList.add(scrollDown ? 'visible-up' : 'visible-down');
-                } else {
-                    el.classList.remove('visible-up', 'visible-down');
-                    if (!scrollDown) {
-                        el.classList.add('down');
-                    } else {
-                        el.classList.remove('down');
-                    }
-                }
-            });
-            lastScrollY = currentScrollY;
-        }
-        window.addEventListener('scroll', handleSlideAnimation);
-        window.addEventListener('resize', handleSlideAnimation);
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.slide-animate').forEach(el => {
-                el.classList.remove('visible-up', 'visible-down', 'down');
-            });
-            handleSlideAnimation();
-        });
-        setTimeout(handleSlideAnimation, 100);
     </script>
-    <style>
-        .sticky-title {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            padding: 10px 16px;
-            background: rgba(0,0,0,0.45);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #fff;
-            z-index: 900;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-        .sticky-title-text {
-            font-size: 1.1rem;
-        }
-        .sticky-back {
-            color: #fff;
-            text-decoration: none;
-            padding: 6px 10px;
-            border: 1px solid rgba(255,255,255,0.35);
-            border-radius: 6px;
-            background: rgba(255,255,255,0.08);
-        }
-        .sticky-back:hover {
-            background: rgba(255,255,255,0.16);
-        }
-    </style>
+    <script src="assets/js/image-lightbox.js"></script>
     <script src="assets/js/sticky-title.js"></script>
+    <script src="assets/js/scroll-animate.js"></script>
     <script src="assets/js/focus-work.js"></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+.gallery-item {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item iframe {
+    aspect-ratio: 1920 / 720;
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none;
+}

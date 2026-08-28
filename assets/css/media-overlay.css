@@ -1,0 +1,30 @@
+.media-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.media-overlay .overlay-content {
+    width: min(90vw, 1280px);
+    height: min(90vh, 720px);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.media-overlay .overlay-content iframe,
+.media-overlay .overlay-content video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+}

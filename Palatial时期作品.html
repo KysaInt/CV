@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palatial 项目作品</title>
+    <link rel="stylesheet" href="assets/css/work-common.css">
+    <style>
+        a { color: #ff9800; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 0 0 24px 0;
+            padding: 12px 16px;
+            background: rgba(50, 50, 50, 0.6);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.88rem;
+            color: #ccc;
+        }
+        .meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .meta-label {
+            color: rgba(255,152,0,0.85);
+            font-weight: 600;
+        }
+        .pending {
+            padding: 14px 16px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(50,50,50,0.45);
+        }
+        .pending p { margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="top-spacer"></div>
+    <div id="sticky-title" class="sticky-title">
+        <span class="sticky-title-text">Palatial 项目作品</span>
+        <a class="sticky-back" href="index.html">返回简历</a>
+    </div>
+
+    <h1 class="slide-animate">公寓数字资产重建与自动化转换流程</h1>
+    <p class="slide-animate">
+        以跨国顾问形式远程参与 Palatial 公寓项目，围绕尺寸准确的柜体资产重建、参数化批量建模、GLB 资产整理与 USD 转换工具开发，建立从 Rhino 到 Blender 及 USD 的交付流程。Palatial 致力于将现实空间转化为精确、经过验证的仿真资产。
+    </p>
+
+    <div class="meta-bar slide-animate">
+        <span class="meta-item"><span class="meta-label">合作形式</span>美国公司 · 跨国顾问 · 远程居家</span>
+        <span class="meta-item"><span class="meta-label">项目时间</span>2026.07-2026.08</span>
+        <span class="meta-item"><span class="meta-label">主要工具</span>Rhino · Grasshopper · Blender · Python · Qt</span>
+    </div>
+
+    <h3 class="slide-animate">公寓模型重建</h3>
+    <p class="slide-animate">
+        根据项目要求重建公寓三维资产，制作尺寸准确且包含内部抽屉结构的柜体模型。
+    </p>
+
+    <h3 class="slide-animate">Grasshopper 参数化批量建模</h3>
+    <p class="slide-animate">
+        制作可复用的 Grasshopper 逻辑，将柜体尺寸与内部结构规则转化为批量生产流程，减少同类模型的重复制作工作。
+    </p>
+
+    <h3 class="slide-animate">GLB 整理与贴图烘焙</h3>
+    <p class="slide-animate">
+        将 Rhino 模型转换为 GLB，并在 Blender 中依据图层名称信息完成分组、网格合并与贴图自动批量烘焙。
+    </p>
+
+    <h3 class="slide-animate">Qt 模型转换控制器</h3>
+    <p class="slide-animate">
+        开发 GLB 至 USD 的 Qt 图形界面工具，统一控制贴图分辨率、默认原点位置等常用转换参数。
+    </p>
+
+    <h3 class="slide-animate">作品展示</h3>
+    <div class="pending slide-animate">
+        <p>项目截图、流程演示和工具界面将在资料整理后添加。</p>
+    </div>
+
+    <script src="assets/js/sticky-title.js"></script>
+    <script src="assets/js/scroll-animate.js"></script>
+    <script src="assets/js/focus-work.js"></script>
+</body>
+</html>
