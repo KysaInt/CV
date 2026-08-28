@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AYE · 作品概览</title>
+    <style>
+        :root {
+            --ink: #f4f0e9;
+            --quiet: rgba(244, 240, 233, 0.66);
+            --night: #252827;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            color: var(--ink);
+            background: var(--night);
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+
+        body::before,
+        body::after {
+            position: fixed;
+            inset: -25%;
+            z-index: -2;
+            content: "";
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.74;
+        }
+
+        body::before {
+            background: radial-gradient(circle at 12% 22%, #81564d, transparent 31%),
+                radial-gradient(circle at 82% 72%, #2d5d5a, transparent 38%);
+            animation: atmosphere 26s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            background: radial-gradient(circle at 73% 18%, #62674c, transparent 34%),
+                radial-gradient(circle at 28% 84%, #333536, transparent 37%);
+            animation: atmosphere 34s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes atmosphere {
+            from { transform: translate3d(-3%, -2%, 0) scale(1); }
+            to { transform: translate3d(4%, 3%, 0) scale(1.09); }
+        }
+
+        .scene {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .scene::after {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            content: "";
+            pointer-events: none;
+            background: linear-gradient(115deg, rgba(14, 16, 16, 0.42), transparent 42%, rgba(14, 16, 16, 0.18));
+        }
+
+        .tile-layer {
+            position: absolute;
+            top: -100vh;
+            left: -100vw;
+            width: 320vw;
+            height: 320vh;
+            z-index: 1;
+            transform: rotate(-45deg);
+            transform-origin: center center;
+            animation: track-roll var(--roll-duration) linear infinite;
+            will-change: transform;
+            --roll-duration: 42s;
+        }
+
+        @keyframes track-roll {
+            from { transform: rotate(-45deg) translate3d(-12vw, 0, 0); }
+            to { transform: rotate(-45deg) translate3d(42vw, 0, 0); }
+        }
+
+        .tile {
+            position: absolute;
+            width: var(--card-width);
+            height: var(--card-height);
+            padding: 0;
+            border: 0;
+            border-radius: 7px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            background: #202321 var(--image) center / cover no-repeat;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+            animation: independent-fade var(--fade-duration) ease-in-out var(--fade-delay) forwards;
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, outline-color 0.35s ease;
+            filter: blur(0) brightness(1) saturate(1);
+            transition-property: transform, box-shadow, outline-color, filter;
+            will-change: opacity, transform, filter;
+        }
+
+        .tile.initial-visible {
+            opacity: 0.94;
+            animation: none;
+        }
+
+        .tile:hover,
+        .tile:focus-visible,
+        .tile.is-hovered {
+            z-index: 10;
+            outline: 2px solid rgba(255, 255, 255, 0.9);
+            outline-offset: 4px;
+            animation-play-state: paused;
+            transform: rotate(45deg) scale(2.4) !important;
+            box-shadow: 0 22px 46px rgba(0, 0, 0, 0.46);
+        }
+
+        .tile.is-video::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: grid;
+            width: 46px;
+            height: 46px;
+            place-items: center;
+            content: "▶";
+            color: #202321;
+            font-size: 20px;
+            line-height: 1;
+            background: rgba(244, 240, 233, 0.9);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 5px 16px rgba(0, 0, 0, 0.35);
+            pointer-events: none;
+        }
+
+        @keyframes independent-fade {
+            0%, 3% { opacity: 0; }
+            10%, 93% { opacity: 0.94; }
+            98%, 100% { opacity: 0; }
+        }
+
+        .intro {
+            position: absolute;
+            z-index: 5;
+            pointer-events: none;
+            text-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+        }
+
+        .intro {
+            top: 28px;
+            left: 30px;
+            z-index: 30;
+            max-width: 620px;
+            padding: 14px 20px 20px 12px;
+            background: linear-gradient(110deg, rgba(28, 30, 29, 0.96), rgba(28, 30, 29, 0.72) 72%, transparent);
+            border-radius: 0 0 26px 0;
+        }
+        .eyebrow {
+            color: var(--quiet);
+            font-size: 10px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+        .eyebrow { margin-bottom: 15px; }
+        h1 {
+            max-width: 590px;
+            margin: 0;
+            font-size: clamp(2.7rem, 6.2vw, 6.8rem);
+            line-height: 0.93;
+            letter-spacing: -0.075em;
+        }
+        .hover-info {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            left: auto;
+            z-index: 40;
+            width: min(620px, calc(100vw - 60px));
+            padding: 14px 20px 17px 12px;
+            color: var(--ink);
+            background: linear-gradient(250deg, rgba(28, 30, 29, 0.96), rgba(28, 30, 29, 0.72) 72%, transparent);
+            border: 0;
+            border-radius: 26px 0 0 0;
+            box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.18);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(12px);
+            transition: opacity 0.38s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .hover-info.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hover-role {
+            margin-bottom: 3px;
+            font-size: clamp(18px, 2.2vw, 28px);
+            font-weight: 700;
+        }
+
+        .hover-company,
+        .hover-time,
+        .hover-tools {
+            color: var(--quiet);
+            font-size: 13px;
+            letter-spacing: 0.05em;
+        }
+
+        .hover-tools { margin-top: 4px; }
+
+        .hover-summary {
+            margin: 8px 0 0;
+            color: rgba(244, 240, 233, 0.84);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        @media (max-width: 720px) {
+            .intro { top: 24px; left: 22px; max-width: 78vw; }
+            h1 { font-size: clamp(2.5rem, 13vw, 4.7rem); }
+            .tile:hover,
+            .tile:focus-visible,
+            .tile.is-hovered { transform: rotate(-45deg) scale(1.8) !important; }
+            .hover-info { right: 22px; bottom: 18px; left: 22px; width: auto; padding: 12px 16px 14px 12px; }
+            .hover-summary { font-size: 12px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body::before, body::after { animation: none; }
+            .tile { animation-duration: 0.01ms, 0.01ms; animation-iteration-count: 1, 1; opacity: 0.82; transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <main class="scene" aria-label="全部作品概览">
+        <div class="tile-layer" id="tileLayer"></div>
+        <header class="intro">
+            <div class="eyebrow">Creative Portfolio · AYE</div>
+            <h1>设计感、执行力、创造力</h1>
+        </header>
+        <div class="hover-info" id="hoverInfo" aria-live="polite">
+            <div class="hover-role" id="hoverRole"></div>
+            <div class="hover-company" id="hoverCompany"></div>
+            <div class="hover-time" id="hoverTime"></div>
+            <div class="hover-tools" id="hoverTools"></div>
+            <p class="hover-summary" id="hoverSummary"></p>
+        </div>
+    </main>
+
+    <script src="guide-videos.js"></script>
+    <script>
+        const pageBySource = {
+            DHZS: '武汉东湖装饰时期作品.html',
+            MLMW: '上海木里木外时期作品.html',
+            OTHER: 'UE&web3d作品.html',
+            python: '音乐程序-python.html',
+            ENS: '上海伍鼎景观时期作品.html',
+            ZX: '上海伍鼎景观时期作品.html',
+            BSBP: '上海伍鼎景观时期作品.html',
+            UTY: '音乐程序-unity.html',
+            QTZN: '杭州青缇智能时期作品.html',
+            XS: '香水瓶作品.html',
+            COMFY: '香水瓶作品.html'
+        };
+
+        const assetCandidates = [];
+        const addRange = (source, prefix, start, end, padding, extension) => {
+            for (let number = start; number <= end; number += 1) {
+                const name = prefix + String(number).padStart(padding, '0') + extension;
+                assetCandidates.push({ source, name, thumb: source === 'COMFY'
+                    ? 'works/20260522香水瓶/COMFYUIOUTPUT/thumbs/640/' + name
+                    : source === 'XS'
+                        ? 'works/20260522香水瓶/thumbs/640/' + name
+                        : 'works/' + (source === 'ENS' || source === 'ZX' || source === 'BSBP' ? 'SHWD/' + source : source) + '/thumbs/640/' + name });
+            }
+        };
+
+        addRange('DHZS', 'DHZS', 2, 236, 0, '.webp');
+        assetCandidates.splice(assetCandidates.findIndex((asset) => asset.thumb.endsWith('/DHZS61.webp')), 1);
+        addRange('MLMW', 'm', 0, 101, 0, '.webp');
+        addRange('MLMW', 'image', 1, 28, 0, '.webp');
+        addRange('ENS', 'ens', 1, 416, 0, '.webp');
+        addRange('ZX', 'zx', 1, 245, 0, '.webp');
+        addRange('BSBP', 'bsbp', 1, 442, 0, '.webp');
+        addRange('XS', 'XS', 1, 35, 4, '.webp');
+        ['aye_bottle_00014_.png', 'aye_bottle_00015_.png', 'aye_bottle_00016_.png', 'aye_bottle_00036_.png', 'aye_bottle_00039_.png', 'aye_bottle_00083_.png', 'aye_bottle_00084_.png', 'Flux.1_Dev_00003_.png'].forEach((name) => assetCandidates.push({ source: 'COMFY', name, thumb: 'works/20260522香水瓶/COMFYUIOUTPUT/thumbs/640/' + name }));
+        ['图元控制.png', '基本控制.png', '节点程序.png', '运动表现.png', '预设列表.png', '颜色方案.png'].forEach((name) => assetCandidates.push({ source: 'python', name, thumb: 'works/python/thumbs/640/' + name }));
+        ['AA.png', 'VS.png', 'VS2.png'].forEach((name) => assetCandidates.push({ source: 'UTY', name, thumb: 'works/UTY/thumbs/640/' + name }));
+        ['jjck.webp', 'jjxr.webp', 'logitechx16.png'].forEach((name) => assetCandidates.push({ source: 'OTHER', name, thumb: 'works/OTHER/thumbs/640/' + name }));
+
+        const fallbackVideoCandidates = [
+            { source: 'SHUNSONG', page: '杭州顺颂尚祺时期作品.html', bvid: 'BV1km28YLEoW', name: '产品动画视频 01', thumb: 'assets/video-thumbs/BV1km28YLEoW.svg', fallback: 'works/DHZS/thumbs/640/DHZS2.webp' },
+            { source: 'SHUNSONG', page: '杭州顺颂尚祺时期作品.html', bvid: 'BV14odrY3Eu8', name: '产品动画视频 02', thumb: 'assets/video-thumbs/BV14odrY3Eu8.svg', fallback: 'works/DHZS/thumbs/640/DHZS10.webp' },
+            { source: 'ENS', page: '上海伍鼎景观时期作品.html', bvid: 'BV1iDdSY7EUh', name: '景观方案视频 01', thumb: 'assets/video-thumbs/BV1iDdSY7EUh.svg', fallback: 'works/SHWD/ENS/thumbs/640/ens1.webp' },
+            { source: 'ENS', page: '上海伍鼎景观时期作品.html', bvid: 'BV1oDdSY7EHC', name: '景观方案视频 02', thumb: 'assets/video-thumbs/BV1oDdSY7EHC.svg', fallback: 'works/SHWD/ENS/thumbs/640/ens10.webp' },
+            { source: 'ENS', page: '上海伍鼎景观时期作品.html', bvid: 'BV1qDdSY7EYE', name: '景观方案视频 03', thumb: 'assets/video-thumbs/BV1qDdSY7EYE.svg', fallback: 'works/SHWD/ENS/thumbs/640/ens100.webp' },
+            { source: 'UTY', page: '音乐程序-unity.html', bvid: 'BV1uMEZ6ZEtG', name: 'Unity 音频可视化视频', thumb: 'assets/video-thumbs/BV1uMEZ6ZEtG.svg', fallback: 'works/UTY/thumbs/640/AA.png' },
+            { source: 'python', page: '音乐程序-python.html', bvid: 'BV1daASzsEXX', name: 'Python 音频程序视频', thumb: 'assets/video-thumbs/BV1daASzsEXX.svg', fallback: 'works/python/thumbs/640/运动表现.png' },
+            { source: 'OTHER', page: 'UE&web3d作品.html', bvid: 'BV1Z1ogY3E1i', name: 'Web3D 交互视频', thumb: 'assets/video-thumbs/BV1Z1ogY3E1i.svg', fallback: 'works/OTHER/thumbs/640/logitechx16.png' },
+            { source: 'OTHER', page: 'UE&web3d作品.html', bvid: 'BV1QFopYhEHt', name: 'UE FFT 可视化视频', thumb: 'assets/video-thumbs/BV1QFopYhEHt.svg', fallback: 'works/MLMW/thumbs/640/m1.webp' },
+            { source: 'BSBP', page: '上海伍鼎景观时期作品.html', bvid: 'BV1SPopYZEKq', name: '景观节点视频', thumb: 'assets/video-thumbs/BV1SPopYZEKq.svg', fallback: 'works/SHWD/BSBP/thumbs/640/bsbp1.webp' },
+            { source: 'UTY', page: '武汉理理线科技时期作品.html', bvid: 'BV1dR6JBmErt', name: '产品功能视频 01', thumb: 'assets/video-thumbs/BV1dR6JBmErt.svg', fallback: 'works/UTY/thumbs/640/VS.png' },
+            { source: 'UTY', page: '武汉理理线科技时期作品.html', bvid: 'BV1jR6JBUEKA', name: '产品功能视频 02', thumb: 'assets/video-thumbs/BV1jR6JBUEKA.svg', fallback: 'works/UTY/thumbs/640/VS2.png' }
+        ];
+
+        const layer = document.getElementById('tileLayer');
+        const hoverInfo = document.getElementById('hoverInfo');
+        const hoverRole = document.getElementById('hoverRole');
+        const hoverCompany = document.getElementById('hoverCompany');
+        const hoverTime = document.getElementById('hoverTime');
+        const hoverTools = document.getElementById('hoverTools');
+        const hoverSummary = document.getElementById('hoverSummary');
+        const experienceBySource = {
+            DHZS: ['公装施工图 / 效果图制图', '武汉东湖装饰工程有限公司', '2017.03-2019.03', 'Photoshop / AutoCAD / 3ds Max / V-Ray', '负责工装项目施工图绘制，并承担效果图建模与渲染输出，参与餐饮、办公等公共空间项目。'],
+            MLMW: ['展厅 / 家具产品建模渲染', '上海木里木外实业有限公司', '2020.05-2021.04', 'SketchUp / 3ds Max / V-Ray / Rhino / Cinema 4D / Blender', '负责展厅空间布局与家具产品精细建模渲染，并拓展曲面建模与基础动画能力。'],
+            SHUNSONG: ['产品主图 / 动画设计制作', '杭州顺颂商祺科技有限公司', '2024.03-2024.08', 'Cinema 4D / Rhino / V-Ray / After Effects', '制定产品渲染出图规范，完成产品建模、灯光材质、批量渲染与宣传动画制作。'],
+            QTZN: ['动态虚拟直播场景设计', '杭州青缇智能有限公司', '2023.05-2024.01', 'Rhino / Cinema 4D / X-Particles / Unreal Engine 4 / After Effects / Photoshop', '主导 XR 虚拟直播场景设计制作，完成 Rhino 建模、C4D 动画、UE4 实时渲染和直播 UI 动态素材。'],
+            C4D: ['个人动画与视觉创作', '离职期间个人研究', '2022.05-2023.04', 'Cinema 4D / Octane / Redshift / Stable Diffusion / Blender', '研究 C4D 动画、渲染和生成式视觉工作流，独立完成从创意、建模到成片的个人作品。'],
+            OTHER: ['Web3D 交互展示开发', '个人技术研究阶段', '2024.08-2025.05', 'Babylon.js / JavaScript / GitHub Pages / GitHub Copilot', '结合 Babylon.js 与前端技术制作 Web3D 交互展示页面，完成从三维设计到网页部署的落地。'],
+            python: ['Python 音频可视化程序', '个人技术研究阶段', '2024.08-2025.05', 'Python / 音频分析 / 自定义 UI', '使用 Python 搭建音频分析、参数控制和可视化表现程序，探索数据驱动的视觉表达。'],
+            ENS: ['艺术装置 / 参数化建模设计', '上海伍鼎景观设计咨询有限公司', '2021.05-2022.04', 'Rhino / Grasshopper / Enscape / V-Ray / Cinema 4D', '负责艺术装置与景观节点的模型制作和实时可视化，学习并应用 Grasshopper 参数化建模流程。'],
+            ZX: ['艺术装置 / 参数化建模设计', '上海伍鼎景观设计咨询有限公司', '2021.05-2022.04', 'Rhino / Grasshopper / Enscape / V-Ray / Cinema 4D', '负责提案阶段模型与景观方案表达，使用 Rhino 建模、Enscape 实时渲染辅助设计沟通。'],
+            BSBP: ['艺术装置 / 参数化建模设计', '上海伍鼎景观设计咨询有限公司', '2021.05-2022.04', 'Rhino / Grasshopper / Enscape / V-Ray / Cinema 4D', '参与景观装置与节点设计的方案表达、模型制作和效果输出，兼顾视觉表现与落地可行性。'],
+            UTY: ['Unity 音频可视化原型开发', '武汉声音进化有限公司', '2026.02-2026.04', 'Unity / Visual Scripting / Python / 音频分析 / AI 辅助开发', '负责音频分析面板与实时数据驱动流程，将节拍、频谱和能量数据接入 Visual Scripting 与视觉效果。'],
+            XS: ['产品视觉设计 / 香水瓶创作', '个人作品项目', '2026.05-至今', 'Cinema 4D / Blender / 材质灯光 / 图像生成', '围绕香水瓶产品进行造型、材质、灯光和画面构成探索，完成多组产品视觉方案。'],
+            COMFY: ['生成式视觉与产品创作', '个人作品项目', '2026.05-至今', 'ComfyUI / Stable Diffusion / ControlNet', '研究生成式图像工作流在产品视觉中的应用，完成香水瓶概念图与视觉方案探索。']
+        };
+        const experienceByPage = {
+            '杭州青缇智能时期作品.html': experienceBySource.QTZN,
+            '杭州顺颂尚祺时期作品.html': experienceBySource.SHUNSONG,
+            '上海伍鼎景观时期作品.html': experienceBySource.ENS,
+            '武汉理理线科技时期作品.html': ['产品动画设计', '武汉理理线科技有限公司', '2025.05-2026.02', 'Cinema 4D / Rhino / Grasshopper / After Effects / VSCode / Python', '制作产品安装说明与功能介绍视频，完成模型优化、视频后期和 Python 自动化工具开发。'],
+            '音乐程序-python.html': experienceBySource.python,
+            '音乐程序-ue-fft.html': ['UE5 音频可视化研究', '个人技术研究阶段', '2024.08-2025.05', 'Unreal Engine 5 / Blueprints / FFT 音频分析', '独立完成 FFT 音频驱动的实时视觉项目，研究声音数据到动态画面的映射。'],
+            '音乐程序-ue-puzzle.html': ['UE5 游戏交互开发', '个人技术研究阶段', '2024.08-2025.05', 'Unreal Engine 5 / Blueprints / 关卡设计', '独立完成消除类游戏原型，负责关卡逻辑、交互反馈和实时视觉表现。'],
+            '音乐程序-ue-racing.html': ['UE5 赛车游戏开发', '个人技术研究阶段', '2024.08-2025.05', 'Unreal Engine 5 / Blueprints / Vehicle System', '完成赛车游戏原型，负责车辆控制、赛道交互和实时画面表现。'],
+            '音乐程序-unity.html': experienceBySource.UTY,
+            '音乐程序-web3d.html': experienceBySource.OTHER,
+            'UE&web3d作品.html': ['UE5 / Web3D 综合研究', '个人技术研究阶段', '2024.08-2025.05', 'Unreal Engine 5 / Babylon.js / Blender / Git / Figma', '研究 UE5 实时交互与 Babylon.js Web3D 展示，完成从三维设计到网页部署的实践。'],
+            'UE相关作品.html': ['UE5 实时视觉与交互开发', '个人技术研究阶段', '2024.08-2025.05', 'Unreal Engine 5 / Blueprints / FFT 音频分析', '独立完成音频可视化、赛车和游戏交互原型，负责蓝图逻辑与实时视觉表现。'],
+            'C4D业余作品.html': experienceBySource.C4D,
+            '香水瓶作品.html': experienceBySource.XS
+        };
+        const shuffle = (items) => items.sort(() => Math.random() - 0.5);
+        const visibleLimit = 900;
+        const flowDuration = 42;
+        let validAssets = [];
+        let imageSlot = 0;
+        let videoSlot = 0;
+        let videoAssets = [];
+        let imageAssets = [];
+
+        function assetWeight(asset) {
+            if (asset.kind === 'video') return 2;
+            if (asset.source === 'MLMW') return 5;
+            if (['DHZS', 'ENS', 'ZX', 'BSBP'].includes(asset.source)) return 0.05;
+            return 1;
+        }
+
+        function weightedTake(pool) {
+            if (!pool.length) return null;
+            const totalWeight = pool.reduce((sum, asset) => sum + assetWeight(asset), 0);
+            let threshold = Math.random() * totalWeight;
+            const selectedIndex = pool.findIndex((asset) => {
+                threshold -= assetWeight(asset);
+                return threshold <= 0;
+            });
+            return pool.splice(selectedIndex === -1 ? pool.length - 1 : selectedIndex, 1)[0];
+        }
+
+        function loadAsset(asset) {
+            return new Promise((resolve) => {
+                const image = new Image();
+                image.onload = () => resolve(asset);
+                image.onerror = () => resolve(null);
+                image.src = asset.thumb;
+            });
+        }
+
+        async function loadVideoAsset(video) {
+            const image = await loadAsset(video);
+            if (image) return { ...video, kind: 'video' };
+            return { ...video, kind: 'video', thumb: video.fallback };
+        }
+
+        function nextAsset(activeTitles = []) {
+            const active = new Set(activeTitles);
+            const candidates = validAssets.filter((asset) => !active.has(asset.name));
+            if (!candidates.length) return validAssets[0];
+
+            return weightedTake([...candidates]);
+        }
+
+        function nextVideo(activeTitles = []) {
+            const active = new Set(activeTitles);
+            const candidates = videoAssets.filter((asset) => !active.has(asset.name));
+            return candidates[Math.floor(Math.random() * candidates.length)] || videoAssets[0];
+        }
+
+        function nextImage(activeTitles = []) {
+            const active = new Set(activeTitles);
+            const candidates = imageAssets.filter((asset) => !active.has(asset.name));
+            return candidates.length ? candidates[Math.floor(Math.random() * candidates.length)] : imageAssets[0];
+        }
+
+        function showExperience(tile, asset) {
+            const experience = experienceByPage[asset.page] || experienceBySource[asset.source] || experienceBySource.OTHER;
+            hoverRole.textContent = experience[0];
+            hoverCompany.textContent = experience[1];
+            hoverTime.textContent = experience[2];
+            hoverTools.textContent = '工具：' + experience[3];
+            hoverSummary.textContent = experience[4];
+            tile.classList.add('is-hovered');
+            hoverInfo.classList.add('visible');
+        }
+
+        function hideExperience(tile) {
+            tile.classList.remove('is-hovered');
+            hoverInfo.classList.remove('visible');
+        }
+
+        function mount(asset, index, total) {
+            createTile(asset, index, total, false);
+        }
+
+        function createTile(asset, index, total, isInitial = false) {
+            const tile = document.createElement('button');
+            const cardWidth = 128 + Math.random() * 6;
+            const cardHeight = 128 + Math.random() * 6;
+            const sourcePage = asset.page || pageBySource[asset.source] || 'index.html';
+            tile.type = 'button';
+            tile.className = asset.kind === 'video' ? 'tile is-video' : 'tile';
+            if (isInitial) tile.classList.add('initial-visible');
+            tile.dataset.title = asset.name;
+            tile.setAttribute('aria-label', asset.name + '，点击进入作品页面');
+            const slot = index % visibleLimit;
+            const column = slot % 30;
+            const row = Math.floor(slot / 30);
+            const columnStep = Math.max(cardWidth + 34, 166);
+            const rowStep = Math.max(cardHeight + 34, 166);
+            const layerWidth = window.innerWidth * 3.2;
+            const layerHeight = window.innerHeight * 3.2;
+            const gridWidth = 30 * columnStep;
+            const gridHeight = 30 * rowStep;
+            const left = (layerWidth - gridWidth) / 2 + column * columnStep;
+            const top = (layerHeight - gridHeight) / 2 + row * rowStep;
+            tile.style.left = left.toFixed(1) + 'px';
+            tile.style.top = top.toFixed(1) + 'px';
+            tile.style.setProperty('--card-width', cardWidth.toFixed(1) + 'px');
+            tile.style.setProperty('--card-height', cardHeight.toFixed(1) + 'px');
+            tile.style.setProperty('--image', 'url("' + asset.thumb + '")');
+            const fadeDuration = 10 + Math.random() * 2;
+            const fadeDelay = Math.random() * 0.8;
+            tile.style.setProperty('--fade-duration', fadeDuration.toFixed(2) + 's');
+            tile.style.setProperty('--fade-delay', fadeDelay.toFixed(2) + 's');
+            if (isInitial) {
+                window.setTimeout(() => {
+                    tile.style.animationDelay = '-2.4s';
+                    tile.classList.remove('initial-visible');
+                }, 1200);
+            }
+            tile.addEventListener('mouseenter', () => {
+                tile.dataset.hovered = 'true';
+                showExperience(tile, asset);
+            });
+            tile.addEventListener('mouseleave', () => {
+                tile.dataset.hovered = 'false';
+                hideExperience(tile);
+            });
+            tile.addEventListener('focus', () => {
+                tile.dataset.hovered = 'true';
+                showExperience(tile, asset);
+            });
+            tile.addEventListener('blur', () => {
+                tile.dataset.hovered = 'false';
+                hideExperience(tile);
+            });
+            tile.addEventListener('click', () => {
+                const focusKey = asset.bvid || asset.name;
+                window.location.href = sourcePage + '?focus=' + encodeURIComponent(focusKey);
+            });
+            layer.appendChild(tile);
+            window.setTimeout(() => {
+                if (tile.dataset.hovered === 'true') {
+                    window.setTimeout(() => tile.dispatchEvent(new Event('lifecycle')), 500);
+                    return;
+                }
+                const activeTitles = [...layer.children]
+                    .filter((node) => node !== tile)
+                    .map((node) => node.dataset.title);
+                tile.remove();
+                mount(nextAsset(activeTitles), index, total);
+            }, (fadeDelay + fadeDuration) * 1000);
+            tile.addEventListener('lifecycle', () => {
+                if (tile.dataset.hovered === 'true') {
+                    window.setTimeout(() => tile.dispatchEvent(new Event('lifecycle')), 500);
+                    return;
+                }
+                const activeTitles = [...layer.children]
+                    .filter((node) => node !== tile)
+                    .map((node) => node.dataset.title);
+                tile.remove();
+                mount(nextAsset(activeTitles), index, total);
+            });
+        }
+
+        const videoCandidates = window.GUIDE_VIDEOS || fallbackVideoCandidates;
+
+        Promise.all([
+            ...assetCandidates.map(loadAsset),
+            ...videoCandidates.map(loadVideoAsset)
+        ]).then((loaded) => {
+            validAssets = loaded.filter(Boolean);
+            const initialPool = [...validAssets];
+            for (let index = 0; index < Math.min(visibleLimit, initialPool.length); index += 1) {
+                createTile(weightedTake(initialPool), index, validAssets.length, true);
+            }
+        });
+    </script>
+</body>
+</html>
