@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palatial 项目作品</title>
     <link rel="stylesheet" href="assets/css/work-common.css">
+    <link rel="stylesheet" href="assets/css/magazine-common.css">
+    <link rel="stylesheet" href="assets/css/lightbox-common.css">
     <style>
         a { color: #ff9800; text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -29,14 +31,19 @@
             color: rgba(255,152,0,0.85);
             font-weight: 600;
         }
-        .pending {
-            padding: 14px 16px;
-            margin-bottom: 30px;
+        .video-demo {
+            margin-bottom: 24px;
             border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(50,50,50,0.45);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
-        .pending p { margin: 0; }
+        .video-demo iframe {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border: 0;
+        }
     </style>
 </head>
 <body>
@@ -48,11 +55,10 @@
 
     <h1 class="slide-animate">公寓数字资产重建与自动化转换流程</h1>
     <p class="slide-animate">
-        以跨国顾问形式远程参与 Palatial 公寓项目，围绕尺寸准确的柜体资产重建、参数化批量建模、GLB 资产整理与 USD 转换工具开发，建立从 Rhino 到 Blender 及 USD 的交付流程。Palatial 致力于将现实空间转化为精确、经过验证的仿真资产。
+        以跨国顾问形式远程参与 Palatial 公寓项目，围绕尺寸准确的柜体资产重建、参数化批量建模、GLB 资产整理与 USDZ 转换工具开发，建立从 Rhino 到 Blender 及 USDZ 的交付流程。Palatial 致力于将现实空间转化为精确、经过验证的仿真资产。更多公司与产品信息可查看 <a href="https://palatial.cloud/" target="_blank" rel="noopener noreferrer">Palatial 官方网站</a>。
     </p>
 
     <div class="meta-bar slide-animate">
-        <span class="meta-item"><span class="meta-label">合作形式</span>美国公司 · 跨国顾问 · 远程居家</span>
         <span class="meta-item"><span class="meta-label">项目时间</span>2026.07-2026.08</span>
         <span class="meta-item"><span class="meta-label">主要工具</span>Rhino · Grasshopper · Blender · Python · Qt</span>
     </div>
@@ -67,21 +73,46 @@
         制作可复用的 Grasshopper 逻辑，将柜体尺寸与内部结构规则转化为批量生产流程，减少同类模型的重复制作工作。
     </p>
 
+    <div class="video-demo slide-animate">
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117216938889286&bvid=BV1rBty6AEaL&cid=41601077068&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+    </div>
+
     <h3 class="slide-animate">GLB 整理与贴图烘焙</h3>
     <p class="slide-animate">
         将 Rhino 模型转换为 GLB，并在 Blender 中依据图层名称信息完成分组、网格合并与贴图自动批量烘焙。
     </p>
 
-    <h3 class="slide-animate">Qt 模型转换控制器</h3>
-    <p class="slide-animate">
-        开发 GLB 至 USD 的 Qt 图形界面工具，统一控制贴图分辨率、默认原点位置等常用转换参数。
-    </p>
-
-    <h3 class="slide-animate">作品展示</h3>
-    <div class="pending slide-animate">
-        <p>项目截图、流程演示和工具界面将在资料整理后添加。</p>
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/platial/thumbs/640/屏幕截图 2026-09-05 160339.png" srcset="works/platial/thumbs/320/屏幕截图 2026-09-05 160339.png 320w, works/platial/thumbs/640/屏幕截图 2026-09-05 160339.png 640w, works/platial/thumbs/1280/屏幕截图 2026-09-05 160339.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/platial/屏幕截图 2026-09-05 160339.png" alt="GLB 至 USDZ 模型转换控制器界面" class="zoomable-img">
+                <div class="mag-caption">GLB2USDZ 管理器</div>
+            </div>
+        </div>
+        <h3>GLB 至 USDZ 模型转换控制器</h3>
+        <p>
+            开发带 Qt 图形界面的 GLB 至 USD/USDZ 批量转换工具，可集中控制贴图烘焙分辨率、并发层级、GPU 烘焙、网格修复、原点位置、Prim 层级与材质命名等常用参数。
+        </p>
     </div>
 
+    <div class="mag-block slide-animate">
+        <div class="mag-thumb-group">
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/platial/thumbs/640/屏幕截图 2026-09-05 160929.png" srcset="works/platial/thumbs/320/屏幕截图 2026-09-05 160929.png 320w, works/platial/thumbs/640/屏幕截图 2026-09-05 160929.png 640w, works/platial/thumbs/1280/屏幕截图 2026-09-05 160929.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/platial/屏幕截图 2026-09-05 160929.png" alt="Azure 同声传译工具主界面" class="zoomable-img">
+                <div class="mag-caption">实时翻译与语音输出</div>
+            </div>
+            <div class="mag-thumb zoomable-img-wrap">
+                <img src="works/platial/thumbs/640/屏幕截图 2026-09-05 160950.png" srcset="works/platial/thumbs/320/屏幕截图 2026-09-05 160950.png 320w, works/platial/thumbs/640/屏幕截图 2026-09-05 160950.png 640w, works/platial/thumbs/1280/屏幕截图 2026-09-05 160950.png 1280w" sizes="140px" loading="lazy" data-fullsrc="works/platial/屏幕截图 2026-09-05 160950.png" alt="Azure 英文播报音色选择界面" class="zoomable-img">
+                <div class="mag-caption">Azure 发音音色</div>
+            </div>
+        </div>
+        <h3>Google Meet 同声传译工具</h3>
+        <p>
+            为跨国视频会议开发实时翻译与语音播报工具，接入 Azure 服务提供语音识别、翻译与发音能力，并支持实时中英文字幕、Azure 音色筛选、语速和语音间隙调节。配合虚拟声卡软件，可将合成语音路由为 Google Meet 的麦克风输入，方便会议中的双语沟通。可惜项目很快结束，这套工具最终没有在实际会议中正式投入使用。
+        </p>
+    </div>
+
+    <script src="assets/js/zoom-modal.js"></script>
     <script src="assets/js/sticky-title.js"></script>
     <script src="assets/js/scroll-animate.js"></script>
     <script src="assets/js/focus-work.js"></script>

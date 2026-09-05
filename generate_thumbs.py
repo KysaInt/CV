@@ -27,6 +27,7 @@ IMAGE_DIRS = [
     "works/OTHER",
     "works/python",
     "works/UTY",
+    "works/platial",
     "works/20260522香水瓶/COMFYUIOUTPUT",
     "head",
 ]
@@ -37,6 +38,7 @@ WORK_PAGES = {
     "MLMW": "上海木里木外时期作品.html",
     "OTHER": "近期其他内容.html",
     "python": "音乐程序-python.html",
+    "platial": "Palatial时期作品.html",
     "SHWD/ENS": "音乐程序-ue-racing.html",
     "SHWD/ZX": "音乐程序-web3d.html",
     "SHWD/BSBP": "音乐程序-ue-puzzle.html",
